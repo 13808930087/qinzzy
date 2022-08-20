@@ -1,0 +1,22 @@
+@charset "UTF-8";
+*{
+
+	margin: 0;
+	padding: 0;
+}
+body{
+	height: 100%;
+	width: 100%;
+
+}
+div{
+	border-radius: 20px 20px 20px 20px;
+	width: 100px;
+	height: 100px;
+	line-height:100px;
+	
+text-align:center;
+	background-color: #0ff;
+	float: left;
+	margin: 20px;
+}

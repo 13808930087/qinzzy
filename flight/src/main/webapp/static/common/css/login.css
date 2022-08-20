@@ -1,0 +1,109 @@
+@charset "UTF-8";
+* {
+ 	margin: 0;
+ 	padding: 0;
+ }
+
+ html {
+ 	height: 100%;
+ }
+
+ body {
+ 	height: 100%;
+ }
+
+ .container {
+ 	height: 100%;
+	background: url(../img/286536.jpg) center / cover;
+ }
+
+ .login-wrapper {
+ 	background-color: rgba(255,255,255,0.6);
+ 	 width: 20%;
+ 	height: 588px;
+ 	border-radius: 15px;
+ 	padding: 0 50px;
+ 	position: absolute;
+ 	left: 48%;
+ 	top: 48%;
+ 	transform: translate(-50%, -50%);
+ }
+
+
+ .header {
+ 	font-size: 38px;
+ 	font-weight: bold;
+ 	text-align: center;
+ }
+.clearfix:after {
+	/*伪元素是行内元素 正常浏览器清除浮动方法*/
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+ .input-item {
+   	margin-bottom: 20px;
+ 	width: 100%;
+
+ }
+  .input-item  input{
+  width: 80%;
+   	display: block;
+ 	border: 0;
+ 	padding: 10px;
+ 	border-bottom: 1px solid rgb(128, 125, 125);
+ 	font-size: 15px;
+ 	outline: none;
+  float:right;
+  }
+  .input-item  label{
+  width: 15%;
+   	display: block;
+ 	font-size: 20px;
+ 	color:#000;
+ 	outline: none;
+ 	line-height:38px;
+  float:left;
+  }
+
+ .input-item:placeholder {
+ 	text-transform: uppercase;
+ }
+
+ .btn {
+ 	text-align: center;
+ 	padding: 10px;
+ 	width: 100%;
+ 	margin-top: 40px;
+ 	background-image: linear-gradient(to right, #0ff, rgb(150, 150, 255));
+ 	color: #fff;
+ 	border: 0px;
+ 	border-radius: 10px 10px 10px 10px;
+ }
+
+ .msg {
+ 	text-align: center;
+ 	line-height: 88px;
+ }
+
+ a {
+ 	text-decoration-line: none;
+ 	color: #00f;
+ }
+  form{
+	 margin-top: 50px;
+ }
+form .error{
+	 position: absolute;
+	 top: 420px;
+	 left: 125px;
+	 width: 200px;
+	 height: 10px;
+	 line-height: 10px;
+	 text-align: center;
+	 font-size: 10px;
+	 color: #f00;
+ }
+ 
