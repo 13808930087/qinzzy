@@ -22,12 +22,9 @@ public class CharachterEncodingFilter implements Filter{
 		// TODO Auto-generated method stub
 		 HttpServletRequest req = (HttpServletRequest)request;
 	        HttpServletResponse resp = (HttpServletResponse)response;
-
 	        req.setCharacterEncoding("utf-8");
 	        resp.setCharacterEncoding("utf-8");
 	        resp.setContentType("text/html;charset=utf-8");
-	        chain.doFilter(request, response);
-
+	        chain.doFilter(request,response);
 	}
-
 }

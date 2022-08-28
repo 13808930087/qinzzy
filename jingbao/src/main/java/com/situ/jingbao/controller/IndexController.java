@@ -3,11 +3,16 @@ package com.situ.jingbao.controller;
 import com.situ.jingbao.common.Global;
 import com.situ.jingbao.dao.LoginDao;
 import com.situ.jingbao.interceptor.JingbaoInterceptor;
+import com.situ.jingbao.model.Goods;
+import com.situ.jingbao.model.Title;
 import com.situ.jingbao.model.User;
+import com.situ.jingbao.service.ListService;
 import com.situ.jingbao.service.LoginService;
+import com.situ.jingbao.service.TitleService;
 import com.situ.jingbao.util.Md5Utils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -19,21 +24,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class IndexController {
+    @Autowired
     private LoginService loginService;
-
-    public IndexController(LoginService loginService) {
-        this.loginService = loginService;
-    }
+    @Autowired
+    private ListService listService;
+   @Autowired
+   private TitleService titleService;
     private static final Log log = LogFactory.getLog(JingbaoInterceptor.class);
 
     @RequestMapping("/index")
     public String indexRequest(Map<String, Object> map, HttpSession session) {
         log.info("index");
+        Goods goods=new Goods();
+        goods.setGoodsNew(1);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
+        List<Title> titles= titleService.getTitle(0);
+        List<Goods> goodss=listService.findAll(goods);
+        map.put("goodss",goodss);
+        if(titles!=null){
+            session.setAttribute("titles",titles);
+        }
         if(user!=null){
             if (user.getCustomer()!=null){
                 session.setAttribute("login_user_name", user.getCustomer().getCustomerName());
@@ -41,14 +56,18 @@ public class IndexController {
                 session.setAttribute("login_user_name", user.getUsername());
             }
         }else {
-            session.setAttribute("login_user_name","登录");
+            session.setAttribute("login_user_name","个人信息");
         }
         if(user!=null){
-                session.setAttribute("login_or_name", "个人信息");
-            session.setAttribute("login_url","#");
+            session.setAttribute("login_or_name1", "个人信息");
+            session.setAttribute("login_url1","#");
+            session.setAttribute("login_or_name2", "注销");
+            session.setAttribute("login_url2","/logout");
         }else {
-            session.setAttribute("login_or_name","登录");
-            session.setAttribute("login_url","/login");
+            session.setAttribute("login_or_name1","登录");
+            session.setAttribute("login_url1","/login");
+            session.setAttribute("login_or_name2","注册");
+            session.setAttribute("login_url2","/register");
         }
         return "index";
     }
@@ -111,14 +130,9 @@ public class IndexController {
             session.setAttribute("login_error", "用户名不存在");
             return "redirect:/login";
         }
-
-
         boolean pass = loginService.check(loginUser);
-
-
         if (pass) {
             session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
-
             return "redirect:/index";
         } else {
             session.setAttribute("login_error", "用户名密码不匹配");

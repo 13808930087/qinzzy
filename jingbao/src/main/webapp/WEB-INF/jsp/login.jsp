@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <c:set var="user" value=" ${login_user}" />
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
     <base href="${ctx}/">
     <title>京宝商城</title>
@@ -146,7 +147,7 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="#">Features</a>
+                                    <li><a href="jingbao/list">Features</a>
                                         <!--Mega Menu Start-->
                                         <ul class="mega-menu">
                                             <li><a href="#" class="item-link">Pages</a>
@@ -399,10 +400,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h1 class="breadmome-name">Login</h1>
+                        <h1 class="breadmome-name">登录</h1>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active">Login</li>
+                            <li><a href="index.html">主页</a></li>
+                            <li class="active">登录</li>
                         </ul>
                     </div>
                 </div>
@@ -419,17 +420,17 @@
                         <div class="login-form-container">
                             <div class="login-form">
                                 <form action="/login" method="post">
-                                    <label>Username</label>
+                                    <label>用户名</label>
                                     <input name="username" type="text">
-                                    <label>Password</label>
+                                    <label>密码</label>
                                     <input name="password" type="password">
                                     <div class="button-box">
                                         <div class="login-toggle-btn">
                                             <input type="checkbox">
-                                            <label>Remember me</label>
-                                            <a href="#">Forgot Password?</a>
+                                            <label>记得我</label>
+                                            <a href="#">忘记了密码?</a>
                                         </div>
-                                        <button type="button" class="default-btn">Login</button>
+                                        <button type="button" class="default-btn">登录</button>
                                     </div>
                                 </form>
                                 <div class="no-account">

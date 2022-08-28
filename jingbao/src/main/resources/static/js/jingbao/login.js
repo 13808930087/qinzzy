@@ -22,7 +22,7 @@ $(function() {
 			layer.msg('用户名不能有空格');
 			return;
 		}
-		if (username.length < 3) {
+		if (username.length < 6) {
 			layer.msg('用户名长度至少3位');
 			return;
 		}
@@ -37,7 +37,7 @@ $(function() {
 			layer.msg('密码不能有空格');
 			return;
 		}
-		if (password.length < 3) {
+		if (password.length < 6) {
 			layer.msg('密码长度至少3位');
 			return;
 		}
@@ -48,8 +48,4 @@ $(function() {
 		console.log(username);
 		$(".login-form>form").submit();
 	});
-
-
-
-
 });

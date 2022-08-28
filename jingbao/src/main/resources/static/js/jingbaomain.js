@@ -55,11 +55,11 @@ function categorySubMenuToggle() {
     if ( screenSize <= 991) {
         $('#cate-toggle .right-menu > a').prepend('<i class="expand menu-expand"></i>');
         $('.category-menu .right-menu ul').slideUp();
-//        $('.category-menu .menu-item-has-children i').on('click', function(e){
-//            e.preventDefault();
-//            $(this).toggleClass('expand');
-//            $(this).siblings('ul').css('transition', 'none').slideToggle();
-//        })
+       $('.category-menu .menu-item-has-children i').on('click', function(e){
+           e.preventDefault();
+           $(this).toggleClass('expand');
+           $(this).siblings('ul').css('transition', 'none').slideToggle();
+       })
     } else {
         $('.category-menu .right-menu > a i').remove();
         $('.category-menu .right-menu ul').slideDown();

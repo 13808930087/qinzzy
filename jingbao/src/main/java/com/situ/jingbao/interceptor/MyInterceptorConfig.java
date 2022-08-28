@@ -15,7 +15,6 @@ public class MyInterceptorConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-
-        registry.addInterceptor(new JingbaoInterceptor()).addPathPatterns("/jingbao/**");
+        registry.addInterceptor(new JingbaoInterceptor()).addPathPatterns("/user/**");
     }
 }

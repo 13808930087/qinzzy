@@ -5,9 +5,11 @@
 <html class="no-js" lang="en">
 <head>
     <base href="${ctx}/">
+    <title>京宝商城</title>
+
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Shopping Cart</title>
+    <title>Shop</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
@@ -38,13 +40,23 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Modernizr Js -->
+    <script type="text/javascript" src="lib/jquery/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="lib/layer/layer.js"></script>
+    <script type="text/javascript">
+        const ctx = "${ctx}";
+        const pages = parseInt("${pi.pages}");
+        const pageNum = parseInt("${pi.pageNum}");
+        const pageSize = parseInt("${pi.pageSize}");
+    </script>
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="js/jingbao/list.js"></script>
 </head>
 <body>
 
 
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
 <![endif]-->
 
 <div class="wrapper">
@@ -108,7 +120,7 @@
                         <div class="header-menu-area">
                             <nav>
                                 <ul class="main-menu">
-                                    <li class="active"><a href="index.html">Home</a>
+                                    <li class="active"><a href="/index">Home</a>
                                         <!--Dropdown Menu Start-->
                                         <ul class="dropdown">
                                             <li><a href="index.html">Home Shop 1</a></li>
@@ -119,14 +131,14 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="about.html">About us</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="/shop">Shop</a></li>
                                     <li><a href="index.html">Pages</a>
                                         <!--Dropdown Menu Start-->
                                         <ul class="dropdown">
                                             <li><a href="about.html">About Us</a></li>
-                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="/shop">Shop</a></li>
                                             <li><a href="single-product.html">Single Product</a></li>
-                                            <li><a href="my-account.html">My Account</a></li>
+                                            <li><a href="/login">My Account</a></li>
                                             <li><a href="login.html">Login</a></li>
                                             <li><a href="register.html">Register</a></li>
                                             <li><a href="faq.html">Frequently Questions</a></li>
@@ -136,7 +148,7 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="#">Features</a>
+                                    <li><a href="jingbao/list">Features</a>
                                         <!--Mega Menu Start-->
                                         <ul class="mega-menu">
                                             <li><a href="#" class="item-link">Pages</a>
@@ -198,7 +210,8 @@
                         <!--Category Menu Start-->
                         <div class="category-menu category-menu-hidden">
                             <div class="category-heading">
-                                <h2 class="categories-toggle"><span>categories</span><i class="ion-ios-arrow-down"></i></h2>
+                                <h2 class="categories-toggle"><span>categories</span><i class="ion-ios-arrow-down"></i>
+                                </h2>
                             </div>
                             <div id="cate-toggle" class="category-menu-list">
                                 <ul>
@@ -313,7 +326,8 @@
                                             <option value="38">Watches</option>
                                         </select>
                                         <input type="text" placeholder="Search product...">
-                                        <button class="top-search-btn" type="submit"><i class="ion-ios-search-strong"></i></button>
+                                        <button class="top-search-btn" type="submit"><i
+                                                class="ion-ios-search-strong"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -338,7 +352,8 @@
                                             <span class="cart-sticker">1x</span>
                                         </div>
                                         <div class="cart-content">
-                                            <h5 class="product-name"><a href="single-product.html">Lipstick Ultra Violet</a></h5>
+                                            <h5 class="product-name"><a href="single-product.html">Lipstick Ultra
+                                                Violet</a></h5>
                                             <span class="product-price">$16.40</span>
                                             <span class="product-size"><span>Size</span>: S</span>
                                             <span class="product-color"><span>Color</span>: Yellow</span>
@@ -353,7 +368,8 @@
                                             <span class="cart-sticker">1x</span>
                                         </div>
                                         <div class="cart-content">
-                                            <h5 class="product-name"><a href="single-product.html">Columbia Men's Ascender</a></h5>
+                                            <h5 class="product-name"><a href="single-product.html">Columbia Men's
+                                                Ascender</a></h5>
                                             <span class="product-price">$23.39</span>
                                             <span class="product-size"><span>Size</span>: S</span>
                                             <span class="product-color"><span>Color</span>: Orange</span>
@@ -370,7 +386,7 @@
                                     <h5>Total <span class="float-right">$46.79</span></h5>
                                 </div>
                                 <div class="checkout">
-                                    <a  href="checkout.html">checkout</a>
+                                    <a href="checkout.html">checkout</a>
                                 </div>
                             </div>
                             <!--Cart Dropdown End-->
@@ -389,10 +405,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h1 class="breadmome-name">Shopping Cart</h1>
+                        <h1 class="breadmome-name">Shop</h1>
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li class="active">Shopping Cart</li>
+                            <li class="active">Shop</li>
                         </ul>
                     </div>
                 </div>
@@ -400,81 +416,327 @@
         </div>
     </div>
     <!--Breadcrumb Area End-->
-    <!--Shopping Cart Area Strat-->
-    <div class="Shopping-cart-area mt-80">
+    <!--Shop Area Start-->
+    <div class="shop-area mt-60">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <form action="#">
-                        <div class="table-content table-responsive">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="picaboo-product-remove">remove</th>
-                                    <th class="picaboo-product-thumbnail">images</th>
-                                    <th class="cart-product-name">Product</th>
-                                    <th class="picaboo-product-price">Unit Price</th>
-                                    <th class="picaboo-product-quantity">Quantity</th>
-                                    <th class="picaboo-product-subtotal">Total</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="picaboo-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-                                    <td class="picaboo-product-thumbnail"><a href="#"><img src="img/cart/cart1.jpg" alt=""></a></td>
-                                    <td class="picaboo-product-name"><a href="#">Aliquam lobortis est</a></td>
-                                    <td class="picaboo-product-price"><span class="amount">$70.00</span></td>
-                                    <td class="picaboo-product-quantity">
-                                        <input value="1" type="number">
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$70.00</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="picaboo-product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
-                                    <td class="picaboo-product-thumbnail"><a href="#"><img src="img/cart/cart2.jpg" alt=""></a></td>
-                                    <td class="picaboo-product-name"><a href="#">Cras neque metus</a></td>
-                                    <td class="picaboo-product-price"><span class="amount">$60.50</span></td>
-                                    <td class="picaboo-product-quantity">
-                                        <input value="1" type="number">
-                                    </td>
-                                    <td class="product-subtotal"><span class="amount">$60.50</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="coupon-all">
-                                    <div class="coupon">
-                                        <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
-                                        <input class="button" name="apply_coupon" value="Apply coupon" type="submit">
-                                    </div>
-                                    <div class="coupon2">
-                                        <input class="button" name="update_cart" value="Update cart" type="submit">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5 ml-auto">
-                                <div class="cart-page-total">
-                                    <h2>Cart totals</h2>
-                                    <ul>
-                                        <li>Subtotal <span>$130.00</span></li>
-                                        <li>Total <span>$130.00</span></li>
+                <div class="col-lg-3 order-2 order-lg-1">
+                    <!--Shop Product Categorie Start-->
+                    <div class="shop-product-cate mb-20">
+                        <h3>Fashion</h3>
+                        <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
+                            <ul class="category-sub-menu">
+                                <li class="has-sub"><a href="#">dresses</a>
+                                    <ul class="category-sub">
+                                        <li><a href="shop.html">Casual Dresses</a></li>
+                                        <li><a href="shop.html">Maxi Dresses</a></li>
+                                        <li><a href="shop.html">Midi Dresses</a></li>
+                                        <li><a href="shop.html">Bodycon Dresses</a></li>
                                     </ul>
-                                    <a href="#">Proceed to checkout</a>
+                                </li>
+                                <li class="has-sub"><a href="#">shoes</a>
+                                    <ul class="category-sub">
+                                        <li><a href="shop.html">Athletic</a></li>
+                                        <li><a href="shop.html">Boots</a></li>
+                                        <li><a href="shop.html">Comfort</a></li>
+                                        <li><a href="shop.html">Fashion Sneakers</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub"><a href="#">Handbags</a>
+                                    <ul class="category-sub">
+                                        <li><a href="shop.html">Backpack</a></li>
+                                        <li><a href="shop.html">Shoulder Bags</a></li>
+                                        <li><a href="shop.html">Mini Bags</a></li>
+                                        <li><a href="shop.html">Bucket Bags</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-sub"><a href="#">Clothing</a>
+                                    <ul class="category-sub">
+                                        <li><a href="shop.html">Sweaters</a></li>
+                                        <li><a href="shop.html">T-shirts</a></li>
+                                        <li><a href="shop.html">Outerwear</a></li>
+                                        <li><a href="shop.html">Jackets</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Shop Product Categorie End-->
+                    <!--Brand Categorie Widget Start-->
+                    <div class="shop-sidebar mb-20">
+                        <h3>Brand</h3>
+                        <div class="shop-checkbox">
+                            <ul>
+                                <li><input name="product-categori" type="checkbox"><a href="#">Graphic Corner (5)</a>
+                                </li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">Studio Design (8)</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Brand Categorie Widget End-->
+                    <!--Price Categorie Widget Start-->
+                    <div class="shop-sidebar mb-20">
+                        <h3>Price</h3>
+                        <div class="shop-checkbox">
+                            <ul>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$18.00 - $21.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$30.00 - $37.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$54.00 - $62.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$72.00 - $83.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$90.00 - $94.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$96.00 - $125.00
+                                    (1)</a></li>
+                                <li><input name="price-filter" checked="" type="radio"><a href="#">$176.00 - $364.00
+                                    (7)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Price Categorie Widget End-->
+                    <!--Size Categorie Widget Strat-->
+                    <div class="shop-sidebar mb-20">
+                        <h3>Size</h3>
+                        <div class="shop-checkbox">
+                            <ul>
+                                <li><input name="product-categori" type="checkbox"><a href="#">S (2)</a></li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">M (2)</a></li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">L (2)</a></li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">XL (2)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Size Categorie Widget End-->
+                    <!--Color Categorie Widget Start-->
+                    <div class="shop-sidebar mb-20">
+                        <h3>color</h3>
+                        <div class="shop-checkbox">
+                            <ul>
+                                <li><a href="#"><span class="color"></span>Pink (2)</a></li>
+                                <li><a href="#"><span class="color"></span>Green (2)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Color Categorie Widget End-->
+                    <!--Dimension Categorie Widget Start-->
+                    <div class="shop-sidebar mb-20">
+                        <h3>Dimension</h3>
+                        <div class="shop-checkbox">
+                            <ul>
+                                <li><input name="product-categori" type="checkbox"><a href="#">40x60cm (3)</a></li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">60x90cm (3)</a></li>
+                                <li><input name="product-categori" type="checkbox"><a href="#">80x120cm (3)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--Dimension Categorie Widget End-->
+                </div>
+                <div class="col-lg-9 order-1 order-lg-2">
+                    <div class="shop-layout">
+                        <!--Grid & List View Start-->
+                        <div class="shop-topbar-wrapper mb-30 d-md-flex justify-content-md-between align-items-center">
+                            <div class="grid-list-option">
+                                <ul class="nav">
+                                    <li>
+                                        <a class="active" data-toggle="tab" href="#grid"><i
+                                                class="ion-grid show_grid"></i></a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#list"><i class="ion-android-menu show_list"></i></a>
+                                    </li>
+                                </ul>
+                                <p class="show-product">Showing 1–9 of 42 results</p>
+                            </div>
+                            <!--Toolbar Short Area Start-->
+                            <div class="toolbar-short-area d-md-flex align-items-center">
+                                <div class="toolbar-shorter">
+                                    <label>Sort By:</label>
+                                    <select class="wide nice-select">
+                                        <option data-display="Select">Nothing</option>
+                                        <option value="Relevance">Relevance</option>
+                                        <option value="Name, A to Z">Name, A to Z</option>
+                                        <option value="Name, Z to A">Name, Z to A</option>
+                                        <option value="Price, low to high">Price, low to high</option>
+                                        <option value="Price, high to low">Price, high to low</option>
+                                    </select>
                                 </div>
                             </div>
+                            <!--Toolbar Short Area End-->
                         </div>
-                    </form>
+                        <!--Grid & List View End-->
+                        <!--Shop Product Start-->
+                        <div class="shop-product">
+                            <div id="myTabContent-2" class="tab-content">
+                                <div id="grid" class="tab-pane fade show active">
+                                    <div class="product-grid-view">
+                                        <div class="row"><c:forEach var="goods" items="${goodss}">
+                                            <div class="col-lg-4 col-xl-4 col-md-4">
+                                                <!--Single Product Start-->
+                                                <div class="single-product mb-30">
+                                                    <div class="product-img">
+                                                        <a href="single-product.html">
+                                                            <img class="first-img" src="${goods.goodsFirstImg}" alt="">
+                                                            <c:if test="${goods.goodsHoverImg!=null}">
+                                                                <img class="hover-img" src="${goods.goodsHoverImg}"
+                                                                     alt=""></c:if>
+                                                        </a>
+
+                                                        <c:if test="${goods.goodsNew==1}"> <span
+                                                                class="sticker">New</span></c:if>
+                                                        <div class="product-action">
+                                                            <ul>
+                                                                <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                                <li><a href="#open-modal" data-toggle="modal"><i
+                                                                        class="ion-eye"></i></a></li>
+                                                                <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-content">
+                                                        <h4><a href="single-product.html">${goods.goodsName}</a></h4>
+                                                        <div class="product-price">
+                                                            <c:if test="${goods.goodsDiscount<1.0}">
+                                                                <span class="regular-price">${goods.goodsPrice}</span>
+                                                                <span class="price">${goods.newGoodsPrice}</span></c:if>
+                                                            <c:if test="${goods.goodsDiscount==1.0}">
+                                                                <span class="price">${goods.goodsPrice}</span>
+                                                            </c:if>
+                                                        </div>
+                                                        <div class="product-reviews">
+                                                            <c:forEach begin="0" end="${goods.goodsLevel}">
+                                                                <i class="ion-android-star"></i>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Single Product End-->
+                                            </div>
+                                        </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="list" class="tab-pane fade">
+                                    <div class="product-list-view">
+                                        <c:forEach var="goods" items="${goodss}">
+                                            <div class="product-list-item mb-40">
+                                                <div class="row">
+                                                    <!--Single List Product Start-->
+                                                    <div class="col-md-4">
+                                                        <div class="single-product">
+                                                            <div class="product-img">
+                                                                <a href="single-product.html">
+                                                                    <img class="first-img" src="${goods.goodsFirstImg}"
+                                                                         alt="">
+                                                                    <c:if test="${goods.goodsHoverImg!=null}">
+                                                                        <img class="hover-img"
+                                                                             src="${goods.goodsHoverImg}" alt="">
+                                                                    </c:if>
+                                                                </a>
+                                                                <c:if test="${goods.goodsNew==1}"> <span
+                                                                        class="sticker">New</span></c:if>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <div class="product-content shop-list">
+                                                            <h4><a href="single-product.html">${goods.goodsName}</a>
+                                                            </h4>
+                                                            <div class="product-price">
+                                                                <c:if test="${goods.goodsDiscount<1.0}">
+                                                                    <span class="regular-price">${goods.goodsPrice}</span>
+                                                                    <span class="price">${goods.newGoodsPrice}</span></c:if>
+                                                                <c:if test="${goods.goodsDiscount==1.0}">
+                                                                    <span class="price">${goods.goodsPrice}</span>
+                                                                </c:if>
+
+                                                            </div>
+                                                            <div class="product-reviews">
+                                                                <c:forEach begin="0" end="${goods.goodsLevel}">
+                                                                    <i class="ion-android-star"></i>
+                                                                </c:forEach>
+                                                            </div>
+                                                            <div class="product-description">
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                                    elit. Fusce posuere metus vitae arcu imperdiet, id
+                                                                    aliquet ante scelerisque. Sed sit amet sem vitae
+                                                                    urna fringilla tempus.</p>
+                                                            </div>
+                                                            <div class="product-list-action">
+                                                                <ul>
+                                                                    <li><a class="pro-add-btn" href="#"><i
+                                                                            class="ion-bag"></i>Add to cart</a></li>
+                                                                    <li><a href="#open-modal" data-toggle="modal"><i
+                                                                            class="ion-eye"></i></a></li>
+                                                                    <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--Single List Product End-->
+                                                </div>
+                                            </div>
+                                        </c:forEach>
+
+                                    </div>
+                                </div>
+                                <!--Pagination Start-->
+                                <div class="pagination-product d-md-flex justify-content-md-between align-items-center">
+                                    <div class="showing-product">
+                                        <form id="list-form" action="jingbao/list"
+                                              method="post">
+                                            <input type="hidden" name="pageNum" value="${pi.pageNum }">
+                                            <input type="hidden" name="pageSize" value="${pi.pageSize }">
+
+                                        </form>
+                                        <p> Showing 1-12 of 13 item(s) </p>
+                                    </div>
+                                    <div class="page-list">
+                                        <ul>
+                                            <li class="prev">
+                                                <a href="javascript:void(0)">
+                                                    <i class="ion-ios-arrow-left">
+                                                    </i>Previous
+                                                </a>
+                                            </li>
+                                            <c:forEach begin="${pi.navigateFirstPage }" end="${pi.navigateLastPage }"
+                                                       var="p">
+                                                <c:if test="${p==pi.pageNum }">
+                                                    <li class="page active">
+                                                        <a href="javascript:void(0)">${p}</a>
+                                                    </li>
+                                                </c:if>
+                                                <c:if test="${p!=pi.pageNum }">
+                                                    <li class="page">
+                                                        <a href="javascript:void(0)">${p}</a>
+                                                    </li>
+                                                </c:if>
+                                            </c:forEach>
+                                            <li class="next">
+                                                <a href="javascript:void(0)">Next
+                                                    <i class="ion-ios-arrow-right"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--Pagination End-->
+                            </div>
+                        </div>
+                        <!--Shop Product End-->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--Shopping Cart Area End-->
+    <!--Shop Area End-->
     <!--Feature Area Start-->
-    <div class="feature-area mt-80">
+    <div class="feature-area mt-60">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -533,9 +795,12 @@
                                 <div class="footer-logo">
                                     <a href="index.html"><img src="img/logo/logo1.jpg" alt=""></a>
                                 </div>
-                                <div class="desc-footer">We are a team of designers and developers that create high quality Magento, Prestashop, Opencart.</div>
+                                <div class="desc-footer">We are a team of designers and developers that create high
+                                    quality Magento, Prestashop, Opencart.
+                                </div>
                                 <div class="address-footer">
-                                    <p class="address"><span>The Barn, Ullenhall, Henley-in-Arden B578 5CC, England</span></p>
+                                    <p class="address">
+                                        <span>The Barn, Ullenhall, Henley-in-Arden B578 5CC, England</span></p>
                                     <p class="phone"><span>+123.456.789 - +123.456.678</span></p>
                                     <p class="mail"><span>support@devitems.com</span></p>
                                 </div>
@@ -602,10 +867,14 @@
                                     <p>Sign up for newsletter</p>
                                     <div class="newsletter-form">
                                         <!-- Newsletter Form -->
-                                        <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="popup-subscribe-form validate" target="_blank" novalidate>
+                                        <form action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef"
+                                              method="post" id="mc-embedded-subscribe-form"
+                                              name="mc-embedded-subscribe-form" class="popup-subscribe-form validate"
+                                              target="_blank" novalidate>
                                             <div id="mc_embed_signup_scroll">
-                                                <div id="mc-form" class="mc-form subscribe-form" >
-                                                    <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email here" />
+                                                <div id="mc-form" class="mc-form subscribe-form">
+                                                    <input id="mc-email" type="email" autocomplete="off"
+                                                           placeholder="Enter your email here"/>
                                                     <button id="mc-submit">Subscribe</button>
                                                 </div>
                                             </div>
@@ -711,7 +980,9 @@
                         <div class="col-md-6">
                             <!--Footer Copyright Start-->
                             <div class="footer-copyright">
-                                <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                                <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
+                                                                                             href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+                                </p>
                             </div>
                             <!--Footer Copyright End-->
                         </div>
@@ -744,28 +1015,32 @@
                         <div class="col-md-5">
                             <!--Modal Tab Content Start-->
                             <div class="tab-content product-details-large" id="myTabContent">
-                                <div class="tab-pane fade show active" id="single-slide1" role="tabpanel" aria-labelledby="single-slide-tab-1">
+                                <div class="tab-pane fade show active" id="single-slide1" role="tabpanel"
+                                     aria-labelledby="single-slide-tab-1">
                                     <!--Single Product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="img/single-product/large/large1.jpg" alt="">
                                     </div>
                                     <!--Single Product Image End-->
                                 </div>
-                                <div class="tab-pane fade" id="single-slide2" role="tabpanel" aria-labelledby="single-slide-tab-2">
+                                <div class="tab-pane fade" id="single-slide2" role="tabpanel"
+                                     aria-labelledby="single-slide-tab-2">
                                     <!--Single Product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="img/single-product/large/large2.jpg" alt="">
                                     </div>
                                     <!--Single Product Image End-->
                                 </div>
-                                <div class="tab-pane fade" id="single-slide3" role="tabpanel" aria-labelledby="single-slide-tab-3">
+                                <div class="tab-pane fade" id="single-slide3" role="tabpanel"
+                                     aria-labelledby="single-slide-tab-3">
                                     <!--Single Product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="img/single-product/large/large3.jpg" alt="">
                                     </div>
                                     <!--Single Product Image End-->
                                 </div>
-                                <div class="tab-pane fade" id="single-slide4" role="tabpanel" aria-labelledby="single-slide-tab-4">
+                                <div class="tab-pane fade" id="single-slide4" role="tabpanel"
+                                     aria-labelledby="single-slide-tab-4">
                                     <!--Single Product Image Start-->
                                     <div class="single-product-img img-full">
                                         <img src="img/single-product/large/large4.jpg" alt="">
@@ -778,16 +1053,20 @@
                             <div class="single-product-menu">
                                 <div class="nav single-slide-menu" role="tablist">
                                     <div class="single-tab-menu img-full">
-                                        <a class="active" data-toggle="tab" id="single-slide-tab-1" href="#single-slide1"><img src="img/single-product/small/small1.jpg" alt=""></a>
+                                        <a class="active" data-toggle="tab" id="single-slide-tab-1"
+                                           href="#single-slide1"><img src="img/single-product/small/small1.jpg" alt=""></a>
                                     </div>
                                     <div class="single-tab-menu img-full">
-                                        <a data-toggle="tab" id="single-slide-tab-2" href="#single-slide2"><img src="img/single-product/small/small2.jpg" alt=""></a>
+                                        <a data-toggle="tab" id="single-slide-tab-2" href="#single-slide2"><img
+                                                src="img/single-product/small/small2.jpg" alt=""></a>
                                     </div>
                                     <div class="single-tab-menu img-full">
-                                        <a data-toggle="tab" id="single-slide-tab-3" href="#single-slide3"><img src="img/single-product/small/small3.jpg" alt=""></a>
+                                        <a data-toggle="tab" id="single-slide-tab-3" href="#single-slide3"><img
+                                                src="img/single-product/small/small3.jpg" alt=""></a>
                                     </div>
                                     <div class="single-tab-menu img-full">
-                                        <a data-toggle="tab" id="single-slide-tab-4" href="#single-slide4"><img src="img/single-product/small/small4.jpg" alt=""></a>
+                                        <a data-toggle="tab" id="single-slide-tab-4" href="#single-slide4"><img
+                                                src="img/single-product/small/small4.jpg" alt=""></a>
                                     </div>
                                 </div>
                             </div>
@@ -813,7 +1092,8 @@
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the bust with ruffles at the bottom of the dress.</p>
+                                    <p>Long printed dress with thin adjustable straps. V-neckline and wiring under the
+                                        bust with ruffles at the bottom of the dress.</p>
                                 </div>
                                 <div class="single-product-action">
                                     <form action="#">
@@ -840,10 +1120,13 @@
                                         <div class="product-add-to-cart">
                                             <span class="control-label">Quantity</span>
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
+                                                <input class="cart-plus-minus-box" type="text" name="qtybutton"
+                                                       value="0">
                                             </div>
                                             <div class="add">
-                                                <button class="add-to-cart"><i class="zmdi zmdi-shopping-cart-plus"></i> add-to-cart</button>
+                                                <button class="add-to-cart"><i class="zmdi zmdi-shopping-cart-plus"></i>
+                                                    add-to-cart
+                                                </button>
                                                 <span class="product-availability"><i class="zmdi zmdi-check"></i> In stock</span>
                                             </div>
                                         </div>
@@ -872,9 +1155,6 @@
     </div>
     <!-- Modal Area End -->
 </div>
-
-
-
 
 
 <!--All Js Here-->
@@ -914,6 +1194,8 @@
 <!--Plugins-->
 <script src="js/plugins.js"></script>
 <!--Main Js-->
-<script src="js/main.js"></script>
+<script src="js/jingbaomain.js"></script>
 </body>
 </html>
+
+

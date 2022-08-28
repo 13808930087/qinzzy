@@ -2,7 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <c:set var="user" value=" ${login_user}" />
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
     <base href="${ctx}/">
     <title>京宝商城</title>
@@ -131,12 +132,12 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="about.html">About us</a></li>
-                                    <li><a href="shop.html">Shop</a></li>
+                                    <li><a href="/shop">Shop</a></li>
                                     <li><a href="index.html">Pages</a>
                                         <!--Dropdown Menu Start-->
                                         <ul class="dropdown">
                                             <li><a href="about.html">About Us</a></li>
-                                            <li><a href="shop.html">Shop</a></li>
+                                            <li><a href="/shop">Shop</a></li>
                                             <li><a href="single-product.html">Single Product</a></li>
                                             <li><a href="/login">My Account</a></li>
                                             <li><a href="login.html">Login</a></li>
@@ -148,7 +149,7 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="#">Features</a>
+                                    <li><a href="jingbao/list">Features</a>
                                         <!--Mega Menu Start-->
                                         <ul class="mega-menu">
                                             <li><a href="#" class="item-link">Pages</a>
@@ -401,10 +402,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="breadcrumb-content text-center">
-                        <h1 class="breadmome-name">Register</h1>
+                        <h1 class="breadmome-name">注册</h1>
                         <ul>
-                            <li><a href="/index">Home</a></li>
-                            <li class="active">Register</li>
+                            <li><a href="/index">主页</a></li>
+                            <li class="active">注册</li>
                         </ul>
                     </div>
                 </div>
@@ -421,7 +422,7 @@
                         <div class="login-form-container">
                             <div class="register-form">
                                 <form action="/register" method="post">
-                                    <p>已经有一个帐户？ <a href="/login">改为登录！</a></p>
+                                    <p><a href="/login">已经有一个帐户？ 改为登录！</a></p>
 <%--                                    <label>性别</label>--%>
 <%--                                    <div class="input-radio">--%>
 <%--                                        <span class="custom-radio"><input name="customerSex" value="1" type="radio"> 男.</span>--%>
@@ -431,11 +432,11 @@
 <%--                                    <input name="first-name" type="text">--%>
 <%--                                    <label>Last Name</label>--%>
 <%--                                    <input name="last-name" type="text">--%>
-                                    <label>Username</label>
+                                    <label>用户名</label>
                                     <input name="username" type="text">
-                                    <label>Password</label>
+                                    <label>密码</label>
                                     <input name="password" type="password">
-                                    <label>Repeat Password</label>
+                                    <label>再次输入密码</label>
                                     <input name="repeatPassword" type="password">
 <%--                                    <label>Birthdate</label>--%>
 <%--                                    <input name="birthday" value="" placeholder="MM/DD/YYYY" type="text">--%>
@@ -448,7 +449,7 @@
                                             <label>注册我们的通讯<br><em>您可以随时取消订阅。为此请在法律声明中找到我们的联系信息。</em></label>
                                         </span>
                                     <div class="button-box">
-                                        <button type="button" class="default-btn">save</button>
+                                        <button type="button" class="default-btn">注册</button>
                                     </div>
                                 </form>
                             </div>
