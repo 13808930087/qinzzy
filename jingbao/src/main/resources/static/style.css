@@ -866,7 +866,7 @@ Common Style CSS
     2.2 Header Middle CSS
 ---------------------------------*/
 .header-middle-area {
-	padding: 10px 0;
+	padding: 0 0;
 	background: transparent;
 }
 .header-middle-area.header-style-3 {
