@@ -2,6 +2,7 @@ package com.situ.jingbao.service.impl;
 
 import com.situ.jingbao.dao.ListDao;
 import com.situ.jingbao.model.Goods;
+import com.situ.jingbao.model.Title;
 import com.situ.jingbao.service.ListService;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,10 @@ public class ListServiceImpl  implements ListService {
           g.setNewGoodsPrice((double) ((int)(g.getNewGoodsPrice()*10))/10);
        }
         return goodss;
+    }
+
+    @Override
+    public List<Title> findId(String categoryName) {
+        return listDao.findId(categoryName);
     }
 }

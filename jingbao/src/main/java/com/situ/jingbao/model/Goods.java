@@ -11,6 +11,18 @@ public class Goods {
     private Integer   goodsLevel;
     private Integer   goodsNew;
 
+    private Integer   categoryId;
+
+
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public void takeNewGoodsPrice() {
         this.newGoodsPrice = goodsPrice*goodsDiscount;
     }

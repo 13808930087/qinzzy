@@ -6,7 +6,17 @@ public class User {
     private String password;
     private String username;
 
+    private String identifyCode;
+
     private Customer customer;
+
+    public String getIdentifyCode() {
+        return identifyCode;
+    }
+
+    public void setIdentifyCode(String identifyCode) {
+        this.identifyCode = identifyCode;
+    }
 
     public Customer getCustomer() {
         return customer;

@@ -20,16 +20,13 @@
             <if test="goods.goodsId!=null">
                 and goods_id = #{goods.goodsId}
             </if>
+            <if test="goods.categoryId!=null">
+                and category_id = #{goods.categoryId}
+            </if>
             <if test="goods.goodsName!=null and goods.goodsName!=''">
                 <bind name="goodsName" value="'%'+goods.goodsName+'%'"/>
                 and goods_name like #{goodsName}
             </if>
-<!--            <if test="goods.goodsDiscount!=null">-->
-<!--                and goods_discount &gt;= #{goods.goodsDiscount}-->
-<!--            </if>-->
-<!--            <if test="goods.arrivalDateEnd!=null">-->
-<!--                and arrival_date &lt;= #{goods.arrivalDateEnd}-->
-<!--            </if>-->
             <if test="goods.goodsLevel!=null">
                 and goods_level &gt;= #{goods.goodsLevel}
             </if>
@@ -37,5 +34,14 @@
                 and goods_new = #{goods.goodsNew}
             </if>
         </where>
+    </select>
+    <resultMap id="TitleMap" type="Title">
+        <id column="title_id" property="titleId"/>
+        <result column="title_name" property="titleName"/>
+    </resultMap>
+    <select id="findId" resultMap="TitleMap" parameterType="java.lang.String">
+        SELECT title_id,title_name
+        from t_title
+        where title_name=#{categoryName}
     </select>
 </mapper>
