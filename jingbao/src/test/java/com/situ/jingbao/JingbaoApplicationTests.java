@@ -8,6 +8,7 @@ class JingbaoApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

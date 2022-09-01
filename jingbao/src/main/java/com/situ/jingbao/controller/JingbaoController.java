@@ -3,6 +3,7 @@ package com.situ.jingbao.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.jingbao.common.Global;
+import com.situ.jingbao.model.GoodsCondition;
 import com.situ.jingbao.model.Goods;
 import com.situ.jingbao.model.Title;
 import com.situ.jingbao.model.User;
@@ -15,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping("/jingbao")
@@ -28,119 +28,138 @@ public class JingbaoController {
 
 
     @RequestMapping("/list")
-    public String list(Goods goods,String categoryName, Integer pageNum, Integer pageSize, Map<String, Object> map,HttpSession session)throws ServletException, IOException {
-        List<Title> titles= titleService.getTitle(0);
-        map.put("titles",titles);
+    public String list(GoodsCondition goods, String categoryName, Integer pageNum, Integer pageSize, Map<String, Object> map, HttpSession session) throws ServletException, IOException {
+        List<Title> titles = titleService.getAllTitle();
+        map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if(user!=null){
-            if (user.getCustomer()!=null){
+        if (user != null) {
+            if (user.getCustomer() != null) {
                 map.put("login_user_name", user.getCustomer().getCustomerName());
-            }else {
+            } else {
                 map.put("login_user_name", user.getUsername());
             }
-        }else {
-            map.put("login_user_name","个人信息");
+        } else {
+            map.put("login_user_name", "个人信息");
         }
-        if(user!=null){
+        if (user != null) {
             map.put("login_or_name1", "个人信息");
-            map.put("login_url1","user/customer");
+            map.put("login_url1", "user/userTemp");
             map.put("login_or_name2", "注销");
-            map.put("login_url2","/logout");
-        }else {
-            map.put("login_or_name1","登录");
-            map.put("login_url1","/login");
-            map.put("login_or_name2","注册");
-            map.put("login_url2","/login?sign=0");
+            map.put("login_url2", "/logout");
+        } else {
+            map.put("login_or_name1", "登录");
+            map.put("login_url1", "/login");
+            map.put("login_or_name2", "注册");
+            map.put("login_url2", "/login?sign=0");
         }
-        titles=null;
-        Title title=null;
-        if(categoryName!=null&&categoryName!=""){
-            titles=listService.findId(categoryName);
-        }
-        if(titles!=null&&titles.size()<1){
-                title=titles.get(0);
-              goods.setCategoryId(titles.get(0).getTitleId());
-        }
-
-        if (pageNum==null) {
+        if (pageNum == null) {
             pageNum = 1;
         }
-        if (pageSize==null) {
+        if (pageSize == null) {
             pageSize = 12;
         }
-        PageHelper.startPage(pageNum, pageSize);
-        List<Goods> goodss = listService.findAll(goods);
-        PageInfo<Goods> pi=new PageInfo(goodss);
+        List<Goods> goodss = null;
+
+        Title title = null;
+        if (categoryName != null && categoryName != "") {
+            Integer id = listService.findId(categoryName);
+            if (id != null) {
+                title = titleService.getTitle(id);
+                goods.setCategoryId(id);
+            }
+        }else if(goods.getCategoryId()!=null){
+            title = titleService.getTitle(goods.getCategoryId());
+        }
+        Set<Integer> titleIds = new HashSet<>();
+        if (title != null) {
+            titleIds = titleIds(title, titleIds);
+            goods.setTitleIds(titleIds);
+        }
+       PageHelper.startPage(pageNum, pageSize);
+        goodss = listService.findGoods(goods);
+        PageInfo<Goods> pi = new PageInfo(goodss);
         pi.calcByNavigatePages(5);
         map.put("goodss", goodss);
         map.put("pi", pi);
-        map.put("title_get",title);
-        map.put("goods",goods);
-        map.put("categoryName",categoryName);
-        if(categoryName!=null ){
-            map.put("pageName",categoryName);
-        }else {
-           map.put("pageName","商品");
+        map.put("title_get", title);
+        map.put("goods", goods);
+        map.put("categoryName", categoryName);
+        if (categoryName != null) {
+            map.put("pageName", categoryName);
+        } else {
+            map.put("pageName", "商品");
         }
-
         return "list";
     }
+
     @RequestMapping("/cart")
-    public String cart(Map<String, Object> map,HttpSession session)throws ServletException, IOException {
-        List<Title> titles= titleService.getTitle(0);
-        map.put("titles",titles);
+    public String cart(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
+        List<Title> titles = titleService.getAllTitle();
+        map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if(user!=null){
-            if (user.getCustomer()!=null){
+        if (user != null) {
+            if (user.getCustomer() != null) {
                 map.put("login_user_name", user.getCustomer().getCustomerName());
-            }else {
+            } else {
                 map.put("login_user_name", user.getUsername());
             }
-        }else {
-            map.put("login_user_name","个人信息");
+        } else {
+            map.put("login_user_name", "个人信息");
         }
-        if(user!=null){
+        if (user != null) {
             map.put("login_or_name1", "个人信息");
-            map.put("login_url1","user/customer");
+            map.put("login_url1", "user/userTemp");
             map.put("login_or_name2", "注销");
-            map.put("login_url2","/logout");
-        }else {
-            map.put("login_or_name1","登录");
-            map.put("login_url1","/login");
-            map.put("login_or_name2","注册");
-            map.put("login_url2","/login?sign=0");
+            map.put("login_url2", "/logout");
+        } else {
+            map.put("login_or_name1", "登录");
+            map.put("login_url1", "/login");
+            map.put("login_or_name2", "注册");
+            map.put("login_url2", "/login?sign=0");
         }
-        map.put("pageName","购物车");
+        map.put("pageName", "购物车");
         return "cart";
     }
 
     @RequestMapping("/product")
-    public String product(Map<String, Object> map, HttpSession session)throws ServletException, IOException {
-        List<Title> titles= titleService.getTitle(0);
-        map.put("titles",titles);
+    public String product(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
+        List<Title> titles = titleService.getAllTitle();
+        map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if(user!=null){
-            if (user.getCustomer()!=null){
+        if (user != null) {
+            if (user.getCustomer() != null) {
                 map.put("login_user_name", user.getCustomer().getCustomerName());
-            }else {
+            } else {
                 map.put("login_user_name", user.getUsername());
             }
-        }else {
-            map.put("login_user_name","个人信息");
+        } else {
+            map.put("login_user_name", "个人信息");
         }
-        if(user!=null){
+        if (user != null) {
             map.put("login_or_name1", "个人信息");
-            map.put("login_url1","user/customer");
+            map.put("login_url1", "user/userTemp");
             map.put("login_or_name2", "注销");
-            map.put("login_url2","/logout");
-        }else {
-            map.put("login_or_name1","登录");
-            map.put("login_url1","/login");
-            map.put("login_or_name2","注册");
-            map.put("login_url2","/login?sign=0");
+            map.put("login_url2", "/logout");
+        } else {
+            map.put("login_or_name1", "登录");
+            map.put("login_url1", "/login");
+            map.put("login_or_name2", "注册");
+            map.put("login_url2", "/login?sign=0");
         }
-        map.put("pageName","商品信息");
+        map.put("pageName", "商品信息");
         return "product";
     }
 
+    public Set<Integer> titleIds(Title title, Set<Integer> titleIds) {
+        if (title.getTitles() == null || title.getTitles().size() == 0) {
+            titleIds.add(title.getTitleId());
+            return titleIds;
+        } else {
+            titleIds.add(title.getTitleId());
+            for (int i = 0; i < title.getTitles().size(); i++) {
+                titleIds(title.getTitles().get(i), titleIds);
+            }
+            return titleIds;
+        }
+    }
 }

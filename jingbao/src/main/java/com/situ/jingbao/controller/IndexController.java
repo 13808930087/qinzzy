@@ -4,6 +4,7 @@ import com.situ.jingbao.common.Global;
 import com.situ.jingbao.dao.LoginDao;
 import com.situ.jingbao.interceptor.JingbaoInterceptor;
 import com.situ.jingbao.model.Goods;
+import com.situ.jingbao.model.GoodsCondition;
 import com.situ.jingbao.model.Title;
 import com.situ.jingbao.model.User;
 import com.situ.jingbao.service.ListService;
@@ -40,11 +41,11 @@ public class IndexController {
     @RequestMapping("/index")
     public String indexRequest(Map<String, Object> map, HttpSession session) {
         log.info("index");
-        Goods goods=new Goods();
+        GoodsCondition goods=new GoodsCondition();
         goods.setGoodsNew(1);
-        List<Goods> goodss=listService.findAll(goods);
+        List<Goods> goodss=listService.findGoods(goods);
         map.put("goodss",goodss);
-        List<Title> titles= titleService.getTitle(0);
+        List<Title> titles= titleService.getAllTitle();
         map.put("titles",titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if(user!=null){
@@ -58,7 +59,7 @@ public class IndexController {
         }
         if(user!=null){
             map.put("login_or_name1", "个人信息");
-            map.put("login_url1","user/customer");
+            map.put("login_url1","user/userTemp");
             map.put("login_or_name2", "注销");
             map.put("login_url2","/logout");
         }else {
@@ -72,7 +73,7 @@ public class IndexController {
 
     @GetMapping("/login")
     public String loginGet(HttpSession session, @RequestParam(required = false) Integer sign, Map<String, Object> map) throws IOException, ServletException {
-        List<Title> titles= titleService.getTitle(0);
+        List<Title> titles= titleService.getAllTitle();
         map.put("titles",titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if(user!=null){
@@ -86,7 +87,7 @@ public class IndexController {
         }
         if(user!=null){
             map.put("login_or_name1", "个人信息");
-            map.put("login_url1","user/customer");
+            map.put("login_url1","user/userTemp");
             map.put("login_or_name2", "注销");
             map.put("login_url2","/logout");
         }else {
@@ -135,13 +136,6 @@ public class IndexController {
         return json;
     }
 
-//    @GetMapping("/register")
-//    public String RegisterGet(HttpSession session, Map<String, Object> map) throws IOException, ServletException {
-//        List<Title> titles= titleService.getTitle(0);
-//        map.put("titles",titles);
-//        map.put("pageName","注册");
-//        return "register";
-//    }
     @PostMapping(value = "/register", produces = "application/json;charset=utf-8")
     @ResponseBody
     public Map<String, Object>  registerPost(User user, HttpSession session) throws IOException, ServletException {

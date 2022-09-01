@@ -14,8 +14,15 @@ public class TitleServiceImpl implements TitleService {
     public TitleServiceImpl(TitleDao titleDao) {
         this.titleDao = titleDao;
     }
-    public List<Title> getTitle(int parentId) {
-        return titleDao.getTitle(parentId);
 
+
+    @Override
+    public Title getTitle(Integer titleId) {
+        return titleDao.getTitle(titleId);
+    }
+
+    @Override
+    public List<Title> getAllTitle() {
+        return titleDao.getAllTitle();
     }
 }

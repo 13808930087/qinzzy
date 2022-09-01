@@ -12,7 +12,7 @@ public interface LoginService {
 
 	boolean check(User loginUser, User targetUser) ;
 
-	 User validation(User loginUser) ;
+	User validation(User loginUser) ;
 
 	int register(User user);
 }

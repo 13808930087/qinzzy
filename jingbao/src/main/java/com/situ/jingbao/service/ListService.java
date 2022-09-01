@@ -1,11 +1,11 @@
 package com.situ.jingbao.service;
 
 import com.situ.jingbao.model.Goods;
-import com.situ.jingbao.model.Title;
+import com.situ.jingbao.model.GoodsCondition;
 
 import java.util.List;
 
 public interface ListService {
-    List<Goods> findAll(Goods goods);
-    List<Title> findId(String categoryName);
+    List<Goods> findGoods(GoodsCondition gs);
+    Integer findId(String categoryName);
 }

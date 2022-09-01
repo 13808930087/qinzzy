@@ -5,5 +5,6 @@ import com.situ.jingbao.model.Title;
 import java.util.List;
 
 public interface TitleService {
-    List<Title> getTitle(int parentId) ;
+    Title getTitle(Integer titleId) ;
+    List<Title> getAllTitle() ;
 }

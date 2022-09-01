@@ -167,7 +167,7 @@
                                 <!--Single Product Start-->
                                 <div class="single-product">
                                     <div class="product-img">
-                                        <a href="single-product.html">
+                                        <a href="javascript:void(0)">
                                             <img class="first-img" src="${goods.goodsFirstImg}" alt="">
                                             <c:if test="${goods.goodsHoverImg!=null}">
                                                 <img class="hover-img" src="${goods.goodsHoverImg}"
@@ -177,7 +177,7 @@
                                                 class="sticker">New</span></c:if>
                                         <div class="product-action">
                                             <ul>
-                                                <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                 <li><a href="#open-modal" data-toggle="modal"><i
                                                         class="ion-eye"></i></a>
                                                 </li>
@@ -186,7 +186,7 @@
                                         </div>
                                     </div>
                                     <div class="product-content">
-                                        <h4><a href="single-product.html">${goods.goodsName}</a></h4>
+                                        <h4><a href="javascript:void(0)">${goods.goodsName}</a></h4>
                                         <div class="product-price">
                                             <c:if test="${goods.goodsDiscount<1.0}">
                                                 <span class="regular-price">${goods.goodsPrice}</span>
@@ -279,14 +279,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product8.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product1.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -294,7 +294,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Versace Bright Crystal</a></h4>
+                                            <h4><a href="javascript:void(0)">Versace Bright Crystal</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$260.00</span>
                                             </div>
@@ -313,14 +313,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product13.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product8.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -328,7 +328,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Vera Wang Princess</a></h4>
+                                            <h4><a href="javascript:void(0)">Vera Wang Princess</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$120.00</span>
                                             </div>
@@ -347,14 +347,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product10.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product11.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -362,7 +362,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">The North Face Men's</a></h4>
+                                            <h4><a href="javascript:void(0)">The North Face Men's</a></h4>
                                             <div class="product-price">
                                                 <span class="regular-price">$60.00</span>
                                                 <span class="price">$54.00</span>
@@ -382,14 +382,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product15.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product16.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -397,7 +397,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Merax Stylish Accent</a></h4>
+                                            <h4><a href="javascript:void(0)">Merax Stylish Accent</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$90.00</span>
                                             </div>
@@ -416,14 +416,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product17.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product18.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -431,7 +431,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Makeup Brushes Set</a></h4>
+                                            <h4><a href="javascript:void(0)">Makeup Brushes Set</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$320.00</span>
                                             </div>
@@ -450,13 +450,13 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product3.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -464,7 +464,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Lipstick Ultra Violet</a></h4>
+                                            <h4><a href="javascript:void(0)">Lipstick Ultra Violet</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$180.00</span>
                                             </div>
@@ -483,14 +483,14 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product13.jpg" alt="">
                                                 <img class="hover-img" src="img/product/product14.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -498,7 +498,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Enriched Nail Polish</a></h4>
+                                            <h4><a href="javascript:void(0)">Enriched Nail Polish</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$300.00</span>
                                             </div>
@@ -517,13 +517,13 @@
                                     <!--Single Product Start-->
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a href="javascript:void(0)">
                                                 <img class="first-img" src="img/product/product6.jpg" alt="">
                                             </a>
                                             <span class="sticker">New</span>
                                             <div class="product-action">
                                                 <ul>
-                                                    <li><a href="cart.html"><i class="ion-bag"></i></a></li>
+                                                    <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                             class="ion-eye"></i></a></li>
                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a></li>
@@ -531,7 +531,7 @@
                                             </div>
                                         </div>
                                         <div class="product-content">
-                                            <h4><a href="single-product.html">Dwar Men's Casual Long</a></h4>
+                                            <h4><a href="javascript:void(0)">Dwar Men's Casual Long</a></h4>
                                             <div class="product-price">
                                                 <span class="price">$350.00</span>
                                             </div>

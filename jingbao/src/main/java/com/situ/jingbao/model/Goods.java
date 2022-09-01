@@ -1,5 +1,7 @@
 package com.situ.jingbao.model;
 
+import java.util.Set;
+
 public class Goods {
     private Integer goodsId;
     private String      goodsName;
@@ -10,9 +12,7 @@ public class Goods {
     private Double    goodsPrice;
     private Integer   goodsLevel;
     private Integer   goodsNew;
-
     private Integer   categoryId;
-
 
 
     public Integer getCategoryId() {

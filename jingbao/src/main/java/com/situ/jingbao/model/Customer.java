@@ -2,7 +2,7 @@ package com.situ.jingbao.model;
 
 public class Customer {
 
-    private int customerId;
+    private Integer customerId;
     private String customerName;
     private String customerSex;
     private String customerIdentity;
