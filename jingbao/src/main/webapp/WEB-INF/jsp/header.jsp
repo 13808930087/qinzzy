@@ -47,6 +47,7 @@
 <link rel="stylesheet" href="style.css">
 <!-- Responsive CSS -->
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/jingbao/header.css">
 <!-- Modernizr Js -->
 
 </head>
@@ -366,9 +367,12 @@
 <div class="page-title-area">
     <div class="container">
         <div class="page-title-content">
-            <ul>
-                <li><a href="index">主页</a></li>
-                <li class="active">${pageName}</li>
+
+            <ul id="heading">
+
+                    <li><a href="index">主页</a></li>
+                    <li class="active">${pageName}</li>
+
             </ul>
         </div>
     </div>

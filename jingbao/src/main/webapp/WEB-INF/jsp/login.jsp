@@ -33,7 +33,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-12 col-lg-6 col-xl-6 ml-auto mr-auto">
-                    <div id="login" class="login" style="display: block">
+                    <div id="login" class="login" style="display: none">
                         <div class="login-form-container">
                             <div class="login-form">
                                 <form action="/login" method="post">
@@ -71,7 +71,9 @@
                                     <%--                                    <input name="first-name" type="text">--%>
                                     <%--                                    <label>Last Name</label>--%>
                                     <%--                                    <input name="last-name" type="text">--%>
-                                    <label>用户名</label>
+                                        <label>昵称</label>
+                                        <input name="nickname" type="text">
+                                        <label>用户名</label>
                                     <input name="username" type="text">
                                     <label>密码</label>
                                     <input name="password" type="password">

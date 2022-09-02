@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Title {
     private String titleName;
-    private int titleId;
-    private int parentId;
-    private int titleLevel;
+    private Integer titleId;
+    private Integer parentId;
+    private Integer titleLevel;
     private String titleSmallImg;
     private String titleBigImg;
     private String titleFourImg;
@@ -44,27 +44,27 @@ public class Title {
         this.titleBigImg = titleBigImg;
     }
 
-    public int getTitleId() {
+    public Integer getTitleId() {
         return titleId;
     }
 
-    public void setTitleId(int titleId) {
+    public void setTitleId(Integer titleId) {
         this.titleId = titleId;
     }
 
-    public int getParentId() {
+    public Integer getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(Integer parentId) {
         this.parentId = parentId;
     }
 
-    public int getTitleLevel() {
+    public Integer getTitleLevel() {
         return titleLevel;
     }
 
-    public void setTitleLevel(int titleLevel) {
+    public void setTitleLevel(Integer titleLevel) {
         this.titleLevel = titleLevel;
     }
 

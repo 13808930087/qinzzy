@@ -40,34 +40,14 @@ public class JingbaoInterceptor implements HandlerInterceptor {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession();
+        String path = req.getServletPath();
 
-
-        String path = req.getServletPath();//
-
-//        boolean match = false;
-//        for (String key : ignoreUrls.keySet()) {
-//            JingbaoInterceptor.Matcher v = ignoreUrls.get(key);
-//            if (v == JingbaoInterceptor.Matcher.EQUALS) {
-//                match = path.equals(key);
-//            } else if (v == JingbaoInterceptor.Matcher.ENDS_WIDTH) {
-//                match = path.endsWith(key);
-//            } else if (v == JingbaoInterceptor.Matcher.STARTS_WIDTH) {
-//                match = path.startsWith(key);
-//            }
-//
-//            if (match) {
-//                break;
-//            }
-//        }
-//        if (match) {
-//            return true;
-//        } else {
             User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
             if (user == null) {
                 resp.sendRedirect(req.getContextPath() + "/login");
+
             } else {
               return true;
-//            }
         }
         return true;
     }

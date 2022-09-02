@@ -29,7 +29,7 @@ $(function() {
 		$("#register").css("display","block");
 		$(".page-title-content .active").text("注册");
 	}
-
+	login();
 	if(sign!=null&&sign==="0"){
 		register();
 	}
@@ -113,6 +113,12 @@ $(function() {
 	$(".register-form .default-btn").click(function() {
 		let username = $(".register-form input[name=username]").val();
 		let password = $(".register-form input[name=password]").val();
+		let nickname = $(".register-form input[name=nickname]").val();
+		if(nickname==null||nickname === ""){
+			nickname=username;
+			console.log(nickname);
+		}
+
 		let repeatPassword = $(".register-form input[name=repeatPassword]").val();
 		if (username === "") {
 			layer.msg('用户名不能为空');
@@ -155,6 +161,7 @@ $(function() {
 			method: "post",
 			dataType: "json",//没有方法的js对象
 			data: {
+				nickname:nickname,
 				username:username,
 				password:password
 			},

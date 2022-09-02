@@ -3,10 +3,7 @@ package com.situ.jingbao.controller;
 import com.situ.jingbao.common.Global;
 import com.situ.jingbao.dao.LoginDao;
 import com.situ.jingbao.interceptor.JingbaoInterceptor;
-import com.situ.jingbao.model.Goods;
-import com.situ.jingbao.model.GoodsCondition;
-import com.situ.jingbao.model.Title;
-import com.situ.jingbao.model.User;
+import com.situ.jingbao.model.*;
 import com.situ.jingbao.service.ListService;
 import com.situ.jingbao.service.LoginService;
 import com.situ.jingbao.service.TitleService;
@@ -49,8 +46,8 @@ public class IndexController {
         map.put("titles",titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if(user!=null){
-            if (user.getCustomer()!=null){
-                map.put("login_user_name", user.getCustomer().getCustomerName());
+            if (user.getNickname()!=null){
+                map.put("login_user_name", user.getNickname());
             }else {
                 map.put("login_user_name", user.getUsername());
             }
@@ -77,8 +74,8 @@ public class IndexController {
         map.put("titles",titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if(user!=null){
-            if (user.getCustomer()!=null){
-                map.put("login_user_name", user.getCustomer().getCustomerName());
+            if (user.getNickname()!=null){
+                map.put("login_user_name", user.getNickname());
             }else {
                 map.put("login_user_name", user.getUsername());
             }
@@ -122,6 +119,7 @@ public class IndexController {
                     session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
                     success = true;
                     loginPrompt="登录成功";
+
                 } else {
                     success = false;
                     loginPrompt="用户名密码不匹配";
@@ -138,17 +136,20 @@ public class IndexController {
 
     @PostMapping(value = "/register", produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Map<String, Object>  registerPost(User user, HttpSession session) throws IOException, ServletException {
+    public Map<String, Object>  register(User user, HttpSession session) throws IOException, ServletException {
         Map<String, Object> json = new HashMap<>();
         User dbUser = loginService.validation(user);
         if (dbUser != null) {
             json.put("success",false);
             json.put("registerPrompt","用户名已存在");
         }else {
-            loginService.register(user);
+
+            Integer num01=loginService.register(user);
             dbUser = loginService.validation(user);
-            if(dbUser!=null){
-                session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
+            Customer customer=new Customer();
+            customer.setCustomerId(dbUser.getCustomerId());
+            Integer num02=loginService.addCustomer(customer);
+            if(num01!=null&&num02!=null){
                 json.put("success",true);
                 json.put("registerPrompt","用户注册成功");
             }else {

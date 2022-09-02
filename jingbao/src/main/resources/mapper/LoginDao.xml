@@ -7,25 +7,29 @@
         <id column="customer_id" property="customerId"/>
         <result column="password" property="password"/>
         <result column="username" property="username"/>
-        <association property="customer" column="customer_id" select="customer"/>
+        <result column="nickname" property="nickname"/>
+        <result column="gravatar_img" property="gravatarImg"/>
+
     </resultMap>
     <select id="validation" resultMap="LoginMap" parameterType="java.lang.String">
-        SELECT username, password, customer_id
+        SELECT username, password, customer_id,nickname,gravatar_img
         from t_user
         where username = #{username}
+    </select>
+    <select id="getId" resultMap="LoginMap" parameterType="java.lang.Integer">
+        SELECT username, password, customer_id,nickname,gravatar_img
+        from t_user
+        where customer_id = #{customerId}
     </select>
 
     <resultMap id="CustomerMap" type="Customer">
         <id column="customer_id" property="customerId"/>
         <result column="customer_name" property="customerName"/>
     </resultMap>
-
-    <select id="customer" resultMap="CustomerMap" parameterType="java.lang.Integer">
-        SELECT customer_name, customer_id
-        from t_customer
-        where customer_id = #{customer_id}
-    </select>
     <insert id="register" parameterType="User">
-        insert into t_user(username, password) value (#{user.username},#{user.password} )
+        insert into t_user(username, password,nickname) value (#{user.username},#{user.password},#{user.nickname} )
+    </insert>
+    <insert id="addCustomer" parameterType="Customer">
+        insert into t_customer(customer_id,customer_name,sex,phone,email,identity_card,province,city,area,customer_introduction) value (#{customer.customerId},#{customer.customerName},#{customer.sex},#{customer.phone},#{customer.email},#{customer.identityCard},#{customer.province},#{customer.city},#{customer.area},#{customer.customerIntroduction} )
     </insert>
 </mapper>

@@ -4,23 +4,55 @@ public class Customer {
 
     private Integer customerId;
     private String customerName;
-    private String customerSex;
-    private String customerIdentity;
-    private String customerPhone;//手机号
-    private String customerBirthday;
-    private String customerType;//称谓
-    public String getCustomerBirthday() {
-        return customerBirthday;
+    private String sex;
+    private String phone;//手机号
+    private String email;//
+    private String identityCard;
+    private String province;
+    private String birthday;
+
+
+    private String city;
+    private String area;
+    private String customerIntroduction;
+
+    public String getCustomerIntroduction() {
+        return customerIntroduction;
     }
 
-    public void setCustomerBirthday(String customerBirthday) {
-        this.customerBirthday = customerBirthday;
+    public void setCustomerIntroduction(String customerIntroduction) {
+        this.customerIntroduction = customerIntroduction;
     }
-    public int getCustomerId() {
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -32,35 +64,43 @@ public class Customer {
         this.customerName = customerName;
     }
 
-    public String getCustomerSex() {
-        return customerSex;
+    public String getSex() {
+        return sex;
     }
 
-    public void setCustomerSex(String customerSex) {
-        this.customerSex = customerSex;
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
-    public String getCustomerIdentity() {
-        return customerIdentity;
+    public String getIdentityCard() {
+        return identityCard;
     }
 
-    public void setCustomerIdentity(String customerIdentity) {
-        this.customerIdentity = customerIdentity;
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCustomerType() {
-        return customerType;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setCustomerType(String customerType) {
-        this.customerType = customerType;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

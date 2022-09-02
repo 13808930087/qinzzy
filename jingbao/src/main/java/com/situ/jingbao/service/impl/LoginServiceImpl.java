@@ -1,6 +1,7 @@
 package com.situ.jingbao.service.impl;
 
 import com.situ.jingbao.dao.LoginDao;
+import com.situ.jingbao.model.Customer;
 import com.situ.jingbao.model.User;
 import com.situ.jingbao.service.LoginService;
 import com.situ.jingbao.util.Md5Utils;
@@ -35,9 +36,19 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public User getId(User loginUser) {
+        return loginDao.getId(loginUser.getCustomerId());
+    }
+
+    @Override
     public int register(User user) {
         String encrypt=Md5Utils.encrypt(user.getPassword() + "{" + user.getUsername() + "}");
         user.setPassword(encrypt);
         return loginDao.register(user);
+    }
+
+    @Override
+    public int addCustomer(Customer customer) {
+        return loginDao.addCustomer(customer);
     }
 }

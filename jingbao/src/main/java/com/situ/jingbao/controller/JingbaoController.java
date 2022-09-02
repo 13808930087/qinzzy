@@ -33,8 +33,8 @@ public class JingbaoController {
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
-            if (user.getCustomer() != null) {
-                map.put("login_user_name", user.getCustomer().getCustomerName());
+            if (user.getNickname() != null) {
+                map.put("login_user_name", user.getNickname());
             } else {
                 map.put("login_user_name", user.getUsername());
             }
@@ -98,8 +98,8 @@ public class JingbaoController {
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
-            if (user.getCustomer() != null) {
-                map.put("login_user_name", user.getCustomer().getCustomerName());
+            if (user.getNickname() != null) {
+                map.put("login_user_name", user.getNickname());
             } else {
                 map.put("login_user_name", user.getUsername());
             }
@@ -127,8 +127,8 @@ public class JingbaoController {
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
-            if (user.getCustomer() != null) {
-                map.put("login_user_name", user.getCustomer().getCustomerName());
+            if (user.getNickname() != null) {
+                map.put("login_user_name", user.getNickname());
             } else {
                 map.put("login_user_name", user.getUsername());
             }
