@@ -7,6 +7,7 @@ import com.situ.jingbao.model.Title;
 import com.situ.jingbao.service.ListService;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -22,10 +23,14 @@ public class ListServiceImpl  implements ListService {
     public List<Goods> findGoods(GoodsCondition gs) {
         List<Goods> goodss= listDao.findGoods(gs);
         for (Goods g : goodss){
-            g.takeNewGoodsPrice();
-            g.setNewGoodsPrice((double) ((int)(g.getNewGoodsPrice()*10))/10);
+                g.takeNewGoodsPrice();
         }
         return goodss;
+    }
+
+    @Override
+    public Goods getGoodsId(int goodsId) {
+        return listDao.getGoodsId(goodsId);
     }
 
 

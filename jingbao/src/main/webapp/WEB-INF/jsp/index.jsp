@@ -190,10 +190,10 @@
                                     <div class="product-content">
                                         <h4><a href="javascript:void(0)">${goods.goodsName}</a></h4>
                                         <div class="product-price">
-                                            <c:if test="${goods.goodsDiscount<1.0}">
+                                            <c:if test="${goods.goodsDiscount<1}">
                                                 <span class="regular-price">${goods.goodsPrice}</span>
                                                 <span class="price">${goods.newGoodsPrice}</span></c:if>
-                                            <c:if test="${goods.goodsDiscount==1.0}">
+                                            <c:if test="${goods.goodsDiscount>=1}">
                                                 <span class="price">${goods.goodsPrice}</span>
                                             </c:if>
                                         </div>

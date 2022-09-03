@@ -7,10 +7,10 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface LoginDao {
-    int addCustomer(@Param("customer") Customer customer);
+    Integer addCustomer(@Param("customer") Customer customer);
 
 
     User validation(String username) ;
-    User getId(Integer customerId) ;
-	int register(@Param("user") User user);
+    User getId(int customerId) ;
+	Integer register(@Param("user") User user);
 }

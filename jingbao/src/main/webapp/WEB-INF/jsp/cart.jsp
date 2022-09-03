@@ -33,39 +33,39 @@
                                 </tr>
                                 </thead>
                                 <tbody class="cart-tbody">
-                                <c:forEach begin="0" end="6">
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="javascript:void(0)">
-                                            <img src="picture/product-1.jpg" alt="Image">
-                                        </a>
-                                    </td>
-                                    <td class="product-name">
-                                        <a href="javascript:void(0)">振荡多路工具<br>变速工具</a>
-                                    </td>
-                                    <td class="product-price">
-                                        <span class="unit-amount">$90.00</span>
-                                    </td>
-                                    <td class="product-quantity">
-                                        <div class="input-counter">
+                                <c:forEach items="${carts}" var="cart" varStatus="p">
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <a href="javascript:void(0)">
+                                                <img src="${cart.goodsImg}" alt="Image">
+                                            </a>
+                                        </td>
+                                        <td class="product-name">
+                                            <a href="javascript:void(0)">${cart.goodsName}</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="unit-amount">${cart.goodsPrice}</span>
+                                        </td>
+                                        <td class="product-quantity">
+                                            <div class="input-counter">
 													<span class="minus-btn">
 														<i class="ri-subtract-line"></i>
 													</span>
-                                            <input type="text" value="1">
-                                            <span class="plus-btn">
+                                                <input type="text" value="1" min="1" max="99">
+                                                <span class="plus-btn">
 														<i class="ri-add-line"></i>
 													</span>
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">
-                                        <span class="subtotal-amount">$90.00</span>
-                                    </td>
-                                    <td class="trash">
-                                        <a href="" class="remove">
-                                            <i class="ri-close-fill"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="subtotal-amount">${cart.total}</span>
+                                        </td>
+                                        <td class="trash">
+                                            <a href="" class="remove">
+                                                <i class="ri-close-fill"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 </c:forEach>
                                 </tbody>
                             </table>

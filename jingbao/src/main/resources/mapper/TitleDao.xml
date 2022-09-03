@@ -11,7 +11,7 @@
         <result column="title_small_img" property="titleSmallImg"/>
         <result column="title_big_img" property="titleBigImg"/>
         <result column="title_four_img" property="titleFourImg"/>
-        <association property="titles" column="title_id" select="getSonTitle"/>
+        <collection property="titles" column="title_id" select="getSonTitle"/>
     </resultMap>
     <select id="getAllTitle" resultMap="TitleMap">
         SELECT title_id, title_name, parent_id,title_level,title_small_img,title_big_img,title_four_img

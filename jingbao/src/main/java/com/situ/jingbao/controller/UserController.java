@@ -3,9 +3,7 @@ package com.situ.jingbao.controller;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.situ.jingbao.common.Global;
-import com.situ.jingbao.model.Customer;
-import com.situ.jingbao.model.Title;
-import com.situ.jingbao.model.User;
+import com.situ.jingbao.model.*;
 import com.situ.jingbao.service.ListService;
 import com.situ.jingbao.service.LoginService;
 import com.situ.jingbao.service.TitleService;
@@ -21,6 +19,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +32,8 @@ import java.util.UUID;
     LoginService loginService;
         @Autowired
         private UserService userService;
+        @Autowired
+        private ListService listService;
         @RequestMapping("/cart")
         public String cart(Map<String, Object> map, HttpSession session)throws ServletException, IOException {
             List<Title> titles= titleService.getAllTitle();
@@ -58,6 +59,8 @@ import java.util.UUID;
                 map.put("login_or_name2","注册");
                 map.put("login_url2","/login?sign=0");
             }
+            List<Cart> carts=userService.getCart(user);
+            map.put("carts",carts);
             map.put("pageName","购物车");
             return "cart";
         }
@@ -119,6 +122,48 @@ import java.util.UUID;
                 }
             return json;
         }
+        @PostMapping(value = "/addCart", produces = "application/json;charset=utf-8")
+        @ResponseBody
+        public Map<String, Object>  addCart(Goods goods, User user,Integer goodsNum, HttpSession session) throws IOException, ServletException {
+            Map<String, Object> json = new HashMap<>();
+            Map<String, Object> cart = new HashMap<>();
+            cart.put("goodsId",goods.getGoodsId());
+            cart.put("goodsImg",goods.getGoodsFirstImg());
+            cart.put("goodsPrice",goods.getNewGoodsPrice());
+            cart.put("goodsName",goods.getGoodsName());
+            if(goodsNum==null){
+                cart.put("goodsNum",1);
+            }else {
+                cart.put("goodsNum",goodsNum);
+            }
+            if(goodsNum==null){
+                cart.put("total",goods.getNewGoodsPrice());
+            }else {
+                cart.put("total",goods.getNewGoodsPrice().multiply(new BigDecimal((int)cart.get("goodsNum"))));
+            }
+            cart.put("customerId",user.getCustomerId());
+            Integer num=userService.addCart(cart);
+            if (num!=null){
+                json.put("success",true);
+                json.put("addCartPrompt","购物车添加成功");
+            }else {
+                json.put("success",false);
+                json.put("addCartPrompt","购物车添加失败");
+            }
+            return json;
+        }
+        @PostMapping(value = "/updateCartGoodsNum", produces = "application/json;charset=utf-8")
+        @ResponseBody
+        public Map<String, Object>  updateCartGoodsNum(Integer goodsNum, HttpSession session) throws IOException, ServletException {
+            Map<String, Object> json = new HashMap<>();
+            Integer num=userService.updateCartGoodsNum(goodsNum);
+            if (num!=null){
+                json.put("success",true);
+            }else {
+                json.put("success",false);
+            }
+            return json;
+        }
         @PostMapping(value = "/editGravatar", produces = "application/json;charset=utf-8")
         @ResponseBody
         public Map<String, Object>  editGravatar(Map<String, Object> map, MultipartFile multipartFile, HttpSession session) throws IOException, ServletException {
@@ -148,6 +193,8 @@ import java.util.UUID;
         public String address(Map<String, Object> map, HttpSession session)throws ServletException, IOException {
             return "address";
         }
+
+
     }
 
 

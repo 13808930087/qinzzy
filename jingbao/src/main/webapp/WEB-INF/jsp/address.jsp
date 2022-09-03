@@ -64,20 +64,8 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>名字</label>
+                                        <label>收件人姓名</label>
                                         <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>姓</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>电子邮件</label>
-                                        <input type="email" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -88,37 +76,25 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>公司名称（可选）</label>
+                                        <label>省</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>国</label>
+                                        <label>市</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>街道地址</label>
+                                        <label>区</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label>城镇/城市</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>州/县</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>州/县</label>
+                                        <label>详细地址</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>

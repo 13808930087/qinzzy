@@ -41,15 +41,15 @@ public class JingbaoInterceptor implements HandlerInterceptor {
         HttpServletResponse resp = (HttpServletResponse) response;
         HttpSession session = req.getSession();
         String path = req.getServletPath();
-
+        session.setAttribute("servletPath",request.getServletPath());
             User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
             if (user == null) {
                 resp.sendRedirect(req.getContextPath() + "/login");
-
+                return false;
             } else {
+                session.removeAttribute("servletPath");
               return true;
         }
-        return true;
     }
 
 

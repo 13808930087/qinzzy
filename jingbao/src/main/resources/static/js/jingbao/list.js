@@ -1,5 +1,3 @@
-
-
 $(function () {
     $("#list-form :input[name=pageNum]").val(pageNum);
     $("#list-form :input[name=pageSize]").val(pageSize);
@@ -70,5 +68,40 @@ $(function () {
             }
 
         }
+    });
+    $(".ion-bag").click(function () {
+        goodsId=$(this).closest(".single-product").find("input[name=goodsId]").val();
+        goodsName=$(this).closest(".single-product").find("input[name=goodsName]").val();
+        goodsFirstImg=$(this).closest(".single-product").find("input[name=goodsFirstImg]").val();
+        newGoodsPrice=$(this).closest(".single-product").find("input[name=newGoodsPrice]").val();
+        if(customerId==null||customerId==""){
+            layer.msg("请登录后再添加到购物车", { icon: 1 });
+            return;
+        }
+        url = "user/addCart";
+        $.ajax({
+            url: url,
+            method: "post",
+            dataType: "json",//没有方法的js对象
+            data: {
+                customerId: customerId,
+                goodsId:goodsId,
+                goodsName:goodsName,
+                goodsFirstImg:goodsFirstImg,
+                newGoodsPrice:newGoodsPrice
+            },
+            success: function(resp) {//回调函数
+                if (resp.success) {
+                    layer.msg(resp.addCartPrompt, { icon: 1 });
+                } else {
+                    layer.msg(resp.addCartPrompt, { icon: 1 });
+                }
+            },
+            error: function(resp) {
+            },
+            traditional: true
+        })
+
+
     });
 })

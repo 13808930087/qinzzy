@@ -173,50 +173,57 @@
                             <div id="myTabContent-2" class="tab-content">
                                 <div id="grid" class="tab-pane fade show active">
                                     <div class="product-grid-view">
-                                        <div class="row"><c:forEach var="goods" items="${goodss}">
-                                            <div class="col-lg-4 col-xl-4 col-md-4">
-                                                <!--Single Product Start-->
-                                                <div class="single-product mb-30">
-                                                    <div class="product-img">
-                                                        <a href="javascript:void(0)">
-                                                            <img class="first-img" src="${goods.goodsFirstImg}" alt="">
-                                                            <c:if test="${goods.goodsHoverImg!=null}">
-                                                                <img class="hover-img" src="${goods.goodsHoverImg}"
-                                                                     alt=""></c:if>
-                                                        </a>
+                                        <div class="row">
+                                            <c:forEach var="goods" items="${goodss}">
+                                                <div class="col-lg-4 col-xl-4 col-md-4">
+                                                    <!--Single Product Start-->
+                                                    <div class="single-product mb-30">
+                                                        <div class="product-img">
+                                                            <a href="javascript:void(0)">
+                                                                <input type="hidden" name="goodsId" value="${goods.goodsId}">
+                                                                <input type="hidden" name="goodsName" value="${goods.goodsName}">
+                                                                <input type="hidden" name="goodsFirstImg" value="${goods.goodsFirstImg}">
+                                                                <input type="hidden" name="newGoodsPrice" value="${goods.newGoodsPrice}">
+                                                                <img class="first-img" src="${goods.goodsFirstImg}"
+                                                                     alt="">
+                                                                <c:if test="${goods.goodsHoverImg!=null}">
+                                                                    <img class="hover-img" src="${goods.goodsHoverImg}"
+                                                                         alt=""></c:if>
+                                                            </a>
 
-                                                        <c:if test="${goods.goodsNew==1}"> <span
-                                                                class="sticker">New</span></c:if>
-                                                        <div class="product-action">
-                                                            <ul>
-                                                                <li><a href="javascript:void(0)"><i class="ion-bag"></i></a></li>
-                                                                <li><a href="#open-modal" data-toggle="modal"><i
-                                                                        class="ion-eye"></i></a></li>
-                                                                <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
-                                                                </li>
-                                                            </ul>
+                                                            <c:if test="${goods.goodsNew==1}"> <span
+                                                                    class="sticker">New</span></c:if>
+                                                            <div class="product-action">
+                                                                <ul>
+                                                                    <li><a href="javascript:void(0)"><i
+                                                                            class="ion-bag"></i></a></li>
+                                                                    <li><a href="#open-modal" data-toggle="modal"><i
+                                                                            class="ion-eye"></i></a></li>
+                                                                    <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-content">
+                                                            <h4><a href="javascript:void(0)">${goods.goodsName}</a></h4>
+                                                            <div class="product-price">
+                                                                <c:if test="${goods.goodsDiscount<1}">
+                                                                    <span class="regular-price">${goods.goodsPrice}</span>
+                                                                    <span class="price">${goods.newGoodsPrice}</span></c:if>
+                                                                <c:if test="${goods.goodsDiscount>=1}">
+                                                                    <span class="price">${goods.goodsPrice}</span>
+                                                                </c:if>
+                                                            </div>
+                                                            <div class="product-reviews">
+                                                                <c:forEach begin="0" end="${goods.goodsLevel}">
+                                                                    <i class="ion-android-star"></i>
+                                                                </c:forEach>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="product-content">
-                                                        <h4><a href="javascript:void(0)">${goods.goodsName}</a></h4>
-                                                        <div class="product-price">
-                                                            <c:if test="${goods.goodsDiscount<1.0}">
-                                                                <span class="regular-price">${goods.goodsPrice}</span>
-                                                                <span class="price">${goods.newGoodsPrice}</span></c:if>
-                                                            <c:if test="${goods.goodsDiscount==1.0}">
-                                                                <span class="price">${goods.goodsPrice}</span>
-                                                            </c:if>
-                                                        </div>
-                                                        <div class="product-reviews">
-                                                            <c:forEach begin="0" end="${goods.goodsLevel}">
-                                                                <i class="ion-android-star"></i>
-                                                            </c:forEach>
-                                                        </div>
-                                                    </div>
+                                                    <!--Single Product End-->
                                                 </div>
-                                                <!--Single Product End-->
-                                            </div>
-                                        </c:forEach>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>
@@ -351,6 +358,14 @@
         const pages = parseInt("${pi.pages}");
         const pageNum = parseInt("${pi.pageNum}");
         const pageSize = parseInt("${pi.pageSize}");
+        let customerId;
+        if (${login_user!=null}&&
+        ${login_user!=""})
+        {
+            customerId = "${login_user.customerId}";
+        }
+        console.log(customerId);
+
     </script>
     <script src="js/jingbao/list.js"></script>
 

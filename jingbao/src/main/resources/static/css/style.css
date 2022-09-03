@@ -3728,7 +3728,7 @@ Cart Area Style
 .cart-area .cart-controller {
   background-color: #ffffff;
   border: 1px solid #ebebeb;
-  border-bottom: none;
+  /*border-bottom: none;*/
   margin-bottom: 35px;
 }
 

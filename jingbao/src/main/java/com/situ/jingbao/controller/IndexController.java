@@ -119,7 +119,7 @@ public class IndexController {
                     session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
                     success = true;
                     loginPrompt="登录成功";
-
+                    session.removeAttribute("servletPath");
                 } else {
                     success = false;
                     loginPrompt="用户名密码不匹配";

@@ -20,7 +20,6 @@
             <if test="gc.goodsId!=null">
                 and goods_id = #{gc.goodsId}
             </if>
-
             <if test="gc.goodsName!=null and gc.goodsName!=''">
                 <bind name="goodsName" value="'%'+gc.goodsName+'%'"/>
                 and goods_name like #{goodsName}
@@ -38,6 +37,12 @@
                 </foreach>
             </if>
         </where>
+    </select>
+
+    <select id="getGoodsId" resultMap="ListMap" parameterType="java.lang.Integer">
+        SELECT goods_id, goods_name, goods_hover_img,goods_first_img,goods_discount,goods_price,goods_level,goods_new
+        from t_goods
+        <where> and goods_id=#{goodsId}</where>
     </select>
 
     <select id="findId" resultType="java.lang.Integer" parameterType="java.lang.String">

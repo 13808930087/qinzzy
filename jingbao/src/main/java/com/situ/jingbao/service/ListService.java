@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ListService {
     List<Goods> findGoods(GoodsCondition gs);
+
+    Goods getGoodsId(int goodsId);
     Integer findId(String categoryName);
 }

@@ -16,6 +16,6 @@ public interface LoginService {
 	User validation(User loginUser) ;
 	User getId(User loginUser) ;
 
-	int register(User user);
-	int addCustomer(Customer customer);
+	 Integer register(User user);
+	 Integer addCustomer(Customer customer);
 }

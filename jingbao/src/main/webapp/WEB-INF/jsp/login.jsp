@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <c:set var="user" value=" ${login_user}"/>
+<c:set var="servletPath" value=" ${servletPath}"/>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -14,7 +15,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-
     <!--Jquery 1.12.4-->
 
 
@@ -121,6 +121,7 @@
         const ctx = "${ctx}";
         const user = "${user}";
         const sign = "${sign}";
+        const servletPath = "${servletPath}"
     </script>
 
     <script src="js/jingbao/login.js"></script>

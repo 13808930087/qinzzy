@@ -1,5 +1,6 @@
 package com.situ.jingbao.model;
 
+import java.math.BigDecimal;
 import java.util.Set;
 
 public class Goods {
@@ -7,24 +8,16 @@ public class Goods {
     private String      goodsName;
     private String     goodsHoverImg;
     private String    goodsFirstImg;
-    private Double   goodsDiscount;
-    private Double newGoodsPrice;
-    private Double    goodsPrice;
+    private BigDecimal   goodsDiscount;
+    private BigDecimal newGoodsPrice;
+    private BigDecimal   goodsPrice;
     private Integer   goodsLevel;
     private Integer   goodsNew;
     private Integer   categoryId;
 
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
-
     public void takeNewGoodsPrice() {
-        this.newGoodsPrice = goodsPrice*goodsDiscount;
+        this.newGoodsPrice = goodsPrice.multiply(goodsDiscount);
     }
 
     public Integer getGoodsId() {
@@ -59,27 +52,27 @@ public class Goods {
         this.goodsFirstImg = goodsFirstImg;
     }
 
-    public Double getGoodsDiscount() {
+    public BigDecimal getGoodsDiscount() {
         return goodsDiscount;
     }
 
-    public void setGoodsDiscount(Double goodsDiscount) {
+    public void setGoodsDiscount(BigDecimal goodsDiscount) {
         this.goodsDiscount = goodsDiscount;
     }
 
-    public Double getNewGoodsPrice() {
+    public BigDecimal getNewGoodsPrice() {
         return newGoodsPrice;
     }
 
-    public void setNewGoodsPrice(Double newGoodsPrice) {
+    public void setNewGoodsPrice(BigDecimal newGoodsPrice) {
         this.newGoodsPrice = newGoodsPrice;
     }
 
-    public Double getGoodsPrice() {
+    public BigDecimal getGoodsPrice() {
         return goodsPrice;
     }
 
-    public void setGoodsPrice(Double goodsPrice) {
+    public void setGoodsPrice(BigDecimal goodsPrice) {
         this.goodsPrice = goodsPrice;
     }
 
@@ -97,5 +90,13 @@ public class Goods {
 
     public void setGoodsNew(Integer goodsNew) {
         this.goodsNew = goodsNew;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 }

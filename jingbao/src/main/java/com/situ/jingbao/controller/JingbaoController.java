@@ -92,34 +92,6 @@ public class JingbaoController {
         return "list";
     }
 
-    @RequestMapping("/cart")
-    public String cart(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
-        List<Title> titles = titleService.getAllTitle();
-        map.put("titles", titles);
-        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if (user != null) {
-            if (user.getNickname() != null) {
-                map.put("login_user_name", user.getNickname());
-            } else {
-                map.put("login_user_name", user.getUsername());
-            }
-        } else {
-            map.put("login_user_name", "个人信息");
-        }
-        if (user != null) {
-            map.put("login_or_name1", "个人信息");
-            map.put("login_url1", "user/userTemp");
-            map.put("login_or_name2", "注销");
-            map.put("login_url2", "/logout");
-        } else {
-            map.put("login_or_name1", "登录");
-            map.put("login_url1", "/login");
-            map.put("login_or_name2", "注册");
-            map.put("login_url2", "/login?sign=0");
-        }
-        map.put("pageName", "购物车");
-        return "cart";
-    }
 
     @RequestMapping("/product")
     public String product(Map<String, Object> map, HttpSession session) throws ServletException, IOException {

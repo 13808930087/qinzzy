@@ -3,12 +3,17 @@
  */
 $(function() {
 	let referrer;
-	if (document.referrer == ""||document.referrer == null) {
-		// 没有来源页面信息的时候，改成首页URL地址
-		referrer="index";
+	if(servletPath!=null&&servletPath!=""&&servletPath!=" "){
+		referrer=servletPath;
 	}else {
-		referrer=  document.referrer;
+		if (document.referrer == ""||document.referrer == null) {
+			// 没有来源页面信息的时候，改成首页URL地址
+			referrer="index";
+		}else {
+			referrer=  document.referrer;
+		}
 	}
+
 	console.log(referrer);
 	if (user != null) {
 		$("input[name=username]").val(user.trim());

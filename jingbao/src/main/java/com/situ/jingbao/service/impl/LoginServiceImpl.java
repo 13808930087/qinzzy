@@ -41,14 +41,14 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public int register(User user) {
+    public Integer register(User user) {
         String encrypt=Md5Utils.encrypt(user.getPassword() + "{" + user.getUsername() + "}");
         user.setPassword(encrypt);
         return loginDao.register(user);
     }
 
     @Override
-    public int addCustomer(Customer customer) {
+    public Integer addCustomer(Customer customer) {
         return loginDao.addCustomer(customer);
     }
 }
