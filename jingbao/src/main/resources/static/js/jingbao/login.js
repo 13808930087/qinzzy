@@ -11,6 +11,9 @@ $(function() {
 			referrer="index";
 		}else {
 			referrer=  document.referrer;
+			if(referrer.endsWith("login")||referrer.endsWith("login?sign=0")){
+				referrer="index";
+			}
 		}
 	}
 

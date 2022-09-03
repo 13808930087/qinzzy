@@ -10,7 +10,9 @@ import java.util.Map;
 @Mapper
 public interface UserDao {
     Customer getCustomer(int customerId);
-    Address getAddress(int customerId);
+    List<UserAddress> getUserAddress(int customerId);
+
+    List<Address> getAddress(int parentId);
 
     Integer editCustomer(@Param("customer")Customer customer);
 

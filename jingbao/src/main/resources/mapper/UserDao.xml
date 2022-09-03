@@ -40,8 +40,6 @@
             phone=#{customer.phone}
         where customer_id = #{customer.customerId}
     </update>
-
-
     <resultMap id="CartMap" type="Cart">
         <id column="cart_id" property="cartId"/>
         <result column="customer_id" property="customerId"/>
@@ -52,7 +50,6 @@
         <result column="total" property="total"/>
         <result column="goods_price" property="goodsPrice"/>
     </resultMap>
-
     <select id="getCart" resultMap="CartMap" parameterType="java.lang.Integer">
         SELECT cart_id,
                customer_id,
@@ -67,18 +64,55 @@
     </select>
     <insert id="addCart" parameterType="java.util.Map">
         insert into t_cart(customer_id, goods_img, goods_id, goods_num, goods_name, goods_price, total)
-        values (#{cart.customerId},#{cart.goodsImg},#{cart.goodsId},#{cart.goodsNum},#{cart.goodsName},#{cart.goodsPrice},#{cart.total});
+        values (#{cart.customerId}, #{cart.goodsImg}, #{cart.goodsId}, #{cart.goodsNum}, #{cart.goodsName},
+                #{cart.goodsPrice}, #{cart.total});
     </insert>
     <update id="updateCartGoodsNum" parameterType="java.lang.Integer">
-        update t_cart set goods_num=#{goodsNum}  where cart_id=#{cart.customerId}
+        update t_cart
+        set goods_num=#{goodsNum}
+        where cart_id = #{cart.customerId}
     </update>
 
 
-    <!--    <resultMap id="AddressMap" type="Address">-->
-
-    <!--    </resultMap>-->
-    <!--    <select id="getAddress" resultMap="AddressMap" parameterType="java.lang.Integer">-->
-
-    <!--    </select>-->
+    <resultMap id="UserAddressMap" type="UserAddress">
+        <id column="address_id" property="addressId"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="detailed_address" property="detailedAddress"/>
+        <result column="consignee" property="consignee"/>
+        <association property="province" column="province" select="getAddressName"/>
+        <association property="city" column="city" select="getAddressName"/>
+        <association property="area" column="area" select="getAddressName"/>
+    </resultMap>
+    <select id="getUserAddress" resultMap="UserAddressMap" parameterType="java.lang.Integer">
+        select address_id,
+               customer_id,
+               province,
+               city,
+               area,
+               phone,
+               email,
+               detailed_address,
+               consignee
+        from t_user_address
+        where customer_id = #{customerId}
+    </select>
+    <select id="getAddressName" resultType="java.lang.String" parameterType="java.lang.Integer">
+        select address_name
+        from t_address
+        where address_id = #{addressId}
+    </select>
+    <resultMap id="AddressMap" type="Address">
+        <id column="address_id" property="addressId"/>
+        <id column="parent_id" property="parentId"/>
+        <result column="address_name" property="addressName"/>
+<!--        <collection property="addresses" column="address_id" select="getAddress"/>-->
+    </resultMap>
+    <select id="getAddress" resultMap="AddressMap" parameterType="java.lang.Integer">
+        select address_name,parent_id,address_id
+        from t_address
+        where parent_id = #{parentId}
+    </select>
 
 </mapper>

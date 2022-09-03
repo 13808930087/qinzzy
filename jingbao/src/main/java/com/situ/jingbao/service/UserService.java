@@ -1,18 +1,17 @@
 package com.situ.jingbao.service;
 
-import com.situ.jingbao.model.Address;
-import com.situ.jingbao.model.Cart;
-import com.situ.jingbao.model.Customer;
-import com.situ.jingbao.model.User;
+import com.situ.jingbao.model.*;
 
 import java.util.List;
 import java.util.Map;
 
 public interface UserService {
     Customer getCustomer(int customerId);
-    Address getAddress(int customerId);
+    List<UserAddress> getUserAddress(int customerId);
 
     Integer editUser(User user);
+
+    List<Address> getAddress(int parentId);
 
     Integer editCustomer(Customer customer);
 

@@ -1,10 +1,7 @@
 package com.situ.jingbao.service.impl;
 
 import com.situ.jingbao.dao.UserDao;
-import com.situ.jingbao.model.Address;
-import com.situ.jingbao.model.Cart;
-import com.situ.jingbao.model.Customer;
-import com.situ.jingbao.model.User;
+import com.situ.jingbao.model.*;
 import com.situ.jingbao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +19,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Address getAddress(int customerId) {
-        return userDao.getAddress(customerId);
+    public List<UserAddress> getUserAddress(int customerId) {
+        return userDao.getUserAddress(customerId);
     }
 
     @Override
     public Integer editUser(User user) {
         return userDao.editUser(user);
+    }
+
+    @Override
+    public List<Address> getAddress(int parentId) {
+        return userDao.getAddress(parentId);
     }
 
     @Override

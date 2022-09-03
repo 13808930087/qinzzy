@@ -93,7 +93,10 @@ public class IndexController {
             map.put("login_or_name2","注册");
             map.put("login_url2","/login?sign=0");
         }
+        String servletPath =(String) session.getAttribute("servletPath");
+        session.removeAttribute("servletPath");
         map.put("sign",sign);
+        map.put("servletPath",servletPath);
         map.put("pageName","登录");
         return "login";
     }

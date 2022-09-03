@@ -1,7 +1,5 @@
 package com.situ.jingbao.controller;
 
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.situ.jingbao.common.Global;
 import com.situ.jingbao.model.*;
 import com.situ.jingbao.service.ListService;
@@ -191,10 +189,25 @@ import java.util.UUID;
 
         @RequestMapping("/address")
         public String address(Map<String, Object> map, HttpSession session)throws ServletException, IOException {
+            User user = (User)session.getAttribute(Global.LOGIN_USER_KEY);
+            List<Address> addresses = userService.getAddress(0);
+            List<UserAddress> userAddresses = userService.getUserAddress(user.getCustomerId());
+            map.put("userAddresses",userAddresses);
+            map.put("addresses",addresses);
             return "address";
         }
 
+    @PostMapping(value = "/addAddress", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Map<String, Object>  addAddress(UserAddress address, HttpSession session) throws IOException, ServletException {
+            Map<String, Object> json = new HashMap<>();
+//        userService.addAddress(address);
 
+        return json;
     }
+
+
+
+}
 
 

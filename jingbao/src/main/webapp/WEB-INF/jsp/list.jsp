@@ -364,7 +364,6 @@
         {
             customerId = "${login_user.customerId}";
         }
-        console.log(customerId);
 
     </script>
     <script src="js/jingbao/list.js"></script>

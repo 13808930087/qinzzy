@@ -114,7 +114,7 @@ img {
 }
 
 .form-control {
-  height: 55px;
+  height: calc(2.25rem + 2px);
   color: #ff6a00;
   border: 1px solid #d7d7d7;
   background-color: transparent;

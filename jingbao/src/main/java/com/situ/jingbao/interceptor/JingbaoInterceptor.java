@@ -47,7 +47,6 @@ public class JingbaoInterceptor implements HandlerInterceptor {
                 resp.sendRedirect(req.getContextPath() + "/login");
                 return false;
             } else {
-                session.removeAttribute("servletPath");
               return true;
         }
     }
