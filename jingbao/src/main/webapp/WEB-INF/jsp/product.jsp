@@ -8,7 +8,7 @@
     <title>京宝商城</title>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Single Product</title>
+    <title>单一产品</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,32 +25,32 @@
                         <div class="tab-pane fade show active" id="single-slide-one">
                             <!--Single Product Image Start-->
                             <div class="single-product-img img-full">
-                                <img src="img/single-product/large/large1.jpg" alt="">
-                                <a class="venobox" data-gall="gallery01" href="img/single-product/large/large1.jpg"><i class="fa fa-search-plus"></i></a>
+                                <img src="${goods.goodsImgs[0]}" alt="">
+                                <a class="venobox" data-gall="gallery01" href="${goods.goodsImgs[0]}"><i class="fa fa-search-plus"></i></a>
                             </div>
                             <!--Single Product Image End-->
                         </div>
                         <div class="tab-pane fade" id="single-slide-two">
                             <!--Single Product Image Start-->
                             <div class="single-product-img img-full">
-                                <img src="img/single-product/large/large2.jpg" alt="">
-                                <a class="venobox" data-gall="gallery01" href="img/single-product/large/large2.jpg"><i class="fa fa-search-plus"></i></a>
+                                <img src="${goods.goodsImgs[1]}" alt="">
+                                <a class="venobox" data-gall="gallery01" href="${goods.goodsImgs[1]}"><i class="fa fa-search-plus"></i></a>
                             </div>
                             <!--Single Product Image End-->
                         </div>
                         <div class="tab-pane fade" id="single-slide-three">
                             <!--Single Product Image Start-->
                             <div class="single-product-img img-full">
-                                <img src="img/single-product/large/large3.jpg" alt="">
-                                <a class="venobox" data-gall="gallery01" href="img/single-product/large/large3.jpg"><i class="fa fa-search-plus"></i></a>
+                                <img src="${goods.goodsImgs[2]}" alt="">
+                                <a class="venobox" data-gall="gallery01" href="${goods.goodsImgs[2]}"><i class="fa fa-search-plus"></i></a>
                             </div>
                             <!--Single Product Image End-->
                         </div>
                         <div class="tab-pane fade" id="single-slide-four">
                             <!--Single Product Image Start-->
                             <div class="single-product-img img-full">
-                                <img src="img/single-product/large/large4.jpg" alt="">
-                                <a class="venobox" data-gall="gallery01" href="img/single-product/large/large4.jpg"><i class="fa fa-search-plus"></i></a>
+                                <img src="${goods.goodsImgs[3]}" alt="">
+                                <a class="venobox" data-gall="gallery01" href="${goods.goodsImgs[3]}"><i class="fa fa-search-plus"></i></a>
                             </div>
                             <!--Single Product Image End-->
                         </div>
@@ -60,16 +60,16 @@
                     <div class="single-product-menu">
                         <div class="nav single-slide-menu" role="tablist">
                             <div class="single-tab-menu img-full">
-                                <a class="active" data-toggle="tab" href="#single-slide-one"><img src="img/single-product/small/small1.jpg" alt=""></a>
+                                <a class="active" data-toggle="tab" href="#single-slide-one"><img src="${goods.goodsImgs[0]}" alt=""></a>
                             </div>
                             <div class="single-tab-menu img-full">
-                                <a data-toggle="tab" href="#single-slide-two"><img src="img/single-product/small/small2.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#single-slide-two"><img src="${goods.goodsImgs[1]}" alt=""></a>
                             </div>
                             <div class="single-tab-menu img-full">
-                                <a data-toggle="tab" href="#single-slide-three"><img src="img/single-product/small/small3.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#single-slide-three"><img src="${goods.goodsImgs[2]}" alt=""></a>
                             </div>
                             <div class="single-tab-menu img-full">
-                                <a data-toggle="tab" href="#single-slide-four"><img src="img/single-product/small/small4.jpg" alt=""></a>
+                                <a data-toggle="tab" href="#single-slide-four"><img src="${goods.goodsImgs[3]}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -77,28 +77,27 @@
                 </div>
                 <div class="col-md-7">
                     <div class="single-product-content">
-                        <h1 class="single-product-name">Adams Men's Dunbar</h1>
+                        <h1 class="single-product-name">${goods.goodsName}</h1>
                         <div class="single-product-reviews">
+                            <c:forEach begin="1" end="${goods.goodsLevel}">
                             <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                            </c:forEach>
                         </div>
                         <div class="single-product-price">
                             <div class="product-discount">
-                                <span class="price">$80.00</span>
-                                <span class="discount">-20%</span>
+                                <span class="price">${goods.newGoodsPrice}</span>
+                                <c:if test="${goods.goodsDiscount<1}">
+                                <span class="discount">-${(1-goods.goodsDiscount)*100}%</span></c:if>
                             </div>
                         </div>
                         <div class="product-info">
-                            <p>Regular fit, round neckline, short sleeves. Made of extra long staple pima cotton. </p>
+                            <p>${goods.goodsIntroduce}</p>
                         </div>
                         <div class="single-product-action">
                             <form action="#">
                                 <div class="product-variants">
                                     <div class="product-variants-item">
-                                        <span class="control-label">Size</span>
+                                        <span class="control-label">尺寸</span>
                                         <select class="nice-select" name="size">
                                             <option value="1">S</option>
                                             <option value="2">M</option>
@@ -107,30 +106,30 @@
                                         </select>
                                     </div>
                                     <div class="product-variants-item">
-                                        <span class="control-label">Color</span>
+                                        <span class="control-label">颜色</span>
                                         <select class="nice-select" name="color">
-                                            <option value="1">Red</option>
-                                            <option value="2">Green</option>
-                                            <option value="3">Blue</option>
-                                            <option value="4">White</option>
+                                            <option value="1">红色</option>
+                                            <option value="2">绿色</option>
+                                            <option value="3">蓝色</option>
+                                            <option value="4">白色</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="product-add-to-cart">
-                                    <span class="control-label">Quantity</span>
+                                    <span class="control-label">数量</span>
                                     <div class="cart-plus-minus">
-                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="0">
+                                        <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1">
                                     </div>
                                     <div class="add">
-                                        <button class="add-to-cart"><i class="ion-bag"></i> add-to-cart</button>
-                                        <span class="product-availability">In stock</span>
+                                        <button class="add-to-cart"><i class="ion-bag"></i> 添加到购物车</button>
+                                        <span class="product-availability">有存货</span>
                                     </div>
                                 </div>
                             </form>
                             <!--Single Product Share-->
                             <div class="single-product-share mt-20">
                                 <ul>
-                                    <li class="categories-title">Share :</li>
+                                    <li class="categories-title">分享 ：</li>
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
@@ -145,19 +144,19 @@
                                 <li>
                                     <div class="block-reassurance-item">
                                         <img src="img/icon/single-icon1.png" alt="">
-                                        <span>Security policy (edit with Customer reassurance module)</span>
+                                        <span>安全策略（使用客户再保证模块进行编辑）</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="block-reassurance-item">
                                         <img src="img/icon/single-icon2.png" alt="">
-                                        <span>Delivery policy (edit with Customer reassurance module)</span>
+                                       <span>交货政策（使用客户再保证模块进行编辑）</span>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="block-reassurance-item">
                                         <img src="img/icon/single-icon3.png" alt="">
-                                        <span>Security policy (edit with Customer reassurance module)</span>
+                                        <span>安全政策（使用客户再保证模块进行编辑）</span>
                                     </div>
                                 </li>
                             </ul>
@@ -178,13 +177,13 @@
                         <!--Review And Description Tab Menu Start-->
                         <ul class="nav dec-and-review-menu">
                             <li>
-                                <a class="active" data-toggle="tab" href="#description">Description</a>
+                       <a class="active" data-toggle="tab" href="#description">描述</a>
                             </li>
                             <li>
-                                <a data-toggle="tab" href="#product-details">Product Details</a>
+                                <a data-toggle="tab" href="#product-details">产品详情</a>
                             </li>
                             <li>
-                                <a data-toggle="tab" href="#reviews">Reviews</a>
+                                <a data-toggle="tab" href="#reviews">评论</a>
                             </li>
                         </ul>
                         <!--Review And Description Tab Menu End-->
@@ -192,8 +191,7 @@
                         <div class="tab-content product-review-content-tab mt-30" id="myTabContent-4">
                             <div class="tab-pane fade show active" id="description">
                                 <div class="single-product-description">
-                                    <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which has since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
-                                </div>
+                                  <p>自 2010 年以来，时尚界一直在打造精心设计的系列。该品牌提供女性化设计、时尚的单品和个性连衣裙，自此演变成一个完整的成衣系列，其中每件单品都是女性衣橱的重要组成部分.结果？酷酷、轻松、别致的外观与年轻的优雅和明显的标志性风格。所有精美的作品均在意大利制造，并以最大的关注度制造。现在时尚扩展到一系列配饰，包括鞋子、帽子、腰带等等！</p></div>
                             </div>
                             <div class="tab-pane fade" id="product-details">
                                 <div class="product-details">
@@ -203,27 +201,27 @@
                                         </a>
                                     </div>
                                     <div class="product-reference">
-                                        <label class="label">Reference </label> <span class="demo-list">demo_13</span>
+                                  <label class="label">参考</label> <span class="demo-list">demo_13</span>
                                     </div>
                                     <div class="product-quantities">
-                                        <label class="label">In stock</label> <span class="item">300 Items</span>
+                                        <label class="label">有货</label> <span class="item">300 件</span>
                                     </div>
                                     <div class="product-out-of-stock"></div>
                                     <div class="product-features">
-                                        <h3>Data sheet</h3>
+                                        <h3>数据表</h3>
                                         <div class="table-responsive">
                                             <table class="table">
-                                                <tr>
-                                                    <td>Compositions</td>
-                                                    <td>Cotton</td>
+                                             <tr>
+                                                    <td>作曲</td>
+                                                    <td>棉花</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Styles</td>
-                                                    <td>Casual</td>
+                                                    <td>样式</td>
+                                                    <td>休闲</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Properties</td>
-                                                    <td>Short Sleeve</td>
+                                                    <td>属性</td>
+                                                    <td>短袖</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -233,10 +231,10 @@
                             <div class="tab-pane fade" id="reviews">
                                 <div class="review-page-comment">
                                     <div class="review-comment">
-                                        <h2>Write your review</h2>
+                                     <h2>写下你的评论</h2>
                                         <ul class="pro-comments-rating">
                                             <li>
-                                                <label>Quality</label>
+                                             <label>质量</label>
                                                 <div class="single-product-reviews">
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star"></i>
@@ -249,18 +247,18 @@
                                     </div>
                                     <div class="review-form">
                                         <form action="#">
-                                            <label>Title for your review<sup class="required">*</sup></label>
+                                            <label>您的评论标题<sup class="required">*</sup></label>
                                             <input type="text" placeholder="Title Here" name="title">
-                                            <label>your review<sup class="required">*</sup></label>
+                                            <label>你的意见<sup class="required">*</sup></label>
                                             <textarea id="content" name="content"></textarea>
-                                            <label>Your name<sup class="required">*</sup></label>
+                                            <label>你的名字<sup class="required">*</sup></label>
                                             <input type="text" placeholder="Your Name" name="title">
                                             <div class="send-your-review">
-                                                <p class="required-fields"><sup>*</sup> Required fields</p>
+                                                <p class="required-fields"><sup>*</sup>必填字段</p>
                                                 <div class="send-cancel-btn">
-                                                    <button class="send-btn">Send</button>
-                                                    or
-                                                    <button class="cancel-btn">Cancel</button>
+                                                    <button class="send-btn">发送</button>
+                                                    或
+                                                    <button class="cancel-btn">取消</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -282,7 +280,7 @@
                 <div class="col-12">
                     <!--Section Title Start-->
                     <div class="section-title">
-                        <h2>12 other products in the same category:</h2>
+                       <h2>同类别的其他 12 种产品：</h2>
                     </div>
                     <!--Section Title End-->
                 </div>
@@ -308,7 +306,7 @@
                                     </div>
                                 </div>
                                 <div class="product-content">
-                                    <h4><a href="javascript:void(0)">Versace Bright Crystal</a></h4>
+                                    <h4><a href="javascript:void(0)">范思哲亮水晶</a></h4>
                                     <div class="product-price">
                                         <span class="price">$260.00</span>
                                     </div>

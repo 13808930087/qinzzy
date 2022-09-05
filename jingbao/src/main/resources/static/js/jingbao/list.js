@@ -69,6 +69,9 @@ $(function () {
 
         }
     });
+    $(".product-div").click(function (){
+       $(this).find("#product-form").submit();
+    });
     $(".ion-bag").click(function () {
         goodsId=$(this).closest(".single-product").find("input[name=goodsId]").val();
         goodsName=$(this).closest(".single-product").find("input[name=goodsName]").val();

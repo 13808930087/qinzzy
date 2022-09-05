@@ -64,7 +64,7 @@ $(function () {
             success: function (resp) {//»Øµ÷º¯Êý
                 if (resp.success) {
                     layer.msg(resp.editPrompt, {icon: 1});
-                    window.location.reload();
+                    setTimeout(function() {   window.location.reload(); }, 500);
                     customer();
                 } else {
                     layer.msg(resp.editPrompt, {icon: 1});

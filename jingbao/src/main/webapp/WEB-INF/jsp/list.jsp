@@ -169,15 +169,20 @@
                         </div>
                         <!--Grid & List View End-->
                         <!--Shop Product Start-->
-                        <div class="shop-product">
+
+                        <div class="shop-product"
+                        >
                             <div id="myTabContent-2" class="tab-content">
                                 <div id="grid" class="tab-pane fade show active">
                                     <div class="product-grid-view">
                                         <div class="row">
                                             <c:forEach var="goods" items="${goodss}">
-                                                <div class="col-lg-4 col-xl-4 col-md-4">
+                                                <div class="col-lg-4 col-xl-4 col-md-4 product-div">
                                                     <!--Single Product Start-->
                                                     <div class="single-product mb-30">
+                                                        <form action="jingbao/product" method="post" id="product-form">
+                                                            <input type="hidden" name="goodsId" value="${goods.goodsId}">
+                                                        </form>
                                                         <div class="product-img">
                                                             <a href="javascript:void(0)">
                                                                 <input type="hidden" name="goodsId" value="${goods.goodsId}">
@@ -215,7 +220,7 @@
                                                                 </c:if>
                                                             </div>
                                                             <div class="product-reviews">
-                                                                <c:forEach begin="0" end="${goods.goodsLevel}">
+                                                                <c:forEach begin="1" end="${goods.goodsLevel}">
                                                                     <i class="ion-android-star"></i>
                                                                 </c:forEach>
                                                             </div>
@@ -276,7 +281,7 @@
                                                             <div class="product-list-action">
                                                                 <ul>
                                                                     <li><a class="pro-add-btn" href="#"><i
-                                                                            class="ion-bag"></i>Add to cart</a></li>
+                                                                            class="ion-bag"></i>添加到购物车</a></li>
                                                                     <li><a href="#open-modal" data-toggle="modal"><i
                                                                             class="ion-eye"></i></a></li>
                                                                     <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
@@ -302,7 +307,6 @@
                                             <input type="hidden" name="categoryId" value="${goods.categoryId }">
                                             <input type="hidden" name="goodsDiscount" value="${goods.goodsDiscount }">
                                             <input type="hidden" name="newGoodsPrice" value="${goods.newGoodsPrice }">
-
                                             <input type="hidden" name="goodsLevel" value="${goods.goodsLevel }">
                                             <input type="hidden" name="goodsNew" value="${goods.goodsNew }">
                                             <input type="hidden" name="pageNum" value="${pi.pageNum}">

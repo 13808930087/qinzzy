@@ -37,7 +37,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String indexRequest(Map<String, Object> map, HttpSession session) {
-        log.info("index");
+
         GoodsCondition goods=new GoodsCondition();
         goods.setGoodsNew(1);
         List<Goods> goodss=listService.findGoods(goods);
@@ -66,6 +66,38 @@ public class IndexController {
             map.put("login_url2","/login?sign=0");
         }
         return "index";
+    }
+    @RequestMapping("/test")
+    public String test(Map<String, Object> map, HttpSession session) {
+
+        GoodsCondition goods=new GoodsCondition();
+        goods.setGoodsNew(1);
+        List<Goods> goodss=listService.findGoods(goods);
+        map.put("goodss",goodss);
+        List<Title> titles= titleService.getAllTitle();
+        map.put("titles",titles);
+        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
+        if(user!=null){
+            if (user.getNickname()!=null){
+                map.put("login_user_name", user.getNickname());
+            }else {
+                map.put("login_user_name", user.getUsername());
+            }
+        }else {
+            map.put("login_user_name","个人信息");
+        }
+        if(user!=null){
+            map.put("login_or_name1", "个人信息");
+            map.put("login_url1","user/userTemp");
+            map.put("login_or_name2", "注销");
+            map.put("login_url2","/logout");
+        }else {
+            map.put("login_or_name1","登录");
+            map.put("login_url1","/login");
+            map.put("login_or_name2","注册");
+            map.put("login_url2","/login?sign=0");
+        }
+        return "test";
     }
 
     @GetMapping("/login")

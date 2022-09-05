@@ -1322,8 +1322,8 @@ Common Style CSS
 	right: 15px;
 }
 .category-heading > h2 > i {
-	float: ;
-	text-align: ;
+	/*float: ;*/
+	/*text-align: ;*/
 	float: right;
 	padding-right: 20px;
 	font-size: 12px;
@@ -3784,7 +3784,7 @@ li.right-menu .cat-mega-menu > li {
     visibility: visible;
 }
 .vbox-close {
-	background: #ff6a00 url("close.gif") no-repeat scroll 10px center !important;
+	/*background: #ff6a00 url("close.gif") no-repeat scroll 10px center !important;*/
 	color: #fff !important;
 	cursor: pointer;
 	display: block;
@@ -4926,7 +4926,7 @@ thead {
 	padding: 8px 20px;
 	cursor: pointer;
 	margin: 20px 0;
-	text-align: ;
+	/*text-align: ;*/
 	text-align: center;
 	-webkit-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
@@ -5368,8 +5368,8 @@ h2.entry-title > a:hover {
 	position: absolute;
 	top: 50%;
 	left: 40px;
-	-webkit-transition: ;
-	transition: ;
+	/*-webkit-transition: ;*/
+	/*transition: ;*/
 	-webkit-transform: translateY(-50%);
 	        transform: translateY(-50%);
 	width: 40px;

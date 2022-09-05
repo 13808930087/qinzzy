@@ -18,4 +18,7 @@ public interface UserService {
     List<Cart> getCart(User user);
     Integer addCart(Map cart);
     Integer updateCartGoodsNum(int  goodsNum);
+
+    Integer addUserAddress(UserAddress userAddress);
+    Integer editUserAddress(UserAddress userAddress);
 }

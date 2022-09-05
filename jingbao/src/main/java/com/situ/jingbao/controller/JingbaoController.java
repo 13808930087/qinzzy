@@ -94,7 +94,7 @@ public class JingbaoController {
 
 
     @RequestMapping("/product")
-    public String product(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
+    public String product(Map<String, Object> map,Integer goodsId, HttpSession session) throws ServletException, IOException {
         List<Title> titles = titleService.getAllTitle();
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
@@ -118,6 +118,8 @@ public class JingbaoController {
             map.put("login_or_name2", "注册");
             map.put("login_url2", "/login?sign=0");
         }
+        Goods goods=  listService.getGoodsId(goodsId);
+        map.put("goods",goods);
         map.put("pageName", "商品信息");
         return "product";
     }

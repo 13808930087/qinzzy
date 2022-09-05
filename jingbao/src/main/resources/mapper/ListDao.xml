@@ -25,7 +25,7 @@
                 and goods_name like #{goodsName}
             </if>
             <if test="gc.goodsLevel!=null">
-                and goods_level &gt;= #{gc.goodsLevel}
+                and goods_level > #{gc.goodsLevel}
             </if>
             <if test="gc.goodsNew!=null">
                 and goods_new = #{gc.goodsNew}
@@ -38,10 +38,27 @@
             </if>
         </where>
     </select>
-
-    <select id="getGoodsId" resultMap="ListMap" parameterType="java.lang.Integer">
-        SELECT goods_id, goods_name, goods_hover_img,goods_first_img,goods_discount,goods_price,goods_level,goods_new
+    <resultMap id="GoodsIdMap" type="Goods">
+        <id column="goods_id" property="goodsId"/>
+        <result column="goods_name" property="goodsName"/>
+        <result column="goods_hover_img" property="goodsHoverImg"/>
+        <result column="goods_first_img" property="goodsFirstImg"/>
+        <result column="goods_discount" property="goodsDiscount"/>
+        <result column="goods_price" property="goodsPrice"/>
+        <result column="goods_level" property="goodsLevel"/>
+        <result column="goods_new" property="goodsNew"/>
+        <result column="goods_introduce" property="goodsIntroduce"/>
+        <collection property="goodsImgs" column="goods_id" select="getGoodsIdImg"/>
+    </resultMap>
+    <select id="getGoodsId" resultMap="GoodsIdMap" parameterType="java.lang.Integer">
+        SELECT goods_id, goods_name, goods_hover_img,goods_first_img,goods_discount,goods_price,goods_level,goods_new,goods_introduce
         from t_goods
+        <where> and goods_id=#{goodsId}</where>
+    </select>
+
+    <select id="getGoodsIdImg" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT img_src
+        from t_goods_img
         <where> and goods_id=#{goodsId}</where>
     </select>
 

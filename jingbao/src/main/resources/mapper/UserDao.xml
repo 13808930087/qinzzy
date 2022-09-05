@@ -80,10 +80,12 @@
         <result column="phone" property="phone"/>
         <result column="email" property="email"/>
         <result column="detailed_address" property="detailedAddress"/>
-        <result column="consignee" property="consignee"/>
-        <association property="province" column="province" select="getAddressName"/>
-        <association property="city" column="city" select="getAddressName"/>
-        <association property="area" column="area" select="getAddressName"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="area" property="area"/>
+        <association property="provinceName" column="province" select="getAddressName"/>
+        <association property="cityName" column="city" select="getAddressName"/>
+        <association property="areaName" column="area" select="getAddressName"/>
     </resultMap>
     <select id="getUserAddress" resultMap="UserAddressMap" parameterType="java.lang.Integer">
         select address_id,
@@ -107,12 +109,37 @@
         <id column="address_id" property="addressId"/>
         <id column="parent_id" property="parentId"/>
         <result column="address_name" property="addressName"/>
-<!--        <collection property="addresses" column="address_id" select="getAddress"/>-->
+        <!--        <collection property="addresses" column="address_id" select="getAddress"/>-->
     </resultMap>
     <select id="getAddress" resultMap="AddressMap" parameterType="java.lang.Integer">
-        select address_name,parent_id,address_id
+        select address_name, parent_id, address_id
         from t_address
         where parent_id = #{parentId}
     </select>
+    <insert id="addUserAddress" parameterType="UserAddress">
+        insert into t_user_address(
+                                  customer_id,
+                                   province,
+                                   city,
+                                   area,
+                                   phone,
+                                   email,
+                                   detailed_address,
+                                  consignee )
+        values (#{userAddress.customerId}, #{userAddress.province}, #{userAddress.city},
+                #{userAddress.area}, #{userAddress.phone}, #{userAddress.email}, #{userAddress.detailedAddress}, #{userAddress.consignee})
+    </insert>
+    <update id="editUserAddress" parameterType="UserAddress">
+        update t_user_address
+        set province=#{userAddress.province},
+            city=#{userAddress.city},
+            area=#{userAddress.area},
+            phone=#{userAddress.phone},
+            email=#{userAddress.email},
+            detailed_address=#{userAddress.detailedAddress},
+            consignee= #{userAddress.consignee}
+        where address_id=#{userAddress.addressId} and customer_id = #{userAddress.customerId}
+    </update>
+
 
 </mapper>

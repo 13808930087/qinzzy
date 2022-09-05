@@ -30,7 +30,11 @@ public class ListServiceImpl  implements ListService {
 
     @Override
     public Goods getGoodsId(int goodsId) {
-        return listDao.getGoodsId(goodsId);
+        Goods goods=  listDao.getGoodsId(goodsId);
+
+        goods.takeNewGoodsPrice();
+
+        return goods;
     }
 
 

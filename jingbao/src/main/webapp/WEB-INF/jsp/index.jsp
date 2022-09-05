@@ -25,7 +25,7 @@
                 <div class="col-md-8 col-lg-6">
                     <div class="hero-slider owl-carousel">
                         <!--Single Slider Start-->
-                        <div class="single-slider" style="background-image: url(/img/slider/home1-slider-1.jpg)">
+                        <div class="single-slider" style="background-image: url(img/slider/home1-slider-1.jpg)">
                             <div class="hero-slider-content">
                                 <h2 class="slow-animation1">pendant lights</h2>
                                 <h2 class="slow-animation2">collection 2018</h2>
@@ -38,7 +38,7 @@
                         </div>
                         <!--Single Slider End-->
                         <!--Single Slider Start-->
-                        <div class="single-slider" style="background-image: url(/img/slider/home1-slider-2.jpg)">
+                        <div class="single-slider" style="background-image: url(img/slider/home1-slider-2.jpg)">
                             <div class="hero-slider-content">
                                 <h2 class="slow-animation1">Beat solo2</h2>
                                 <h2 class="slow-animation2">wireless</h2>

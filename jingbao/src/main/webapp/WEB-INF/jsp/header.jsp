@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/jingbao/header.css">
 <!-- Modernizr Js -->
-
+<script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -132,7 +132,7 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="#">博客</a></li>
-                                    <li><a href="jingbao/list">商品</a>
+                                    <li><a href="test">测试</a>
                                         <!--Mega Menu Start-->
                                         <ul class="mega-menu">
                                             <li><a href="#" class="item-link">页</a>
@@ -302,7 +302,8 @@
                         <div class="mini-cart">
                             <a href="#">
                                     <span class="cart-info">
-		                                <span class="cart-total">2</span>
+                                        <c:if test="${login_user_name!='个人信息'}">  <span class="cart-total">2</span></c:if>
+
 		                                <span class="user/cart">我的购物车</span>
 		                            </span>
                             </a>

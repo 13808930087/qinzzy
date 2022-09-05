@@ -1,6 +1,7 @@
 package com.situ.jingbao.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Set;
 
 public class Goods {
@@ -14,7 +15,24 @@ public class Goods {
     private Integer   goodsLevel;
     private Integer   goodsNew;
     private Integer   categoryId;
+    private String goodsIntroduce;
+    private List<String> goodsImgs;
 
+    public String getGoodsIntroduce() {
+        return goodsIntroduce;
+    }
+
+    public void setGoodsIntroduce(String goodsIntroduce) {
+        this.goodsIntroduce = goodsIntroduce;
+    }
+
+    public List<String> getGoodsImgs() {
+        return goodsImgs;
+    }
+
+    public void setGoodsImgs(List<String> goodsImgs) {
+        this.goodsImgs = goodsImgs;
+    }
 
     public void takeNewGoodsPrice() {
         this.newGoodsPrice = goodsPrice.multiply(goodsDiscount);

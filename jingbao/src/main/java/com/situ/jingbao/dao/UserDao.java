@@ -22,4 +22,8 @@ public interface UserDao {
     Integer addCart(@Param("cart")Map cart);
 
     Integer updateCartGoodsNum(int goodsNum);
+
+    Integer editUserAddress(@Param("userAddress")UserAddress userAddress);
+
+    Integer addUserAddress(@Param("userAddress")UserAddress userAddress);
 }

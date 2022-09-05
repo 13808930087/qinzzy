@@ -52,4 +52,14 @@ public class UserServiceImpl implements UserService {
     public Integer updateCartGoodsNum(int goodsNum) {
         return userDao.updateCartGoodsNum(goodsNum);
     }
+
+    @Override
+    public Integer addUserAddress(UserAddress userAddress) {
+        return userDao.addUserAddress(userAddress);
+    }
+
+    @Override
+    public Integer editUserAddress(UserAddress userAddress) {
+        return userDao.editUserAddress(userAddress);
+    }
 }
