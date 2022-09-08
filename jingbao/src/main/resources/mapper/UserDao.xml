@@ -40,40 +40,6 @@
             phone=#{customer.phone}
         where customer_id = #{customer.customerId}
     </update>
-    <resultMap id="CartMap" type="Cart">
-        <id column="cart_id" property="cartId"/>
-        <result column="customer_id" property="customerId"/>
-        <result column="goods_img" property="goodsImg"/>
-        <result column="goods_id" property="goodsId"/>
-        <result column="goods_num" property="goodsNum"/>
-        <result column="goods_name" property="goodsName"/>
-        <result column="total" property="total"/>
-        <result column="goods_price" property="goodsPrice"/>
-    </resultMap>
-    <select id="getCart" resultMap="CartMap" parameterType="java.lang.Integer">
-        SELECT cart_id,
-               customer_id,
-               goods_img,
-               goods_id,
-               goods_num,
-               goods_name,
-               total,
-               goods_price
-        from t_cart
-        where customer_id = #{customerId}
-    </select>
-    <insert id="addCart" parameterType="java.util.Map">
-        insert into t_cart(customer_id, goods_img, goods_id, goods_num, goods_name, goods_price, total)
-        values (#{cart.customerId}, #{cart.goodsImg}, #{cart.goodsId}, #{cart.goodsNum}, #{cart.goodsName},
-                #{cart.goodsPrice}, #{cart.total});
-    </insert>
-    <update id="updateCartGoodsNum" parameterType="java.lang.Integer">
-        update t_cart
-        set goods_num=#{goodsNum}
-        where cart_id = #{cart.customerId}
-    </update>
-
-
     <resultMap id="UserAddressMap" type="UserAddress">
         <id column="address_id" property="addressId"/>
         <result column="customer_id" property="customerId"/>

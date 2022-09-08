@@ -411,7 +411,10 @@
             min = input.attr('min'),
             max = input.attr('max');
 
+
         btnUp.on('click', function () {
+            console.log(max);
+            console.log(min);
             var oldValue = parseFloat(input.val());
             if (oldValue >= max) {
                 var newVal = oldValue;

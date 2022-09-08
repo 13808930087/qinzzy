@@ -38,20 +38,7 @@ public class UserServiceImpl implements UserService {
         return userDao.editCustomer(customer);
     }
 
-    @Override
-    public List<Cart> getCart(User user) {
-        return userDao.getCart(user.getCustomerId());
-    }
 
-    @Override
-    public Integer addCart(Map cart) {
-        return userDao.addCart(cart);
-    }
-
-    @Override
-    public Integer updateCartGoodsNum(int goodsNum) {
-        return userDao.updateCartGoodsNum(goodsNum);
-    }
 
     @Override
     public Integer addUserAddress(UserAddress userAddress) {
@@ -62,4 +49,6 @@ public class UserServiceImpl implements UserService {
     public Integer editUserAddress(UserAddress userAddress) {
         return userDao.editUserAddress(userAddress);
     }
+
+
 }

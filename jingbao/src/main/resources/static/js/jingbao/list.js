@@ -69,8 +69,8 @@ $(function () {
 
         }
     });
-    $(".product-div").click(function (){
-       $(this).find("#product-form").submit();
+    $(".product-div img,.product-div .goods-name,.product-div span").click(function (){
+       $(this).closest(".product-div").find("#product-form").submit();
     });
     $(".ion-bag").click(function () {
         goodsId=$(this).closest(".single-product").find("input[name=goodsId]").val();
@@ -81,7 +81,7 @@ $(function () {
             layer.msg("请登录后再添加到购物车", { icon: 1 });
             return;
         }
-        url = "user/addCart";
+        url = "cart/addCart";
         $.ajax({
             url: url,
             method: "post",
@@ -106,5 +106,10 @@ $(function () {
         })
 
 
+    });
+    $(".shop-sidebar button[name=price-filter-btn]").click(function (){
+       $(".showing-product #list-form input[name=priceFilterStart]").val( $(".shop-sidebar input[name=price-filter-start]").val());
+        $(".showing-product #list-form input[name=priceFilterEnd]") .val( $(".shop-sidebar input[name=price-filter-end]").val());
+        $("#list-form").submit();
     });
 })

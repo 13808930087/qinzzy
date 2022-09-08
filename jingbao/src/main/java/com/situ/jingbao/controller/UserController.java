@@ -2,11 +2,9 @@ package com.situ.jingbao.controller;
 
 import com.situ.jingbao.common.Global;
 import com.situ.jingbao.model.*;
-import com.situ.jingbao.service.ListService;
-import com.situ.jingbao.service.LoginService;
-import com.situ.jingbao.service.TitleService;
-import com.situ.jingbao.service.UserService;
+import com.situ.jingbao.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,71 +25,19 @@ import java.util.UUID;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
+    private CartService cartService;
+    @Autowired
     LoginService loginService;
     @Autowired
     private UserService userService;
     @Autowired
     private ListService listService;
-
-    @RequestMapping("/cart")
-    public String cart(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
-        List<Title> titles = titleService.getAllTitle();
-        map.put("titles", titles);
-        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if (user != null) {
-            if (user.getNickname() != null) {
-                map.put("login_user_name", user.getNickname());
-            } else {
-                map.put("login_user_name", user.getUsername());
-            }
-        } else {
-            map.put("login_user_name", "个人信息");
-        }
-        if (user != null) {
-            map.put("login_or_name1", "个人信息");
-            map.put("login_url1", "user/userTemp");
-            map.put("login_or_name2", "注销");
-            map.put("login_url2", "/logout");
-        } else {
-            map.put("login_or_name1", "登录");
-            map.put("login_url1", "/login");
-            map.put("login_or_name2", "注册");
-            map.put("login_url2", "/login?sign=0");
-        }
-        List<Cart> carts = userService.getCart(user);
-        map.put("carts", carts);
-        map.put("pageName", "购物车");
-        return "cart";
-    }
-
     @Autowired
     private TitleService titleService;
 
     @RequestMapping("/userTemp")
     public String userTemp(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
-        List<Title> titles = titleService.getAllTitle();
-        map.put("titles", titles);
-        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        if (user != null) {
-            if (user.getNickname() != null) {
-                map.put("login_user_name", user.getNickname());
-            } else {
-                map.put("login_user_name", user.getUsername());
-            }
-        } else {
-            map.put("login_user_name", "个人信息");
-        }
-        if (user != null) {
-            map.put("login_or_name1", "个人信息");
-            map.put("login_url1", "user/userTemp");
-            map.put("login_or_name2", "注销");
-            map.put("login_url2", "/logout");
-        } else {
-            map.put("login_or_name1", "登录");
-            map.put("login_url1", "/login");
-            map.put("login_or_name2", "注册");
-            map.put("login_url2", "/login?sign=0");
-        }
+        head(map,session );
         map.put("pageName", "个人中心");
         return "userTemp";
     }
@@ -126,49 +72,6 @@ public class UserController {
         return json;
     }
 
-    @PostMapping(value = "/addCart", produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public Map<String, Object> addCart(Goods goods, User user, Integer goodsNum, HttpSession session) throws IOException, ServletException {
-        Map<String, Object> json = new HashMap<>();
-        Map<String, Object> cart = new HashMap<>();
-        cart.put("goodsId", goods.getGoodsId());
-        cart.put("goodsImg", goods.getGoodsFirstImg());
-        cart.put("goodsPrice", goods.getNewGoodsPrice());
-        cart.put("goodsName", goods.getGoodsName());
-        if (goodsNum == null) {
-            cart.put("goodsNum", 1);
-        } else {
-            cart.put("goodsNum", goodsNum);
-        }
-        if (goodsNum == null) {
-            cart.put("total", goods.getNewGoodsPrice());
-        } else {
-            cart.put("total", goods.getNewGoodsPrice().multiply(new BigDecimal((int) cart.get("goodsNum"))));
-        }
-        cart.put("customerId", user.getCustomerId());
-        Integer num = userService.addCart(cart);
-        if (num != null) {
-            json.put("success", true);
-            json.put("addCartPrompt", "购物车添加成功");
-        } else {
-            json.put("success", false);
-            json.put("addCartPrompt", "购物车添加失败");
-        }
-        return json;
-    }
-
-    @PostMapping(value = "/updateCartGoodsNum", produces = "application/json;charset=utf-8")
-    @ResponseBody
-    public Map<String, Object> updateCartGoodsNum(Integer goodsNum, HttpSession session) throws IOException, ServletException {
-        Map<String, Object> json = new HashMap<>();
-        Integer num = userService.updateCartGoodsNum(goodsNum);
-        if (num != null) {
-            json.put("success", true);
-        } else {
-            json.put("success", false);
-        }
-        return json;
-    }
 
     @PostMapping(value = "/editGravatar", produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -244,6 +147,34 @@ public class UserController {
         return json;
     }
 
+    public void head(Map<String, Object> map, HttpSession session ){
+        List<Title> titles = titleService.getAllTitle();
+        map.put("titles", titles);
+        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
+        if (user != null) {
+            if (user.getNickname() != null) {
+                map.put("login_user_name", user.getNickname());
+            } else {
+                map.put("login_user_name", user.getUsername());
+            }
+        } else {
+            map.put("login_user_name", "个人信息");
+        }
+        if (user != null) {
+            map.put("login_or_name1", "个人信息");
+            map.put("login_url1", "user/userTemp");
+            map.put("login_or_name2", "注销");
+            map.put("login_url2", "/logout");
+        } else {
+            map.put("login_or_name1", "登录");
+            map.put("login_url1", "/login");
+            map.put("login_or_name2", "注册");
+            map.put("login_url2", "/login?sign=0");
+        }
+
+            List<Cart> carts = cartService.getCart(user);
+            map.put("carts", carts);
+        }
 }
 
 

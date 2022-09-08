@@ -4,7 +4,8 @@
 <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 <script type="text/javascript" src="lib/jquery/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="lib/layer/layer.js"></script>
-<script src="js/jingbao/header.js"></script>   <!--Header Area Start-->
+<script src="js/jingbao/header.js"></script>
+<!--Header Area Start-->
 <!-- Place favicon.ico in the root directory -->
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 <!--All Css Here-->
@@ -94,7 +95,8 @@
             </div>
         </div>
         <!--Header Top Area End-->
-        <!--Header Middle Area Start--><div class="he-50"></div>
+        <!--Header Middle Area Start-->
+        <div class="he-50"></div>
         <div class="header-middle-area header-sticky">
             <div class="container">
                 <div class="row">
@@ -139,7 +141,7 @@
                                                 <ul>
                                                     <li><a href="/login">我的账户</a></li>
                                                     <li><a href="javascript:void(0)">结帐</a></li>
-                                                    <li><a href="user/cart">购物车</a></li>
+                                                    <li><a href="cart/list">购物车</a></li>
                                                     <li><a href="javascript:void(0)">愿望列表</a></li>
                                                     <li><a href="javascript:void(0)">常见问题</a></li>
                                                     <li><a href="javascript:void(0)">错误404</a></li>
@@ -212,16 +214,22 @@
                                     <c:forEach var="title" items="${titles}" varStatus="p">
                                         <c:if test="${p.count<6}">
                                             <li class="right-menu">
-                                                <a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                <a href="javascript:void(0)"><p
+                                                        style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                </a>
                                                 <c:if test="${ not empty title.titles}">
                                                     <ul class="cat-mega-menu">
                                                         <c:forEach var="title" items="${title.titles}">
                                                             <li class="right-menu cat-mega-title">
-                                                                <a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                                <a href="javascript:void(0)"><p
+                                                                        style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                                </a>
                                                                 <c:if test="${ not empty title.titles}">
                                                                     <ul>
                                                                         <c:forEach var="title" items="${title.titles}">
-                                                                            <li><a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                                            <li><a href="javascript:void(0)"><p
+                                                                                    style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                                            </a>
                                                                             </li>
                                                                         </c:forEach>
                                                                     </ul>
@@ -234,16 +242,22 @@
                                         </c:if>
                                         <c:if test="${p.count>=6}">
                                             <li class="rx-child right-menu">
-                                                <a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                <a href="javascript:void(0)"><p
+                                                        style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                </a>
                                                 <c:if test="${ not empty title.titles}">
                                                     <ul class="cat-mega-menu">
                                                         <c:forEach var="title" items="${title.titles}">
                                                             <li class="right-menu cat-mega-title">
-                                                                <a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                                <a href="javascript:void(0)"><p
+                                                                        style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                                </a>
                                                                 <c:if test="${ not empty title.titles}">
                                                                     <ul>
                                                                         <c:forEach var="title" items="${title.titles}">
-                                                                            <li><a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a>
+                                                                            <li><a href="javascript:void(0)"><p
+                                                                                    style=" width: 100px; display: inline-block;">${title.titleName}</p>
+                                                                            </a>
                                                                             </li>
                                                                         </c:forEach>
                                                                     </ul>
@@ -267,16 +281,16 @@
                     <div class="col-md-9 col-lg-6 order-lg-2 order-1">
                         <!--Header Top Search Start-->
                         <div class="header-top-search">
-                            <div class="search-categories">
-                                <form action="#">
+                            <div class="search-categories" id="search-categories">
+                                <form action="jingbao/list" method="post">
                                     <div class="search-form-input">
                                         <select id="select" name="select" class="nice-select">
                                             <c:if test="${title_get!=null}">
                                                 <option value="${title_get.titleId}">${title_get.titleName}</option>
                                             </c:if>
-                                            <c:if test="${title_get==null}">
-                                                <option value="">所有类别</option>
-                                            </c:if>
+
+                                            <option value="">所有类别</option>
+
                                             <c:forEach items="${titles}" var="title">
                                                 <option value="${title.titleId}">${title.titleName}</option>
                                                 <c:forEach items="${title.titles}" var="title">
@@ -288,7 +302,7 @@
 
                                             </c:forEach>
                                         </select>
-                                        <input type="text" placeholder="Search product...">
+                                        <input type="text" name="goodsName" placeholder="Search product...">
                                         <button class="top-search-btn" type="button"><i
                                                 class="ion-ios-search-strong"></i></button>
                                     </div>
@@ -300,59 +314,49 @@
                     <div class="col-md-3 col-lg-3 order-lg-3 order-2">
                         <!--Mini Cart Start-->
                         <div class="mini-cart">
-                            <a href="#">
+                            <a href="javascript:void(0)">
                                     <span class="cart-info">
-                                        <c:if test="${login_user_name!='个人信息'}">  <span class="cart-total">2</span></c:if>
+                                        <c:if test="${login_user_name!='个人信息'} and ${login_user_name!=null}"> <span
+                                                class="cart-total">2</span></c:if>
 
-		                                <span class="user/cart">我的购物车</span>
+		                                <span class="cart/list">我的购物车</span>
 		                            </span>
                             </a>
                             <!--Cart Dropdown Start-->
-                            <div class="header-cart" style="display: none;">
-                                <ul class="cart-items">
-                                    <li class="single-cart-item">
-                                        <div class="cart-img">
-                                            <a href="user/cart"><img src="img/cart/cart1.jpg" alt=""></a>
-                                            <span class="cart-sticker">1x</span>
-                                        </div>
-                                        <div class="cart-content">
-                                            <h5 class="product-name"><a href="javascript:void(0)">Lipstick Ultra
-                                                Violet</a></h5>
-                                            <span class="product-price">$16.40</span>
-                                            <span class="product-size"><span>Size</span>: S</span>
-                                            <span class="product-color"><span>Color</span>: Yellow</span>
-                                        </div>
-                                        <div class="cart-item-remove">
-                                            <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="single-cart-item">
-                                        <div class="cart-img">
-                                            <a href="user/cart"><img src="img/cart/cart2.jpg" alt=""></a>
-                                            <span class="cart-sticker">1x</span>
-                                        </div>
-                                        <div class="cart-content">
-                                            <h5 class="product-name"><a href="javascript:void(0)">Columbia Men's
-                                                Ascender</a></h5>
-                                            <span class="product-price">$23.39</span>
-                                            <span class="product-size"><span>Size</span>: S</span>
-                                            <span class="product-color"><span>Color</span>: Orange</span>
-                                        </div>
-                                        <div class="cart-item-remove">
-                                            <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="cart-total">
-                                    <h5>小计 <span class="float-right">$39.79</span></h5>
-                                    <h5>运费 <span class="float-right">$7.00</span></h5>
-                                    <h5>税收 <span class="float-right">$0.00</span></h5>
-                                    <h5>总计 <span class="float-right">$46.79</span></h5>
+                            <c:if test="${login_user_name=='个人信息'}">
+                            <div id="cart-small" style="display: none;">
+                                </c:if>
+                                <div class="header-cart" style="display: none;">
+                                    <ul class="cart-items"><c:forEach items="${carts}" var="cart" varStatus="p">
+                                        <c:if test="${p.index<3}">
+                                        <li class="single-cart-item">
+                                            <div class="cart-img">
+                                                <a href="cart/list"><img src="${cart.goodsImg}" alt=""></a>
+                                                <span class="cart-sticker">${cart.goodsNum}x</span>
+                                            </div>
+                                            <div class="cart-content">
+                                                <span class="product-name">${cart.goodsName}</span>
+
+                                                <span class="product-price">${cart.goodsPrice}</span>
+
+                                            </div>
+                                            <div class="cart-item-remove">
+                                                <a title="Remove" href="#"><i class="fa fa-trash"></i></a>
+                                            </div>
+                                        </li></c:if></c:forEach>
+
+                                    </ul>
+                                    <div class="cart-total">
+                                        <h5>小计 <span class="float-right">$</span></h5>
+                                        <h5>运费 <span class="float-right">$7.00</span></h5>
+                                        <h5>总计 <span class="float-right">$46.79</span></h5>
+                                    </div>
+                                    <div class="checkout">
+                                        <a href="cart/list">查看</a>
+                                    </div>
                                 </div>
-                                <div class="checkout">
-                                    <a href="user/cart">查看</a>
-                                </div>
-                            </div>
+                                <c:if test="${login_user_name=='个人信息'}"> </div>
+                            </c:if>
                             <!--Cart Dropdown End-->
                         </div>
                         <!--Mini Cart End-->
@@ -363,22 +367,22 @@
         <!--Header Bottom Area End-->
     </header>
     <!--Header Area End-->
-<!--Breadcrumb Area Start-->
+    <!--Breadcrumb Area Start-->
 
-<div class="page-title-area">
-    <div class="container">
-        <div class="page-title-content">
+    <div class="page-title-area">
+        <div class="container">
+            <div class="page-title-content">
 
-            <ul id="heading">
+                <ul id="heading">
 
                     <li><a href="index">主页</a></li>
                     <li class="active">${pageName}</li>
 
-            </ul>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<!--Breadcrumb Area End-->
+    <!--Breadcrumb Area End-->
 
 
 

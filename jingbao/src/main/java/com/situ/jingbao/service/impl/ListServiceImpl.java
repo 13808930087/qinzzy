@@ -21,20 +21,13 @@ public class ListServiceImpl  implements ListService {
 
     @Override
     public List<Goods> findGoods(GoodsCondition gs) {
-        List<Goods> goodss= listDao.findGoods(gs);
-        for (Goods g : goodss){
-                g.takeNewGoodsPrice();
-        }
-        return goodss;
+       return listDao.findGoods(gs);
+
     }
 
     @Override
     public Goods getGoodsId(int goodsId) {
-        Goods goods=  listDao.getGoodsId(goodsId);
-
-        goods.takeNewGoodsPrice();
-
-        return goods;
+        return   listDao.getGoodsId(goodsId);
     }
 
 

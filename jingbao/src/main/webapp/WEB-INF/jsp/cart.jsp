@@ -21,47 +21,58 @@
                 <div class="col-lg-9">
                     <form class="cart-controller">
                         <div class="cart-table table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="table">
                                 <thead class="cart-thead">
                                 <tr>
-                                    <th scope="col">产品</th>
-                                    <th scope="col"></th>
-                                    <th scope="col">价格</th>
-                                    <th scope="col">数量</th>
-                                    <th scope="col">总额</th>
-                                    <th scope="col">删除</th>
+                                    <th class="product-checkbox">
+                                        <input name="checkbox" type="checkbox">
+                                    </th>
+
+                                    <th scope="col" style="width: 130px;">产品图片</th>
+                                    <th scope="col" style="width: 145px;">产品名</th>
+                                    <th scope="col" style="width: 130px;">价格</th>
+                                    <th scope="col" style="width: 145px;">数量</th>
+                                    <th scope="col" style="width: 130px;">总额</th>
+                                    <th scope="col" style="width: 100px;">删除</th>
                                 </tr>
                                 </thead>
                                 <tbody class="cart-tbody">
                                 <c:forEach items="${carts}" var="cart" varStatus="p">
-                                    <tr>
-                                        <td class="product-thumbnail">
+
+                                    <tr><td style="display: none">
+                                        <input name="cartId" type="text" value="${cart.cartId}">
+                                    </td>
+                                        <td class="product-checkbox">
+                                            <input name="checkbox" type="checkbox">
+                                        </td>
+                                        <td class="product-thumbnail" style="width: 130px;">
                                             <a href="javascript:void(0)">
                                                 <img src="${cart.goodsImg}" alt="Image">
                                             </a>
                                         </td>
-                                        <td class="product-name">
+                                        <td class="product-name" style="width: 145px;">
                                             <a href="javascript:void(0)">${cart.goodsName}</a>
                                         </td>
-                                        <td class="product-price">
-                                            <span class="unit-amount">${cart.goodsPrice}</span>
+                                        <td class="product-price" style="width: 130px;">
+                                            <span class="unit-amount"
+                                                  >${cart.goodsPrice}</span>
                                         </td>
-                                        <td class="product-quantity">
+                                        <td class="product-quantity" style="width: 145px;">
                                             <div class="input-counter">
 													<span class="minus-btn">
 														<i class="ri-subtract-line"></i>
 													</span>
-                                                <input type="text" value="1" min="1" max="99">
+                                                <input type="text" value="${cart.goodsNum}" max="99" min="1">
                                                 <span class="plus-btn">
 														<i class="ri-add-line"></i>
 													</span>
                                             </div>
                                         </td>
-                                        <td class="product-subtotal">
+                                        <td class="product-subtotal" style="width: 130px;">
                                             <span class="subtotal-amount">${cart.total}</span>
                                         </td>
-                                        <td class="trash">
-                                            <a href="" class="remove">
+                                        <td class="trash" style="width: 100px;">
+                                            <a href="javascript:void(0)" class="remove">
                                                 <i class="ri-close-fill"></i>
                                             </a>
                                         </td>
@@ -71,35 +82,17 @@
                             </table>
                         </div>
                     </form>
-                    <div class="coupon-cart">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8">
-                                <div class="form-group mb-0">
-                                    <input type="text" class="form-control" placeholder="Coupon code">
-                                    <button class="default-btn">
-                                        申请优惠券
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4">
-                                <a href="javascript:void(0)" class="default-btn update-cart">
-                                    更新购物车
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="col-lg-3">
                     <div class="cart-totals">
-                        <h3 class="cart-checkout-title">Cart Totals</h3>
+                        <h3 class="cart-checkout-title">购物车总数</h3>
                         <ul>
-                            <li>Subtotal <span>$240.00</span></li>
-                            <li>Shipping <span>$00.00</span></li>
-                            <li>Total <span>$315.00</span></li>
-                            <li><b>Payable Total</b> <span><b>$240.00</b></span></li>
+                            <li>小计 <span id="subtotal">$00.00</span></li>
+                            <li><b>应付总额</b> <span id="totalPayable">$00.00</span></li>
                         </ul>
                         <a href="javascript:void(0)" class="default-btn">
-                            Proceed to checkout
+                            结账
                         </a>
                     </div>
                 </div>
@@ -110,5 +103,18 @@
     <!--Footer Area Start-->
     <%@include file="footer.jsp" %>
     <!--Footer Area End-->
+    <script type="text/javascript">
+        const ctx = "${ctx}";
+        const pages = parseInt("${pi.pages}");
+        const pageNum = parseInt("${pi.pageNum}");
+        const pageSize = parseInt("${pi.pageSize}");
+        let customerId;
+        if (${login_user!=null}&&
+        ${login_user!=""})
+        {
+            customerId = "${login_user.customerId}";
+        }
+    </script>
+    <script src="js/jingbao/cart.js"></script>
 
 </html>

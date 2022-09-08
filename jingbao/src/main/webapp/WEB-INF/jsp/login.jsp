@@ -38,9 +38,9 @@
                             <div class="login-form">
                                 <form action="/login" method="post">
                                     <label>用户名</label>
-                                    <input name="username" type="text">
+                                    <input name="username" type="text" value="123456">
                                     <label>密码</label>
-                                    <input name="password" type="password">
+                                    <input name="password" type="password" value="123456">
                                     <label style="display: table-cell">验证码:</label><input id="identify-input" type="text" name="identifyCode">
                                     <img id="identify-img" src="/identifyImage"><br><br>
                                     <div class="button-box">

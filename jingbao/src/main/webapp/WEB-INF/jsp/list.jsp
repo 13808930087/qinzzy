@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico in the root directory -->
-
+    <link rel="stylesheet" href="css/jingbao/list.css">
     <!--Header Area Start-->
     <%@include file="header.jsp" %>
     <!--Header Area End-->
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-lg-3 order-2 order-lg-1">
                     <!--Shop Product Categorie Start-->
-                    <div class="shop-product-cate mb-20">
+                    <div id="shop-product-cate" class="shop-product-cate mb-20">
                         <c:if test="${title_get!=null}">
                             <h3>${title_get.titleName}</h3>
                             <div id="shop-cate-toggle" class="category-menu sidebar-menu sidbar-style">
@@ -32,7 +32,7 @@
                                         <li class="has-sub"><a href="#">${title.titleName}</a>
                                             <ul class="category-sub">
                                                 <c:forEach items="${title.titles}" var="title">
-                                                    <li><a href="javascript:void(0)">${title.titleName}</a></li>
+                                                    <li><a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a></li>
                                                 </c:forEach>
                                             </ul>
                                         </li>
@@ -49,7 +49,7 @@
                                             <ul class="category-sub">
 
                                                 <c:forEach items="${title.titles}" var="title">
-                                                    <li><a href="javascript:void(0)">${title.titleName}</a></li>
+                                                    <li><a href="javascript:void(0)"><p style=" width: 100px; display: inline-block;">${title.titleName}</p></a></li>
                                                 </c:forEach>
                                             </ul>
                                         </li>
@@ -59,78 +59,17 @@
                         </c:if>
                     </div>
                     <!--Shop Product Categorie End-->
-                    <!--Brand Categorie Widget Start-->
-                    <div class="shop-sidebar mb-20">
-                        <h3>品牌</h3>
-                        <div class="shop-checkbox">
-                            <ul>
-                                <li><input name="product-categori" type="checkbox"><a href="#">图形角 (5)</a>
-                                </li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">工作室设计 (8)</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Brand Categorie Widget End-->
                     <!--Price Categorie Widget Start-->
                     <div class="shop-sidebar mb-20">
-                        <h3>Price</h3>
+                        <h3>价格</h3>
                         <div class="shop-checkbox">
-                            <ul>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$18.00 - $21.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$30.00 - $37.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$54.00 - $62.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$72.00 - $83.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$90.00 - $94.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$96.00 - $125.00
-                                    (1)</a></li>
-                                <li><input name="price-filter" checked="" type="radio"><a href="#">$176.00 - $364.00
-                                    (7)</a></li>
-                            </ul>
+                        <label>最低价 </label><input type="text" class="price-filter-input" name="price-filter-start">
+                            <label>最高价 </label><input type="text" class="price-filter-input" name="price-filter-end">
+                            <label> </label>
+                            <button name="price-filter-btn">确定</button>
                         </div>
                     </div>
                     <!--Price Categorie Widget End-->
-                    <!--Size Categorie Widget Strat-->
-                    <div class="shop-sidebar mb-20">
-                        <h3>Size</h3>
-                        <div class="shop-checkbox">
-                            <ul>
-                                <li><input name="product-categori" type="checkbox"><a href="#">S (2)</a></li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">M (2)</a></li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">L (2)</a></li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">XL (2)</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Size Categorie Widget End-->
-                    <!--Color Categorie Widget Start-->
-                    <div class="shop-sidebar mb-20">
-                        <h3>color</h3>
-                        <div class="shop-checkbox">
-                            <ul>
-                                <li><a href="#"><span class="color"></span>Pink (2)</a></li>
-                                <li><a href="#"><span class="color"></span>Green (2)</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Color Categorie Widget End-->
-                    <!--Dimension Categorie Widget Start-->
-                    <div class="shop-sidebar mb-20">
-                        <h3>Dimension</h3>
-                        <div class="shop-checkbox">
-                            <ul>
-                                <li><input name="product-categori" type="checkbox"><a href="#">40x60cm (3)</a></li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">60x90cm (3)</a></li>
-                                <li><input name="product-categori" type="checkbox"><a href="#">80x120cm (3)</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!--Dimension Categorie Widget End-->
                 </div>
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="shop-layout">
@@ -202,15 +141,15 @@
                                                                 <ul>
                                                                     <li><a href="javascript:void(0)"><i
                                                                             class="ion-bag"></i></a></li>
-                                                                    <li><a href="#open-modal" data-toggle="modal"><i
+                                                                    <li><a href="javascript:void(0)" data-toggle="modal"><i
                                                                             class="ion-eye"></i></a></li>
-                                                                    <li><a href="#"><i class="ion-ios-copy-outline"></i></a>
+                                                                    <li><a href="javascript:void(0)"><i class="ion-ios-copy-outline"></i></a>
                                                                     </li>
                                                                 </ul>
                                                             </div>
                                                         </div>
                                                         <div class="product-content">
-                                                            <h4><a href="javascript:void(0)">${goods.goodsName}</a></h4>
+                                                            <h4><a class="goods-name" href="javascript:void(0)">${goods.goodsName}</a></h4>
                                                             <div class="product-price">
                                                                 <c:if test="${goods.goodsDiscount<1}">
                                                                     <span class="regular-price">${goods.goodsPrice}</span>
@@ -308,19 +247,25 @@
                                             <input type="hidden" name="goodsDiscount" value="${goods.goodsDiscount }">
                                             <input type="hidden" name="newGoodsPrice" value="${goods.newGoodsPrice }">
                                             <input type="hidden" name="goodsLevel" value="${goods.goodsLevel }">
-                                            <input type="hidden" name="goodsNew" value="${goods.goodsNew }">
+                                            <input type="hidden" name="goodsNew" value="${goods.goodsNew}">
                                             <input type="hidden" name="pageNum" value="${pi.pageNum}">
                                             <input type="hidden" name="pageSize" value="${pi.pageSize}">
-
+                                            <input type="hidden" name="priceFilterStart" value="">
+                                            <input type="hidden" name="priceFilterEnd" value="">
+                                            <input type="hidden" name="categoryName" value="">
                                         </form>
-                                        <p> Showing 1-12 of 13 item(s) </p>
+                                        <c:if test="${pi.total!=0}">
+                                            <p class="show-product" style="font-size: 16px;width: 300px">显示${firstPage }–${lastPage }页
+                                                中的第${pi.pageNum}页
+                                            </p>
+                                        </c:if>
                                     </div>
                                     <div class="page-list">
                                         <ul>
                                             <li class="prev">
                                                 <a href="javascript:void(0)">
                                                     <i class="ion-ios-arrow-left">
-                                                    </i>Previous
+                                                    </i>上一页
                                                 </a>
                                             </li>
                                             <c:forEach begin="${pi.navigateFirstPage }" end="${pi.navigateLastPage }"
@@ -337,7 +282,7 @@
                                                 </c:if>
                                             </c:forEach>
                                             <li class="next">
-                                                <a href="javascript:void(0)">Next
+                                                <a href="javascript:void(0)">下一页
                                                     <i class="ion-ios-arrow-right"></i>
                                                 </a>
                                             </li>
@@ -368,7 +313,10 @@
         {
             customerId = "${login_user.customerId}";
         }
-
+        $("#shop-product-cate p").click(function (){
+            $("#list-form input[name=categoryName]").val($(this).text());
+            $("#list-form").submit();
+        });
     </script>
     <script src="js/jingbao/list.js"></script>
 
