@@ -130,6 +130,15 @@
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        const ctx = "${ctx}";
+        let customerId;
+        if (${login_user!=null}&&
+        ${login_user!=""})
+        {
+            customerId = "${login_user.customerId}";
+        }
+    </script>
     <script src="js/jingbao/address.js"></script>
 </html>
 

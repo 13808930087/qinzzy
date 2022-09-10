@@ -133,8 +133,8 @@
                                         </ul>
                                         <!--Dropdown Menu End-->
                                     </li>
-                                    <li><a href="#">博客</a></li>
-                                    <li><a href="test">测试</a>
+                                    <li><a href="cart/list">购物车</a></li>
+                                    <li><a href="order/buy">订单</a>
                                         <!--Mega Menu Start-->
                                         <ul class="mega-menu">
                                             <li><a href="#" class="item-link">页</a>

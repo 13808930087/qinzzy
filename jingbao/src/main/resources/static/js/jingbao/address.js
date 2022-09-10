@@ -37,11 +37,32 @@ $(function () {
             $("#editAddress select[name=province]").val(province);
             $("select[name=province]").change();
             $("#editAddress select[name=city]").val(city);
-            $("select[name=city]").change();
             $("#editAddress select[name=area]").val(area);
             $("#editAddress input[name=detailedAddress]").val(detailedAddress);
             userUrl = "user/editUserAddress"
             editAddress();
+        });
+        $(".m-0").click(function () {
+            addressId = parseInt($(this).closest(".billing-address-bar").find("input[name=addressId]").val());
+            $(this).closest(".billing-address-bar").remove();
+            removeUrl = "user/removeAddress";
+            $.ajax({
+                url: removeUrl,
+                method: "post",
+                dataType: "json",//没有方法的js对象
+                data: {
+                    addressId: addressId
+                },
+                success: function (resp) {//回调函数
+                    if (resp.success) {
+                        layer.msg(resp.addressPrompt, {icon: 1});
+                    }
+
+                },
+                error: function (resp) {
+                },
+                traditional: true
+            });
         });
 
         $("#default-btn-confirm").click(function () {
@@ -53,7 +74,6 @@ $(function () {
             city = $("#editAddress select[name=city]").val();
             area = $("#editAddress select[name=area]").val();
             detailedAddress = $("#editAddress input[name=detailedAddress]").val();
-            console.log(userUrl);
             $.ajax({
                 url: userUrl,
                 method: "post",
@@ -88,7 +108,8 @@ $(function () {
         });
         $("select[name=province]").change(function () {
             parentId = $("select[name=province]").val();
-            url = "user/getAddress";
+            console.log(parentId);
+            url = ctx + "user/getAddress";
             $.ajax({
                 url: url,
                 method: "post",
@@ -113,7 +134,7 @@ $(function () {
         });
         $("select[name=city]").change(function () {
             parentId = $("select[name=city]").val();
-            url = "user/getAddress";
+            url = ctx + "user/getAddress";
             $.ajax({
                 url: url,
                 method: "post",
@@ -135,6 +156,7 @@ $(function () {
             });
 
         });
+
     }
 )
 ;

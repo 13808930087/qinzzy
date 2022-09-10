@@ -31,8 +31,6 @@ private CartService cartService;
     private LoginService loginService;
     @Autowired
     private ListService listService;
-    @Autowired
-    private UserService userService;
    @Autowired
    private TitleService titleService;
     private static final Log log = LogFactory.getLog(JingbaoInterceptor.class);

@@ -50,5 +50,11 @@ public class UserServiceImpl implements UserService {
         return userDao.editUserAddress(userAddress);
     }
 
+    @Override
+    public boolean removeAddress(Integer addressId) {
+        int num=userDao.removeAddress(addressId);
+        return num>0;
+    }
+
 
 }

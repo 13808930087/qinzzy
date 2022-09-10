@@ -18,4 +18,5 @@ public interface UserService {
     Integer addUserAddress(UserAddress userAddress);
     Integer editUserAddress(UserAddress userAddress);
 
+    boolean removeAddress(Integer addressId);
 }

@@ -81,7 +81,7 @@ $(function () {
             layer.msg("请登录后再添加到购物车", { icon: 1 });
             return;
         }
-        url = "cart/addCart";
+        url = ctx+ "cart/addCart";
         $.ajax({
             url: url,
             method: "post",

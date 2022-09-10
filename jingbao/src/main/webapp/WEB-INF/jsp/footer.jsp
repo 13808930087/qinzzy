@@ -228,5 +228,24 @@
 <script src="js/plugins.js"></script>
 <!--Main Js-->
 <script src="js/main.js"></script>
+<script src="js/jquery.min.js"></script>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<script src="js/meanmenu.min.js"></script>
+
+<script src="js/owl.carousel.min.js"></script>
+
+<script src="js/wow.min.js"></script>
+
+<script src="js/range-slider.min.js"></script>
+
+<script src="js/form-validator.min.js"></script>
+
+<script src="js/contact-form-script.js"></script>
+
+<script src="js/ajaxchimp.min.js"></script>
+
+<script src="js/custom.js"></script>
 </div>
 </body>

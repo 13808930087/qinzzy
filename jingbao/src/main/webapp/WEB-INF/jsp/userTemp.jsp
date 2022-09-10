@@ -29,10 +29,7 @@
                             <a href="javascript:void(0)" data-href="user/address">编辑地址</a>
                         </li>
                         <li>
-                            <a href="javascript:void(0)">订单历史</a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0)">订单详细信息</a>
+                            <a href="javascript:void(0)" data-href="user/orderHistory">订单历史</a>
                         </li>
                         <li>
                             <a href="javascript:void(0)">密码</a>

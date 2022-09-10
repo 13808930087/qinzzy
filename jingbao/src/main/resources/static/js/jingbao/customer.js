@@ -47,7 +47,7 @@ $(function () {
         customerName = $(".submit-property-form input[name=customerName]").val();
         email = $(".submit-property-form input[name=email]").val();
         phone = $(".submit-property-form input[name=phone]").val();
-        url = "user/editCustomer";
+        url = ctx+ "user/editCustomer";
         $.ajax({
             url: url,
             method: "post",

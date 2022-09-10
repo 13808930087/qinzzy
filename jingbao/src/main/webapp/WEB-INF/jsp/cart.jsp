@@ -38,16 +38,19 @@
                                 </thead>
                                 <tbody class="cart-tbody">
                                 <c:forEach items="${carts}" var="cart" varStatus="p">
-
-                                    <tr><td style="display: none">
-                                        <input name="cartId" type="text" value="${cart.cartId}">
-                                    </td>
+                                    <tr>
+                                        <td style="display: none">
+                                            <input name="cartId" type="text" value="${cart.cartId}">
+                                        </td>
+                                        <td style="display: none">
+                                            <input name="goodsId" type="text" value="${cart.goodsId}">
+                                        </td>
                                         <td class="product-checkbox">
                                             <input name="checkbox" type="checkbox">
                                         </td>
                                         <td class="product-thumbnail" style="width: 130px;">
                                             <a href="javascript:void(0)">
-                                                <img src="${cart.goodsImg}" alt="Image">
+                                                <img src="${cart.goodsImg}" data-img="${cart.goodsImg}" alt="Image">
                                             </a>
                                         </td>
                                         <td class="product-name" style="width: 145px;">
@@ -55,14 +58,15 @@
                                         </td>
                                         <td class="product-price" style="width: 130px;">
                                             <span class="unit-amount"
-                                                  >${cart.goodsPrice}</span>
+                                            >${cart.goodsPrice}</span>
                                         </td>
                                         <td class="product-quantity" style="width: 145px;">
                                             <div class="input-counter">
 													<span class="minus-btn">
 														<i class="ri-subtract-line"></i>
 													</span>
-                                                <input type="text" value="${cart.goodsNum}" max="99" min="1">
+                                                <input type="text" value="${cart.goodsNum}" max="99" min="1"
+                                                       name="goodsNum">
                                                 <span class="plus-btn">
 														<i class="ri-add-line"></i>
 													</span>
@@ -105,9 +109,6 @@
     <!--Footer Area End-->
     <script type="text/javascript">
         const ctx = "${ctx}";
-        const pages = parseInt("${pi.pages}");
-        const pageNum = parseInt("${pi.pageNum}");
-        const pageSize = parseInt("${pi.pageSize}");
         let customerId;
         if (${login_user!=null}&&
         ${login_user!=""})

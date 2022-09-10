@@ -26,18 +26,19 @@ import java.util.UUID;
 public class UserController {
     @Autowired
     private CartService cartService;
+
+    @Autowired
+    private OrderService orderService;
     @Autowired
     LoginService loginService;
     @Autowired
     private UserService userService;
     @Autowired
-    private ListService listService;
-    @Autowired
     private TitleService titleService;
 
     @RequestMapping("/userTemp")
     public String userTemp(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
-        head(map,session );
+        head(map, session);
         map.put("pageName", "个人中心");
         return "userTemp";
     }
@@ -53,6 +54,7 @@ public class UserController {
         }
         return "customer";
     }
+
 
     @PostMapping(value = "/editCustomer", produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -71,7 +73,6 @@ public class UserController {
         }
         return json;
     }
-
 
     @PostMapping(value = "/editGravatar", produces = "application/json;charset=utf-8")
     @ResponseBody
@@ -117,37 +118,68 @@ public class UserController {
         return json;
     }
 
+    @PostMapping(value = "/removeAddress", produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public Map<String, Object> removeAddress(Integer addressId) throws IOException, ServletException {
+        Map<String, Object> json = new HashMap<>();
+        boolean b = userService.removeAddress(addressId);
+        if (b) {
+            json.put("success", true);
+            json.put("addressPrompt", "删除地址成功");
+        } else {
+            json.put("success", false);
+            json.put("addressPrompt", "删除地址失败");
+        }
+
+        return json;
+    }
+
+
     @PostMapping(value = "/addUserAddress", produces = "application/json;charset=utf-8")
     @ResponseBody
     public Map<String, Object> addUserAddress(UserAddress address) throws IOException, ServletException {
         Map<String, Object> json = new HashMap<>();
-        Integer num=  userService.addUserAddress(address);
-        if(num!=null){
-            json.put("success",true);
-            json.put("addressPrompt","添加地址成功");
-        }else {
-            json.put("success",false);
-            json.put("addressPrompt","添加地址失败");
+        Integer num = userService.addUserAddress(address);
+        if (num != null) {
+            json.put("success", true);
+            json.put("addressPrompt", "添加地址成功");
+        } else {
+            json.put("success", false);
+            json.put("addressPrompt", "添加地址失败");
         }
         return json;
     }
+
     @PostMapping(value = "/editUserAddress", produces = "application/json;charset=utf-8")
     @ResponseBody
     public Map<String, Object> editUserAddress(UserAddress address) throws IOException, ServletException {
         Map<String, Object> json = new HashMap<>();
-        Integer num= userService.editUserAddress(address);
-        if(num!=null){
-            json.put("success",true);
-            json.put("addressPrompt","修改地址成功");
+        Integer num = userService.editUserAddress(address);
+        if (num != null) {
+            json.put("success", true);
+            json.put("addressPrompt", "修改地址成功");
 
-        }else {
-            json.put("success",false);
-            json.put("addressPrompt","修改地址失败");
+        } else {
+            json.put("success", false);
+            json.put("addressPrompt", "修改地址失败");
         }
         return json;
     }
 
-    public void head(Map<String, Object> map, HttpSession session ){
+    @RequestMapping("/orderHistory")
+    public String order(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
+        User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
+        if (user != null) {
+            int customerId = user.getCustomerId();
+            map.put("user", user);
+            List<Order> orders= orderService.findById(customerId);
+            map.put("orders",orders);
+        }
+        
+        return "orderHistory";
+    }
+
+    public void head(Map<String, Object> map, HttpSession session) {
         List<Title> titles = titleService.getAllTitle();
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
@@ -172,9 +204,9 @@ public class UserController {
             map.put("login_url2", "/login?sign=0");
         }
 
-            List<Cart> carts = cartService.getCart(user);
-            map.put("carts", carts);
-        }
+        List<Cart> carts = cartService.getCart(user);
+        map.put("carts", carts);
+    }
 }
 
 

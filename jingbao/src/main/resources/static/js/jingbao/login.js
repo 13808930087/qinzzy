@@ -91,7 +91,7 @@ $(function() {
 			layer.msg('验证码不能有空格');
 			return;
 		}
-		url="login";
+		url=ctx+"login";
 		$.ajax({
 			url: url,
 			method: "post",

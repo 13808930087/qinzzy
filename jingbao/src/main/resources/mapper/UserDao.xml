@@ -106,6 +106,9 @@
             consignee= #{userAddress.consignee}
         where address_id=#{userAddress.addressId} and customer_id = #{userAddress.customerId}
     </update>
+    <delete id="removeAddress" parameterType="java.lang.Integer">
+        delete from t_user_address where address_id=#{addressId}
+    </delete>
 
 
 </mapper>

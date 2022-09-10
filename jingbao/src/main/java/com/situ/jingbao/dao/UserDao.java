@@ -22,4 +22,5 @@ public interface UserDao {
 
     Integer addUserAddress(@Param("userAddress")UserAddress userAddress);
 
+    Integer removeAddress(Integer addressId);
 }

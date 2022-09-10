@@ -25,8 +25,6 @@ public class JingbaoController {
     @Autowired
     private ListService listService;
     @Autowired
-    private UserService userService;
-    @Autowired
     private CartService cartService;
 
     @RequestMapping("/list")
