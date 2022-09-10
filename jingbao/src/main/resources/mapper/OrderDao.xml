@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.situ.jingbao.dao.OrderDao">
+    <!-- useGeneratedKeys="true" 声明此处添加中id用的是自动增长
+     keyProperty="orderId" 将orderId值 传递给当前方法的参数中的id属性 (Order的orderId属性)-->
+    <insert id="addOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="orderId">
+        insert into t_order (order_identifier, customer_id, `consignee`, address, total, order_time, pay_type,
+                             order_state, phone)
+        values (#{orderIdentifier}, #{customerId}, #{consignee}, #{address}, #{total}, #{orderTime}, #{payType},
+                #{orderState}, #{phone})
+    </insert>
+    <insert id="addOrderItem" parameterType="OrderItem">
+        insert into t_order_item (goods_num,
+                                  goods_name,
+                                  goods_price,
+                                  goods_img,
+                                  order_id,
+                                  goods_id,
+                                  goods_total)
+        values (#{goodsNum}, #{goodsName}, #{goodsPrice}, #{goodsImg}, #{orderId}, #{goodsId}, #{goodsTotal})
+    </insert>
+    <resultMap id="OrderMap" type="Order">
+        <id column="order_id" property="orderId"/>
+        <result column="order_identifier" property="orderIdentifier"/>
+        <result column="user_id" property="userId"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="order_state" property="orderState"/>
+        <result column="consignee" property="consignee"/>
+        <result column="address" property="address"/>
+        <result column="total" property="total"/>
+        <result column="pay_type" property="payType"/>
+        <result column="phone" property="phone"/>
+        <result column="address" property="address"/>
+        <result column="order_time" property="orderTime" javaType="java.time.LocalDateTime"/>
+        <collection property="orderItemList" column="order_id" select="findOrderItemsByOrderId"/>
+    </resultMap>
+    <resultMap id="OrderItem" type="OrderItem">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="goods_num" property="goodsNum"/>
+        <result column="goods_name" property="goodsName"/>
+        <result column="goods_price" property="goodsPrice"/>
+        <result column="goods_img" property="goodsImg"/>
+        <result column="goods_id" property="goodsId"/>
+        <result column="goods_total" property="goodsTotal"/>
+    </resultMap>
+    <!--根据订单编号查询订单项-->
+    <select id="findOrderItemsByOrderId" resultMap="OrderItem" parameterType="java.lang.Integer">
+        select id,
+               goods_num,
+               goods_name,
+               goods_price,
+               goods_img,
+               order_id,
+               goods_id,
+               goods_total
+        from t_order_item
+        where order_id = #{order_id}
+    </select>
+
+    <select id="findById" resultMap="OrderMap" parameterType="java.lang.Integer">
+        select order_id,
+               order_identifier,
+               customer_id,
+               order_state,
+               consignee,
+               address,
+               total,
+               order_time,
+               phone,
+               pay_type
+        from t_order
+        where customer_id = #{customerId}
+    </select>
+
+
+</mapper>
