@@ -11,7 +11,7 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 10/09/2022 11:00:03
+ Date: 14/09/2022 09:22:35
 */
 
 SET NAMES utf8mb4;
@@ -3288,12 +3288,13 @@ CREATE TABLE `t_cart`  (
   `goods_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名',
   `goods_price` decimal(10, 2) NULL DEFAULT NULL COMMENT '商品单价',
   PRIMARY KEY (`cart_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_cart
 -- ----------------------------
 INSERT INTO `t_cart` VALUES (9, 20, 222.20, 'img/product/product34.jpg', 1, 1, 'Pluots mini', 222.20);
+INSERT INTO `t_cart` VALUES (48, 1, 759.20, 'img/product/product34.jpg', 3, 4, 'xkluots', 189.80);
 
 -- ----------------------------
 -- Table structure for t_customer
@@ -4478,17 +4479,15 @@ CREATE TABLE `t_order`  (
   `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '电话',
   `pay_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '购买方式',
   PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
-INSERT INTO `t_order` VALUES (12, '20220908154153324', 1, 'CREATED', NULL, NULL, 1699.46, '2022-09-08 15:41:53', NULL, NULL);
-INSERT INTO `t_order` VALUES (13, '20220908154214764', 1, 'CREATED', NULL, NULL, 627.32, '2022-09-08 15:42:15', NULL, NULL);
-INSERT INTO `t_order` VALUES (14, '20220908210832820', 1, 'CREATED', NULL, NULL, 0.00, '2022-09-08 21:08:33', NULL, NULL);
-INSERT INTO `t_order` VALUES (15, '20220909190846633', 1, 'CREATED', NULL, NULL, 0.00, '2022-09-09 19:08:47', NULL, NULL);
-INSERT INTO `t_order` VALUES (16, '20220909190847634', 1, 'CREATED', NULL, NULL, 0.00, '2022-09-09 19:08:48', NULL, NULL);
-INSERT INTO `t_order` VALUES (17, '20220909190847831', 1, 'CREATED', NULL, NULL, 0.00, '2022-09-09 19:08:48', NULL, NULL);
+INSERT INTO `t_order` VALUES (30, '20220912112619042', 1, 'CREATED', NULL, NULL, 1625.68, '2022-09-12 11:26:19', NULL, NULL);
+INSERT INTO `t_order` VALUES (31, '20220912112623703', 1, 'CREATED', NULL, NULL, 1315.22, '2022-09-12 11:26:23', NULL, NULL);
+INSERT INTO `t_order` VALUES (32, '20220912112632342', 1, 'PAIED', NULL, NULL, 723.20, '2022-09-12 11:26:32', NULL, NULL);
+INSERT INTO `t_order` VALUES (33, '20220912133822801', 1, 'PAIED', NULL, NULL, 1555.40, '2022-09-12 13:38:22', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for t_order_item
@@ -4504,17 +4503,19 @@ CREATE TABLE `t_order_item`  (
   `goods_id` int NULL DEFAULT NULL,
   `goods_total` decimal(10, 2) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_order_item
 -- ----------------------------
-INSERT INTO `t_order_item` VALUES (7, 1, 'Pluots mini', 222.20, 'img/product/product34.jpg', 12, 1, 222.20);
-INSERT INTO `t_order_item` VALUES (8, 1, 'Rambatan', 958.70, 'img/product/product11.jpg', 12, 2, 958.70);
-INSERT INTO `t_order_item` VALUES (9, 1, 'Strawberry air', 518.56, 'img/product/product28.jpg', 12, 6, 518.56);
-INSERT INTO `t_order_item` VALUES (10, 1, 'xkluots', 189.80, 'img/product/product34.jpg', 13, 3, 189.80);
-INSERT INTO `t_order_item` VALUES (11, 1, 'Gwape elite', 134.32, 'img/product/product8.jpg', 13, 4, 134.32);
-INSERT INTO `t_order_item` VALUES (12, 1, 'Cherry', 303.20, 'img/product/product31.jpg', 13, 5, 303.20);
+INSERT INTO `t_order_item` VALUES (28, 2, 'xkluots', 189.80, 'img/product/product34.jpg', 30, 3, 379.60);
+INSERT INTO `t_order_item` VALUES (29, 2, 'Adam Herrera', 623.04, 'img/product/product36.jpg', 30, 109, 1246.08);
+INSERT INTO `t_order_item` VALUES (30, 1, 'Pluots mini', 222.20, 'img/product/product34.jpg', 31, 1, 222.20);
+INSERT INTO `t_order_item` VALUES (31, 1, 'Rambatan', 958.70, 'img/product/product11.jpg', 31, 2, 958.70);
+INSERT INTO `t_order_item` VALUES (32, 1, 'Gwape elite', 134.32, 'img/product/product8.jpg', 31, 4, 134.32);
+INSERT INTO `t_order_item` VALUES (33, 4, 'Frances Jimenez', 105.00, 'img/product/product5.jpg', 32, 127, 420.00);
+INSERT INTO `t_order_item` VALUES (34, 1, 'Cherry', 303.20, 'img/product/product31.jpg', 32, 5, 303.20);
+INSERT INTO `t_order_item` VALUES (35, 7, 'Pluots mini', 222.20, 'img/product/product34.jpg', 33, 1, 1555.40);
 
 -- ----------------------------
 -- Table structure for t_title
@@ -4661,7 +4662,7 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('123456', '56b291d6ed9b9cb8e2d3dc09cb6377b9', 1, 'sdfdf', 'gravatar/c0eec061-07b3-443c-8a06-2f91811bc231.png');
+INSERT INTO `t_user` VALUES ('123456', '56b291d6ed9b9cb8e2d3dc09cb6377b9', 1, '123456', 'gravatar/99208d31-3797-4f55-ad6c-1fd66c497b32.png');
 INSERT INTO `t_user` VALUES ('register', 'ff8c21e5e90b359a344cfa5f59fa987b', 19, 'register', 'picture/customer-1.png');
 INSERT INTO `t_user` VALUES ('666666', '5d39baae0b44d1165f7a507da3e8939c', 20, '111', 'gravatar/34e3853e-dc0b-4626-b1b6-f900d0396413.png');
 
@@ -4679,13 +4680,13 @@ CREATE TABLE `t_user_address`  (
   `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `detailed_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '详细地址',
   `consignee` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '收货人',
-  `default` int NULL DEFAULT NULL COMMENT '默认',
+  `default` enum('1','0') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '默认',
   PRIMARY KEY (`address_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of t_user_address
 -- ----------------------------
-INSERT INTO `t_user_address` VALUES (5, 1, 130000, 130700, 130721, '13808930087', NULL, '54664', '秦筝柱yuyuy', NULL);
+INSERT INTO `t_user_address` VALUES (6, 1, 130000, 130100, 130102, '0000', NULL, 'ad', '秦筝柱', '1');
 
 SET FOREIGN_KEY_CHECKS = 1;
