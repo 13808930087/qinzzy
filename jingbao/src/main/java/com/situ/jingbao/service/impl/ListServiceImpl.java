@@ -26,8 +26,8 @@ public class ListServiceImpl  implements ListService {
     }
 
     @Override
-    public Goods getGoodsId(int goodsId) {
-        return   listDao.getGoodsId(goodsId);
+    public Goods findGoodsId(int goodsId) {
+        return   listDao.findGoodsId(goodsId);
     }
 
 

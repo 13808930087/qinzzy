@@ -118,7 +118,7 @@
     <!--Footer Area End-->
 
     <script type="text/javascript">
-        const ctx = "${ctx}";
+
         const user = "${user}";
         const sign = "${sign}";
         const servletPath = "${servletPath}"

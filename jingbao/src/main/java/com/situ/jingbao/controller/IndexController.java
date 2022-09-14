@@ -126,7 +126,7 @@ private CartService cartService;
             dbUser = loginService.validation(user);
             Customer customer=new Customer();
             customer.setCustomerId(dbUser.getCustomerId());
-            Integer num02=loginService.addCustomer(customer);
+            Integer num02=loginService.saveCustomer(customer);
             if(num01!=null&&num02!=null){
                 json.put("success",true);
                 json.put("registerPrompt","用户注册成功");
@@ -162,7 +162,7 @@ private CartService cartService;
     }
 
     public void head(Map<String, Object> map, HttpSession session){
-        List<Title> titles = titleService.getAllTitle();
+        List<Title> titles = titleService.findAllTitle();
         map.put("titles", titles);
     User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
@@ -187,7 +187,7 @@ private CartService cartService;
     }
 
 
-            List<Cart> carts = cartService.getCart(user);
+            List<Cart> carts = cartService.findCart(user);
             map.put("carts", carts);
         }
 }

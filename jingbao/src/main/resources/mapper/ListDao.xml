@@ -56,16 +56,16 @@
         <result column="goods_new" property="goodsNew"/>
         <result column="goods_introduce" property="goodsIntroduce"/>
         <result column="new_goods_price" property="newGoodsPrice"/>
-        <collection property="goodsImgs" column="goods_id" select="getGoodsIdImg"/>
+        <collection property="goodsImgs" column="goods_id" select="findGoodsIdImg"/>
     </resultMap>
-    <select id="getGoodsId" resultMap="GoodsIdMap" parameterType="java.lang.Integer">
+    <select id="findGoodsId" resultMap="GoodsIdMap" parameterType="java.lang.Integer">
         SELECT goods_id, goods_name,new_goods_price,
         goods_hover_img,goods_first_img,goods_discount,goods_price,goods_level,goods_new,goods_introduce
         from t_goods
         <where>and goods_id=#{goodsId}</where>
     </select>
 
-    <select id="getGoodsIdImg" resultType="java.lang.String" parameterType="java.lang.Integer">
+    <select id="findGoodsIdImg" resultType="java.lang.String" parameterType="java.lang.Integer">
         SELECT img_src
         from t_goods_img
         <where>and goods_id=#{goodsId}</where>

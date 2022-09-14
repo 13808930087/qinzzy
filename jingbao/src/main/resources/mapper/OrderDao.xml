@@ -5,13 +5,13 @@
 <mapper namespace="com.situ.jingbao.dao.OrderDao">
     <!-- useGeneratedKeys="true" 声明此处添加中id用的是自动增长
      keyProperty="orderId" 将orderId值 传递给当前方法的参数中的id属性 (Order的orderId属性)-->
-    <insert id="addOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="orderId">
+    <insert id="saveOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="orderId">
         insert into t_order (order_identifier, customer_id, `consignee`, address, total, order_time, pay_type,
                              order_state, phone)
         values (#{orderIdentifier}, #{customerId}, #{consignee}, #{address}, #{total}, #{orderTime}, #{payType},
                 #{orderState}, #{phone})
     </insert>
-    <insert id="addOrderItem" parameterType="OrderItem">
+    <insert id="saveOrderItem" parameterType="OrderItem">
         insert into t_order_item (goods_num,
                                   goods_name,
                                   goods_price,
@@ -62,18 +62,36 @@
 
     <select id="findById" resultMap="OrderMap" parameterType="java.lang.Integer">
         select order_id,
-               order_identifier,
-               customer_id,
-               order_state,
-               consignee,
-               address,
-               total,
-               order_time,
-               phone,
-               pay_type
+        order_identifier,
+        customer_id,
+        order_state,
+        consignee,
+        address,
+        total,
+        order_time,
+        phone,
+        pay_type
+        from t_order
+        where customer_id = #{customerId}
+            and order_id=#{orderId}
+    </select>
+    <select id="findOrders" resultMap="OrderMap" parameterType="java.lang.Integer">
+        select order_id,
+        order_identifier,
+        customer_id,
+        order_state,
+        consignee,
+        address,
+        total,
+        order_time,
+        phone,
+        pay_type
         from t_order
         where customer_id = #{customerId}
     </select>
-
+    <update id="updateOrder"  parameterType="Order">
+    update t_Order set order_state =#{orderState},pay_type =#{payType}
+    Where order_id=#{orderId} and customer_id=#{customerId}
+    </update>
 
 </mapper>

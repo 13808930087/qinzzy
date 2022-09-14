@@ -14,13 +14,13 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
     @Override
-    public Customer getCustomer(int customerId) {
-        return userDao.getCustomer(customerId);
+    public Customer findCustomer(int customerId) {
+        return userDao.findCustomer(customerId);
     }
 
     @Override
-    public List<UserAddress> getUserAddress(int customerId) {
-        return userDao.getUserAddress(customerId);
+    public List<UserAddress> findUserAddress(int customerId) {
+        return userDao.findUserAddress(customerId);
     }
 
     @Override
@@ -29,8 +29,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Address> getAddress(int parentId) {
-        return userDao.getAddress(parentId);
+    public List<Address> findAddress(int parentId) {
+        return userDao.findAddress(parentId);
     }
 
     @Override

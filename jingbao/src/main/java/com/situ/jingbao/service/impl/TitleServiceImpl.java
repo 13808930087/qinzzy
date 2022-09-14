@@ -18,12 +18,12 @@ public class TitleServiceImpl implements TitleService {
 
 
     @Override
-    public Title getTitle(Integer titleId) {
-        return titleDao.getTitle(titleId);
+    public Title findTitle(Integer titleId) {
+        return titleDao.findTitle(titleId);
     }
 
     @Override
-    public List<Title> getAllTitle() {
-        return titleDao.getAllTitle();
+    public List<Title> findAllTitle() {
+        return titleDao.findAllTitle();
     }
 }

@@ -10,10 +10,10 @@ public interface CartService {
 
     boolean updateCart(Cart cart);
 
-    boolean removeCart(Cart cart);
+    boolean deleteCart(Cart cart);
 
-    Cart getCartOne(Integer customerId, Integer goodsId);
+    Cart findCartOne(Integer customerId, Integer goodsId);
 
-    List<Cart> getCart(User user);
-    boolean addCart(Cart cart);
+    List<Cart> findCart(User user);
+    boolean saveCart(Cart cart);
 }

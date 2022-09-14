@@ -43,11 +43,11 @@ public class JingbaoController {
         if (categoryName != null && categoryName != "") {
             Integer id = listService.findId(categoryName);
             if (id != null) {
-                title = titleService.getTitle(id);
+                title = titleService.findTitle(id);
                 goods.setCategoryId(id);
             }
         }else if(goods.getCategoryId()!=null){
-            title = titleService.getTitle(goods.getCategoryId());
+            title = titleService.findTitle(goods.getCategoryId());
         }
         Set<Integer> titleIds = new HashSet<>();
         if (title != null) {
@@ -78,7 +78,7 @@ public class JingbaoController {
     @RequestMapping("/product")
     public String product(Map<String, Object> map,Integer goodsId, HttpSession session) throws ServletException, IOException {
         head(map,session );
-        Goods goods=  listService.getGoodsId(goodsId);
+        Goods goods=  listService.findGoodsId(goodsId);
         map.put("goods",goods);
         map.put("pageName", "商品信息");
         return "product";
@@ -97,7 +97,7 @@ public class JingbaoController {
         }
     }
     public void head(Map<String, Object> map, HttpSession session ){
-        List<Title> titles = titleService.getAllTitle();
+        List<Title> titles = titleService.findAllTitle();
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
@@ -121,7 +121,7 @@ public class JingbaoController {
             map.put("login_url2", "/login?sign=0");
         }
 
-            List<Cart> carts = cartService.getCart(user);
+            List<Cart> carts = cartService.findCart(user);
             map.put("carts", carts);
         }
 }

@@ -303,7 +303,7 @@
     <%@include file="footer.jsp" %>
     <!--Footer Area End-->
     <script type="text/javascript">
-        const ctx = "${ctx}";
+
         const pages = parseInt("${pi.pages}");
         const pageNum = parseInt("${pi.pageNum}");
         const pageSize = parseInt("${pi.pageSize}");

@@ -14,8 +14,8 @@ public interface LoginService {
 	boolean check(User loginUser, User targetUser) ;
 
 	User validation(User loginUser) ;
-	User getId(User loginUser) ;
+	User findUserId(User loginUser) ;
 
 	 Integer register(User user);
-	 Integer addCustomer(Customer customer);
+	 Integer saveCustomer(Customer customer);
 }

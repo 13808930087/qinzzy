@@ -53,7 +53,7 @@ $(function () {
         }
 
 
-        url = ctx + "order/addOrder"
+        url = ctx + "order/saveOrder"
         $.ajax({
             url: url,
             method: "post",
@@ -62,7 +62,8 @@ $(function () {
             data: JSON.stringify(orderItems),
             success: function (resp) {//回调函数
                 if (resp.success) {
-
+                    $("input[name=orderId]").val(resp.orderId);
+                    $("#order-form").submit();
                 } else {
 
                 }
@@ -153,7 +154,7 @@ $(function () {
             spinner.closest('tr').remove();
 
 
-            let url = ctx + "cart/removeCart";
+            let url = ctx + "cart/deleteCart";
             setTimeout(function () {
                 //发送请求
                 $.post(url, {

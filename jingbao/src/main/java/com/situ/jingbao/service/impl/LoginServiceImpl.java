@@ -36,8 +36,8 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public User getId(User loginUser) {
-        return loginDao.getId(loginUser.getCustomerId());
+    public User findUserId(User loginUser) {
+        return loginDao.findUserId(loginUser.getCustomerId());
     }
 
     @Override
@@ -48,7 +48,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public Integer addCustomer(Customer customer) {
-        return loginDao.addCustomer(customer);
+    public Integer saveCustomer(Customer customer) {
+        return loginDao.saveCustomer(customer);
     }
 }

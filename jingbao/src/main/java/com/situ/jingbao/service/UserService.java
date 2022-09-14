@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public interface UserService {
-    Customer getCustomer(int customerId);
-    List<UserAddress> getUserAddress(int customerId);
+    Customer findCustomer(int customerId);
+    List<UserAddress> findUserAddress(int customerId);
 
     Integer editUser(User user);
 
-    List<Address> getAddress(int parentId);
+    List<Address> findAddress(int parentId);
 
     Integer editCustomer(Customer customer);
 

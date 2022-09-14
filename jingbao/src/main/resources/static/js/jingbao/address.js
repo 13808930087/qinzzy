@@ -109,7 +109,7 @@ $(function () {
         $("select[name=province]").change(function () {
             parentId = $("select[name=province]").val();
             console.log(parentId);
-            url = ctx + "user/getAddress";
+            url = ctx + "user/findAddress";
             $.ajax({
                 url: url,
                 method: "post",
@@ -134,7 +134,7 @@ $(function () {
         });
         $("select[name=city]").change(function () {
             parentId = $("select[name=city]").val();
-            url = ctx + "user/getAddress";
+            url = ctx + "user/findAddress";
             $.ajax({
                 url: url,
                 method: "post",

@@ -25,8 +25,8 @@ public class CartServiceImpl  implements CartService {
 
     }
     @Override
-    public boolean removeCart(Cart cart) {
-        if( cartDao.removeCart(cart.getCustomerId(),cart.getGoodsId())!=null) {
+    public boolean deleteCart(Cart cart) {
+        if( cartDao.deleteCart(cart.getCustomerId(),cart.getGoodsId())!=null) {
             return true;
         }else {
             return false;
@@ -34,23 +34,23 @@ public class CartServiceImpl  implements CartService {
     }
 
     @Override
-    public Cart getCartOne(Integer customerId, Integer goodsId) {
-        return cartDao.getCartOne(customerId,goodsId);
+    public Cart findCartOne(Integer customerId, Integer goodsId) {
+        return cartDao.findCartOne(customerId,goodsId);
     }
 
     @Override
-    public List<Cart> getCart(User user) {
+    public List<Cart> findCart(User user) {
         if(user!=null){
-            return cartDao.getCart(user.getCustomerId());
+            return cartDao.findCart(user.getCustomerId());
         }else {
             return null;
         }
     }
 
     @Override
-    public boolean addCart(Cart cart) {
+    public boolean saveCart(Cart cart) {
 
-        if( cartDao.addCart(cart)!=null) {
+        if( cartDao.saveCart(cart)!=null) {
             return true;
         }else {
             return false;

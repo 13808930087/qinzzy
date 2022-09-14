@@ -23,7 +23,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public boolean addOrder(Order order) {
+    public boolean saveOrder(Order order) {
         LocalDateTime now = LocalDateTime.now();
         order.setOrderTime(now);
         String code = now.format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS"));
@@ -37,24 +37,34 @@ public class OrderServiceImpl implements OrderService {
             order.setTotal(bd);//设置总价
         }
         //保存订单及订单项
-        int rows = orderDao.addOrder(order);//保存之后，才有订单主键
+        int rows = orderDao.saveOrder(order);//保存之后，才有订单主键
         for (OrderItem oi : order.getOrderItemList()) {
             oi.setOrderId(order.getOrderId());
-            orderDao.addOrderItem(oi);
+            orderDao.saveOrderItem(oi);
             //删除购物车项
-          cartDao.removeCart(order.getCustomerId(),oi.getGoodsId());
+          cartDao.deleteCart(order.getCustomerId(),oi.getGoodsId());
         }
         return rows > 0;
 
     }
 
     @Override
-    public List<Order> findById(Integer customerId) {
-        return orderDao.findById(customerId);
+    public Order findById(Integer customerId, Integer orderId) {
+        return orderDao.findById(customerId,orderId);
+    }
+
+    @Override
+    public List<Order> findOrders(Integer customerId) {
+        return orderDao.findOrders(customerId);
     }
 
     @Override
     public List<OrderItem> findOrderItemsByOrderId(Integer orderId) {
         return orderDao.findOrderItemsByOrderId(orderId);
+    }
+
+    @Override
+    public boolean updateOrder(Order order) {
+        return orderDao.updateOrder(order)>0;
     }
 }

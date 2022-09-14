@@ -131,7 +131,7 @@
         </div>
     </div>
     <script type="text/javascript">
-        const ctx = "${ctx}";
+
         let customerId;
         if (${login_user!=null}&&
         ${login_user!=""})

@@ -48,7 +48,7 @@ public class UserController {
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
             int customerId = user.getCustomerId();
-            Customer customer = userService.getCustomer(customerId);
+            Customer customer = userService.findCustomer(customerId);
             map.put("user", user);
             map.put("customer", customer);
         }
@@ -65,7 +65,7 @@ public class UserController {
         if (num02 != null && num01 != null) {
             json.put("success", true);
             json.put("editPrompt", "成功");
-            User dbUser = loginService.getId(user);
+            User dbUser = loginService.findUserId(user);
             session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
         } else {
             json.put("success", false);
@@ -102,18 +102,18 @@ public class UserController {
     @RequestMapping("/address")
     public String address(Map<String, Object> map, HttpSession session) throws ServletException, IOException {
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
-        List<Address> addresses = userService.getAddress(0);
-        List<UserAddress> userAddresses = userService.getUserAddress(user.getCustomerId());
+        List<Address> addresses = userService.findAddress(0);
+        List<UserAddress> userAddresses = userService.findUserAddress(user.getCustomerId());
         map.put("userAddresses", userAddresses);
         map.put("addresses", addresses);
         return "address";
     }
 
-    @PostMapping(value = "/getAddress", produces = "application/json;charset=utf-8")
+    @PostMapping(value = "/findAddress", produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Map<String, Object> getAddress(Integer parentId) throws IOException, ServletException {
+    public Map<String, Object> findAddress(Integer parentId) throws IOException, ServletException {
         Map<String, Object> json = new HashMap<>();
-        List<Address> addresses = userService.getAddress(parentId);
+        List<Address> addresses = userService.findAddress(parentId);
         json.put("addresses", addresses);
         return json;
     }
@@ -172,7 +172,8 @@ public class UserController {
         if (user != null) {
             int customerId = user.getCustomerId();
             map.put("user", user);
-            List<Order> orders= orderService.findById(customerId);
+            Integer order=null;
+            List<Order> orders= orderService.findOrders(customerId);
             map.put("orders",orders);
         }
         
@@ -180,7 +181,7 @@ public class UserController {
     }
 
     public void head(Map<String, Object> map, HttpSession session) {
-        List<Title> titles = titleService.getAllTitle();
+        List<Title> titles = titleService.findAllTitle();
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
@@ -204,7 +205,7 @@ public class UserController {
             map.put("login_url2", "/login?sign=0");
         }
 
-        List<Cart> carts = cartService.getCart(user);
+        List<Cart> carts = cartService.findCart(user);
         map.put("carts", carts);
     }
 }

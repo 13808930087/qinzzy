@@ -9,9 +9,12 @@ import java.util.List;
 
 @Mapper
 public interface OrderDao {
-    Integer addOrder(Order order);
-    Integer addOrderItem( OrderItem oi);
+    Integer saveOrder(Order order);
+    Integer saveOrderItem( OrderItem oi);
 
-    List<Order> findById(Integer customerId);
+    Order findById(@Param("customerId") Integer customerId,@Param("orderId") Integer orderId);
     List<OrderItem> findOrderItemsByOrderId(Integer orderId);
+    Integer updateOrder(Order order);
+
+    List<Order> findOrders(@Param("customerId") Integer customerId);
 }

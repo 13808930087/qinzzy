@@ -88,6 +88,9 @@
                     </form>
 
                 </div>
+                <form id="order-form" action="order/buy" method="post">
+                    <input type="hidden" name="orderId">
+                </form>
                 <div class="col-lg-3">
                     <div class="cart-totals">
                         <h3 class="cart-checkout-title">购物车总数</h3>
@@ -108,7 +111,7 @@
     <%@include file="footer.jsp" %>
     <!--Footer Area End-->
     <script type="text/javascript">
-        const ctx = "${ctx}";
+
         let customerId;
         if (${login_user!=null}&&
         ${login_user!=""})

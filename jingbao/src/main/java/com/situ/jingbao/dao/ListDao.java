@@ -13,7 +13,7 @@ import java.util.Set;
 public interface ListDao {
 
     List<Goods> findGoods(@Param("gc") GoodsCondition gc);
-    Goods getGoodsId(int goodsId);
+    Goods findGoodsId(int goodsId);
 
     Integer findId(String categoryName);
 }

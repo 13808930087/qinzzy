@@ -14,6 +14,16 @@ public class UserAddress {
     private String detailedAddress;
     private String consignee;
 
+    private String addressDefault;
+
+    public String getAddressDefault() {
+        return addressDefault;
+    }
+
+    public void setAddressDefault(String addressDefault) {
+        this.addressDefault = addressDefault;
+    }
+
     public String getProvinceName() {
         return provinceName;
     }

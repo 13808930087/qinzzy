@@ -14,7 +14,7 @@
         <result column="area" property="area"/>
 
     </resultMap>
-    <select id="getCustomer" resultMap="CustomerMap" parameterType="java.lang.Integer">
+    <select id="findCustomer" resultMap="CustomerMap" parameterType="java.lang.Integer">
         SELECT customer_id,
                customer_name,
                province,
@@ -49,11 +49,12 @@
         <result column="province" property="province"/>
         <result column="city" property="city"/>
         <result column="area" property="area"/>
-        <association property="provinceName" column="province" select="getAddressName"/>
-        <association property="cityName" column="city" select="getAddressName"/>
-        <association property="areaName" column="area" select="getAddressName"/>
+        <result column="default" property="addressDefault"/>
+        <association property="provinceName" column="province" select="findAddressName"/>
+        <association property="cityName" column="city" select="findAddressName"/>
+        <association property="areaName" column="area" select="findAddressName"/>
     </resultMap>
-    <select id="getUserAddress" resultMap="UserAddressMap" parameterType="java.lang.Integer">
+    <select id="findUserAddress" resultMap="UserAddressMap" parameterType="java.lang.Integer">
         select address_id,
                customer_id,
                province,
@@ -62,11 +63,12 @@
                phone,
                email,
                detailed_address,
-               consignee
+               consignee,
+               `default`
         from t_user_address
         where customer_id = #{customerId}
     </select>
-    <select id="getAddressName" resultType="java.lang.String" parameterType="java.lang.Integer">
+    <select id="findAddressName" resultType="java.lang.String" parameterType="java.lang.Integer">
         select address_name
         from t_address
         where address_id = #{addressId}
@@ -75,9 +77,9 @@
         <id column="address_id" property="addressId"/>
         <id column="parent_id" property="parentId"/>
         <result column="address_name" property="addressName"/>
-        <!--        <collection property="addresses" column="address_id" select="getAddress"/>-->
+        <!--        <collection property="addresses" column="address_id" select="findAddress"/>-->
     </resultMap>
-    <select id="getAddress" resultMap="AddressMap" parameterType="java.lang.Integer">
+    <select id="findAddress" resultMap="AddressMap" parameterType="java.lang.Integer">
         select address_name, parent_id, address_id
         from t_address
         where parent_id = #{parentId}

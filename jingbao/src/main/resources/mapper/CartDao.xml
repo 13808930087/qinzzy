@@ -13,7 +13,7 @@
         <result column="total" property="total"/>
         <result column="goods_price" property="goodsPrice"/>
     </resultMap>
-    <select id="getCart" resultMap="CartMap" parameterType="java.lang.Integer">
+    <select id="findCart" resultMap="CartMap" parameterType="java.lang.Integer">
         SELECT cart_id,
                customer_id,
                goods_img,
@@ -25,7 +25,7 @@
         from t_cart
         where customer_id = #{customerId}
     </select>
-    <select id="getCartOne" resultMap="CartMap">
+    <select id="findCartOne" resultMap="CartMap">
         SELECT cart_id,
                customer_id,
                goods_img,
@@ -37,7 +37,7 @@
         from t_cart
         where customer_id = #{customerId} and goods_id = #{goodsId}
     </select>
-    <insert id="addCart" parameterType="Cart">
+    <insert id="saveCart" parameterType="Cart">
         insert into t_cart(customer_id, goods_img, goods_id, goods_num, goods_name, goods_price, total)
         values (#{cart.customerId}, #{cart.goodsImg}, #{cart.goodsId}, #{cart.goodsNum}, #{cart.goodsName},
                 #{cart.goodsPrice}, #{cart.total});
@@ -47,7 +47,7 @@
         set goods_num=#{cart.goodsNum},total=#{cart.total}
         where cart_id = #{cart.cartId} and customer_id =#{cart.customerId}
     </update>
-    <delete id="removeCart">
+    <delete id="deleteCart">
         delete from t_cart
         where goods_id = #{goodsId} and customer_id =#{customerId}
     </delete>

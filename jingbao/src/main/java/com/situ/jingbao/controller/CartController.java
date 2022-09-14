@@ -39,7 +39,7 @@ public class CartController {
 
     @PostMapping(value = "/addCart", produces = "application/json;charset=utf-8")
     @ResponseBody
-    public Map<String, Object> addCart(Cart cart, Goods goods, User user, Integer goodsNum, HttpSession session) throws IOException, ServletException {
+    public Map<String, Object> saveCart(Cart cart, Goods goods, User user, Integer goodsNum, HttpSession session) throws IOException, ServletException {
         Map<String, Object> json = new HashMap<>();
         cart.setGoodsImg(goods.getGoodsFirstImg());
         cart.setGoodsPrice( goods.getNewGoodsPrice());
@@ -52,9 +52,9 @@ public class CartController {
             cart.setTotal(cart.getGoodsPrice().multiply(new BigDecimal((int) cart.getGoodsNum())));
         }
         boolean b;
-        Cart dbCart=cartService.getCartOne(cart.getCustomerId(),cart.getGoodsId());
+        Cart dbCart=cartService.findCartOne(cart.getCustomerId(),cart.getGoodsId());
         if(dbCart==null){
-            b= cartService.addCart(cart);
+            b= cartService.saveCart(cart);
         }else {
             dbCart.setGoodsNum(cart.getGoodsNum()+dbCart.getGoodsNum());
             dbCart.setGoodsPrice(cart.getGoodsPrice());
@@ -78,14 +78,14 @@ public class CartController {
         return ResponseEntity.ok(Map.of("success", b));
     }
 
-    @PostMapping(value = "/removeCart", produces = "application/json;charset=utf-8")
+    @PostMapping(value = "/deleteCart", produces = "application/json;charset=utf-8")
     @ResponseBody
-    public ResponseEntity<Map<String, Object>> removeCart(Cart cart, HttpSession session) {
-        boolean b = cartService.removeCart(cart);
+    public ResponseEntity<Map<String, Object>> deleteCart(Cart cart, HttpSession session) {
+        boolean b = cartService.deleteCart(cart);
         return ResponseEntity.ok(Map.of("success", b));
     }
     public void head(Map<String, Object> map, HttpSession session ){
-        List<Title> titles = titleService.getAllTitle();
+        List<Title> titles = titleService.findAllTitle();
         map.put("titles", titles);
         User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
         if (user != null) {
@@ -108,7 +108,7 @@ public class CartController {
             map.put("login_or_name2", "注册");
             map.put("login_url2", "/login?sign=0");
         }
-        List<Cart> carts = cartService.getCart(user);
+        List<Cart> carts = cartService.findCart(user);
         map.put("carts", carts);
     }
 

@@ -11,11 +11,11 @@ public interface CartDao {
 
     Integer updateCart(@Param("cart") Cart cart);
 
-    Integer removeCart(@Param("customerId")Integer customerId, @Param("goodsId")Integer goodsId);
+    Integer deleteCart(@Param("customerId")Integer customerId, @Param("goodsId")Integer goodsId);
 
-    Cart getCartOne(@Param("customerId")Integer customerId, @Param("goodsId")Integer goodsId);
-    List<Cart> getCart(int customerId);
+    Cart findCartOne(@Param("customerId")Integer customerId, @Param("goodsId")Integer goodsId);
+    List<Cart> findCart(int customerId);
 
-    Integer addCart(@Param("cart")Cart cart);
+    Integer saveCart(@Param("cart")Cart cart);
 
 }

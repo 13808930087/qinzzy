@@ -134,41 +134,41 @@
                                         <!--Dropdown Menu End-->
                                     </li>
                                     <li><a href="cart/list">购物车</a></li>
-                                    <li><a href="order/buy">订单</a>
-                                        <!--Mega Menu Start-->
-                                        <ul class="mega-menu">
-                                            <li><a href="#" class="item-link">页</a>
-                                                <ul>
-                                                    <li><a href="/login">我的账户</a></li>
-                                                    <li><a href="javascript:void(0)">结帐</a></li>
-                                                    <li><a href="cart/list">购物车</a></li>
-                                                    <li><a href="javascript:void(0)">愿望列表</a></li>
-                                                    <li><a href="javascript:void(0)">常见问题</a></li>
-                                                    <li><a href="javascript:void(0)">错误404</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#" class="item-link">博客</a>
-                                                <ul>
-                                                    <li><a href="javascript:void(0)">没有一个侧边栏</a></li>
-                                                    <li><a href="javascript:void(0)">左栏</a></li>
-                                                    <li><a href="javascript:void(0)">画廊的格式</a></li>
-                                                    <li><a href="javascript:void(0)">音频格式</a></li>
-                                                    <li><a href="javascript:void(0)">视频格式</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#" class="item-link">商品</a>
-                                                <ul>
-                                                    <li><a href="javascript:void(0)">全宽</a></li>
-                                                    <li><a href="javascript:void(0)">侧边栏右</a></li>
-                                                    <li><a href="javascript:void(0)">列表视图</a></li>
-                                                    <li><a href="javascript:void(0)">单一产品</a></li>
-                                                    <li><a href="javascript:void(0)">变量的产品</a></li>
-                                                    <li><a href="javascript:void(0)">简单的产品</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <!--Mega Menu End-->
-                                    </li>
+<%--                                    <li><a href="order/buy">订单</a>--%>
+<%--                                        <!--Mega Menu Start-->--%>
+<%--                                        <ul class="mega-menu">--%>
+<%--                                            <li><a href="#" class="item-link">页</a>--%>
+<%--                                                <ul>--%>
+<%--                                                    <li><a href="/login">我的账户</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">结帐</a></li>--%>
+<%--                                                    <li><a href="cart/list">购物车</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">愿望列表</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">常见问题</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">错误404</a></li>--%>
+<%--                                                </ul>--%>
+<%--                                            </li>--%>
+<%--                                            <li><a href="#" class="item-link">博客</a>--%>
+<%--                                                <ul>--%>
+<%--                                                    <li><a href="javascript:void(0)">没有一个侧边栏</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">左栏</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">画廊的格式</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">音频格式</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">视频格式</a></li>--%>
+<%--                                                </ul>--%>
+<%--                                            </li>--%>
+<%--                                            <li><a href="#" class="item-link">商品</a>--%>
+<%--                                                <ul>--%>
+<%--                                                    <li><a href="javascript:void(0)">全宽</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">侧边栏右</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">列表视图</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">单一产品</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">变量的产品</a></li>--%>
+<%--                                                    <li><a href="javascript:void(0)">简单的产品</a></li>--%>
+<%--                                                </ul>--%>
+<%--                                            </li>--%>
+<%--                                        </ul>--%>
+<%--                                        <!--Mega Menu End-->--%>
+<%--                                    </li>--%>
                                 </ul>
                             </nav>
                         </div>

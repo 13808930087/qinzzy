@@ -16,7 +16,7 @@
         from t_user
         where username = #{username}
     </select>
-    <select id="getId" resultMap="LoginMap" parameterType="java.lang.Integer">
+    <select id="findUserId" resultMap="LoginMap" parameterType="java.lang.Integer">
         SELECT username, password, customer_id,nickname,gravatar_img
         from t_user
         where customer_id = #{customerId}
@@ -29,7 +29,7 @@
     <insert id="register" parameterType="User">
         insert into t_user(username, password,nickname) value (#{user.username},#{user.password},#{user.nickname} )
     </insert>
-    <insert id="addCustomer" parameterType="Customer">
+    <insert id="saveCustomer" parameterType="Customer">
         insert into t_customer(customer_id,customer_name,sex,phone,email,identity_card,province,city,area,customer_introduction) value (#{customer.customerId},#{customer.customerName},#{customer.sex},#{customer.phone},#{customer.email},#{customer.identityCard},#{customer.province},#{customer.city},#{customer.area},#{customer.customerIntroduction} )
     </insert>
 </mapper>

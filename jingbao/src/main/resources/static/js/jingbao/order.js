@@ -109,7 +109,7 @@ $(function () {
         $("select[name=province]").change(function () {
             parentId = $("select[name=province]").val();
             console.log(parentId);
-            url = ctx + "user/getAddress";
+            url = ctx + "user/findAddress";
             $.ajax({
                 url: url,
                 method: "post",
@@ -134,7 +134,7 @@ $(function () {
         });
         $("select[name=city]").change(function () {
             parentId = $("select[name=city]").val();
-            url = ctx + "user/getAddress";
+            url = ctx + "user/findAddress";
             $.ajax({
                 url: url,
                 method: "post",
@@ -156,7 +156,44 @@ $(function () {
             });
 
         });
+        $(".billing-address-bar").click(function (){
+            $(this).addClass("border-red");
+            $(this).siblings(".billing-address-bar").removeClass("border-red");
+        })
+    $(".place-order .default-btn").click(function (){
+        var orderStateId=1;
+        var orderId=$(".place-order input[name=orderId]").val();
+        console.log(orderStateId);
+        console.log(orderId);
+        console.log(orderId);
+        console.log(customerId);
+        url = ctx + "order/updateOrder"
+        $.ajax({
+            url: url,
+            method: "post",
+            dataType: "json",
+            data: {
+                orderStateId:orderStateId,
+                orderId:orderId,
+                customerId:customerId
+            },
+            success: function (resp) {//回调函数
+                if (resp.success) {
+                    layer.msg("支付成功", { icon: 1 });
+                } else {
 
+                }
+            }
+            ,
+            error: function (resp) {
+            }
+            ,
+            traditional: true
+        })
+
+
+
+    })
     }
 )
 ;
