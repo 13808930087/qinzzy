@@ -3,19 +3,20 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/><!DOCTYPE html>
 <html class="x-admin-sm">
 <head>
+    <base href="${ctx}/">
     <meta charset="UTF-8">
     <title>欢迎页面</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-    <!--<link rel="stylesheet" href="./css/font.css">-->
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/iconfont.css">
-    <script src="./lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/index.js"></script>
-    <script src="./js/jquery.js"></script>
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/survey.js"></script>
+    <!--<link rel="stylesheet" href="admin/css/font.css">-->
+    <link rel="stylesheet" href="admin/css/index.css">
+    <link rel="stylesheet" href="admin/css/iconfont.css">
+    <script src="admin/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="admin/js/index.js"></script>
+    <script src="admin/js/jquery.js"></script>
+    <script src="admin/js/jquery.min.js"></script>
+    <script src="admin/js/survey.js"></script>
     <style>
         #FontScroll{
             width: 100%;
@@ -305,7 +306,7 @@
 </div>
 </body>
 
-<script src="./js/echarts.min.js"></script>
+<script src="admin/js/echarts.min.js"></script>
 <script type="text/javascript">
     $(function () {
         $('.myscroll').myScroll({
@@ -318,43 +319,43 @@
     layui.use('layer', function(){
         var layer = layui.layer;
         var remember = '';
-        $(document).ready(function(){
-            layer.prompt({
-                formType: 2,
-                anim: 3,
-                offset: 'rb',
-                value: "",
-                title: '便签',
-                skin: 'demo-class',
-                area: ['280px', '150px'],
-                id: 'remember' ,//设定一个id，防止重复弹出
-                btn: ['确定', '取消'],
-                shade: 0,
-                moveType: 1, //拖拽模式，0或者1
-                btn2: function(index, layero){
-                    $.ajax({
-                        url:"delremember.html"
-                        ,type:"post"
-                        ,success:function(res) {
-                            layer.msg(res.msg);
-                            if(res.code == 1) {
-                                $('#remember textarea').val('');
-                            }
-                        }
-                    })
-                    return false;
-                }
-            },function(value, index, elem){
-                $.ajax({
-                    url:"/admin/main/remember.shtml"
-                    ,type:"post"
-                    ,data:{message:value}
-                    ,success:function(res) {
-                        layer.msg(res.msg);
-                    }
-                })
-            })
-        });
+        // $(document).ready(function(){
+        //     layer.prompt({
+        //         formType: 2,
+        //         anim: 3,
+        //         offset: 'rb',
+        //         value: "",
+        //         title: '便签',
+        //         skin: 'demo-class',
+        //         area: ['280px', '150px'],
+        //         id: 'remember' ,//设定一个id，防止重复弹出
+        //         btn: ['确定', '取消'],
+        //         shade: 0,
+        //         moveType: 1, //拖拽模式，0或者1
+        //         btn2: function(index, layero){
+        //             $.ajax({
+        //                 url:"delremember.html"
+        //                 ,type:"post"
+        //                 ,success:function(res) {
+        //                     layer.msg(res.msg);
+        //                     if(res.code == 1) {
+        //                         $('#remember textarea').val('');
+        //                     }
+        //                 }
+        //             })
+        //             return false;
+        //         }
+        //     },function(value, index, elem){
+        //         $.ajax({
+        //             url:"/admin/main/remember.shtml"
+        //             ,type:"post"
+        //             ,data:{message:value}
+        //             ,success:function(res) {
+        //                 layer.msg(res.msg);
+        //             }
+        //         })
+        //     })
+        // });
     });
 
     function getTime(){
@@ -384,6 +385,6 @@
     }
     setInterval(getTime,1000);
 </script>
-<script src="js/fontscroll.js"></script>
+<script src="admin/js/fontscroll.js"></script>
 
 </html>

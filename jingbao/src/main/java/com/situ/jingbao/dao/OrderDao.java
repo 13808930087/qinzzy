@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 @Mapper
-public interface OrderDao {
+public interface OrderDAO {
     Integer saveOrder(Order order);
     Integer saveOrderItem( OrderItem oi);
 

@@ -1,6 +1,5 @@
 package com.situ.jingbao.service;
 
-import com.situ.jingbao.dao.LoginDao;
 import com.situ.jingbao.model.Customer;
 import com.situ.jingbao.model.User;
 import com.situ.jingbao.util.Md5Utils;

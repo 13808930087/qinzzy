@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 @Mapper
-public interface LoginDao {
+public interface LoginDAO {
     Integer saveCustomer(@Param("customer") Customer customer);
 
 

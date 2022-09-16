@@ -1,7 +1,7 @@
 package com.situ.jingbao.controller;
 
 import com.situ.jingbao.common.Global;
-import com.situ.jingbao.dao.LoginDao;
+import com.situ.jingbao.dao.LoginDAO;
 import com.situ.jingbao.interceptor.JingbaoInterceptor;
 import com.situ.jingbao.model.*;
 import com.situ.jingbao.service.*;

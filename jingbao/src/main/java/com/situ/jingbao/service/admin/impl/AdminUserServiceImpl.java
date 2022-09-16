@@ -1,9 +1,11 @@
 package com.situ.jingbao.service.admin.impl;
 
+
 import com.situ.jingbao.dao.admin.AdminUserDAO;
 import com.situ.jingbao.model.admin.AdminUser;
 import com.situ.jingbao.model.admin.AdminUserSearchBean;
 import com.situ.jingbao.service.admin.AdminUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -13,25 +15,23 @@ import java.util.List;
 
 @Service
 public class AdminUserServiceImpl implements AdminUserService {
-    private final AdminUserDAO dao;
-
-    public AdminUserServiceImpl(AdminUserDAO dao) {
-        this.dao = dao;
-    }
+    @Autowired
+    private AdminUserDAO adminUserDAO;
 
     @Override
     public AdminUser findByUsername(String username) {
-        return dao.findByUsername(username);
+        return adminUserDAO.findByUsername(username);
     }
 
     @Override
     public List<AdminUser> findAll(AdminUserSearchBean ausb) {
-        return dao.findAll(ausb);
+
+            return adminUserDAO.findAll(ausb);
     }
 
     @Override
     public int deleteByIds(Integer[] ids) {
-        return dao.deleteByIds(ids);
+        return adminUserDAO.deleteByIds(ids);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         String encrypted = DigestUtils.md5DigestAsHex(meta.getBytes(StandardCharsets.UTF_8));
         user.setPassword(encrypted);
 
-        return dao.save(user) > 0;
+        return adminUserDAO.save(user) > 0;
     }
 
     @Override
@@ -51,11 +51,11 @@ public class AdminUserServiceImpl implements AdminUserService {
         String encrypted = DigestUtils.md5DigestAsHex(meta.getBytes(StandardCharsets.UTF_8));
         user.setPassword(encrypted);
 
-        return dao.update(user) > 0;
+        return adminUserDAO.update(user) > 0;
     }
 
     @Override
     public boolean updateState(Integer id, boolean state) {
-        return dao.updateState(id, state) > 0;
+        return adminUserDAO.updateState(id, state) > 0;
     }
 }

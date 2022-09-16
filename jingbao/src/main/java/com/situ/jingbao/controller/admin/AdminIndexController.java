@@ -12,5 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
         public String index() {
             return "admin/index";
         }
+        @GetMapping("/welcome")
+        public String welcome() {
+            return "admin/welcome";
+        }
+
     }
 

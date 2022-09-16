@@ -10,10 +10,9 @@ import java.util.List;
 import java.util.Set;
 
 @Mapper
-public interface ListDao {
+public interface ListDAO {
 
     List<Goods> findGoods(@Param("gc") GoodsCondition gc);
     Goods findGoodsId(int goodsId);
-
     Integer findId(String categoryName);
 }

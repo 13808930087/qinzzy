@@ -1,24 +1,19 @@
 package com.situ.jingbao.controller.admin;
 
+
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.situ.jingbao.common.Global;
-import com.situ.jingbao.model.User;
 import com.situ.jingbao.model.admin.AdminUser;
 import com.situ.jingbao.model.admin.AdminUserSearchBean;
 import com.situ.jingbao.service.admin.AdminUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.DigestUtils;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,75 +22,41 @@ import java.util.Map;
 @Controller
 @RequestMapping("/admin")
 public class AdminUserController {
-    private static final String ADMIN_USER_LOGIN_ERROR_KEY = "#admin_user_login_error";
-    private AdminUserService userService;
 
-    public AdminUserController(AdminUserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private AdminUserService adminUserService;
 
-    @GetMapping("/login")
-    public String loginGet(HttpSession session, Map<String, Object> map) throws IOException, ServletException {
-        String error = (String) session.getAttribute(ADMIN_USER_LOGIN_ERROR_KEY);
-        if (error != null) {
-            session.removeAttribute(ADMIN_USER_LOGIN_ERROR_KEY);
-            map.put("error", error);
-        }
-        String username = (String) session.getAttribute("current_login_user");
-        if (username != null) {
-            map.put("username", username);
-            session.removeAttribute("current_login_user");
-        }
-        map.put("pageName", "登录");
-        return "admin/login";
-    }
-
-    @PostMapping("/login")
-    public String loginPost(User user,Map<String, Object> map, HttpSession session) throws IOException, ServletException {
-        String sessionCode = (String) session.getAttribute("identifyCode");
-        String loginUrl = "admin/login";
-        String loginPrompt;
-        if (user.getIdentifyCode() == null || user.getIdentifyCode() == "") {
-            loginPrompt = " 验证码不能为空";
-        } else if (user.getIdentifyCode().equalsIgnoreCase(sessionCode)) {
-            AdminUser dbUser = userService.findByUsername(user.getUsername());
-            if (dbUser == null) {
-                loginPrompt = "用户名不存在";
-            } else {
-                String str = user.getPassword() + "{" + user.getUsername() + "}";
-                String encrypt = DigestUtils.md5DigestAsHex(str.getBytes(StandardCharsets.UTF_8));
-                if (encrypt.equals(dbUser.getPassword())) {
-                    session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
-                    loginUrl = "admin/index";
-                    loginPrompt = "登录成功";
-                } else {
-                    loginPrompt = "用户名密码不匹配";
-                }
-            }
-        } else {
-            loginPrompt = "验证码错误";
-        }
-        map.put("ADMIN_USER_LOGIN_ERROR_KEY", loginPrompt);
-        return loginUrl;
-    }
-
-    @RequestMapping("/user/list")
-    public String list(AdminUserSearchBean ausb, Map<String, Object> map) {
-
+    @RequestMapping("/adminList")
+    public String adminList(AdminUserSearchBean ausb, Map<String, Object> map) {
         PageHelper.startPage(ausb.getPageNo(), ausb.getPageSize());
-        List<AdminUser> userList = userService.findAll(ausb);
-
-
+        List<AdminUser> userList = adminUserService.findAll(ausb);
         PageInfo<AdminUser> pi = new PageInfo<>(userList);
         pi.calcByNavigatePages(5);
         map.put("users", userList);
         map.put("pi", pi);
         map.put("ausb", ausb);
-
-
-        return "admin/user/list";
+        return "admin/admin-list";
     }
-
+    @RequestMapping("/adminRole")
+    public String adminRole(Map<String, Object> map) {
+        return "admin/admin-role";
+    }
+    @RequestMapping("/adminCate")
+    public String adminCate(Map<String, Object> map) {
+        return "admin/admin-cate";
+    }
+    @RequestMapping("/adminRule")
+    public String adminRule(Map<String, Object> map) {
+        return "admin/admin-rule";
+    }
+    @RequestMapping("/adminAdd")
+    public String adminAdd(Map<String, Object> map) {
+        return "admin/admin-add";
+    }
+    @RequestMapping("/adminEdit")
+    public String adminEdit(Map<String, Object> map) {
+        return "admin/admin-edit";
+    }
     @PostMapping(value = "/user/delete", produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> deleteByIds(Integer[] ids) {
@@ -107,7 +68,7 @@ public class AdminUserController {
             return ResponseEntity.badRequest().body(json);
         }
 
-        int rows = userService.deleteByIds(ids);
+        int rows = adminUserService.deleteByIds(ids);
 
         json.put("success", true);
         return ResponseEntity.ok(json);
@@ -126,7 +87,7 @@ public class AdminUserController {
             return ResponseEntity.ok(json);
         }
 
-        boolean b = userService.save(user);
+        boolean b = adminUserService.save(user);
 
         if (b) {
             json.put("success", true);
@@ -157,7 +118,7 @@ public class AdminUserController {
             return ResponseEntity.ok(json);
         }
 
-        boolean b = userService.update(user);
+        boolean b = adminUserService.update(user);
 
         if (b) {
             json.put("success", true);
@@ -175,7 +136,7 @@ public class AdminUserController {
     public ResponseEntity<Map<String, Object>> editState(Integer id, boolean state) {
         Map<String, Object> json = new HashMap<>();
 
-        boolean b = userService.updateState(id, state);
+        boolean b = adminUserService.updateState(id, state);
 
         if (b) {
             json.put("success", true);

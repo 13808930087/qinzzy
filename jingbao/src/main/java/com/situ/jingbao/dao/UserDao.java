@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mapper
-public interface UserDao {
+public interface UserDAO {
     Customer findCustomer(int customerId);
     List<UserAddress> findUserAddress(int customerId);
 

@@ -1,10 +1,12 @@
 package com.situ.jingbao.service.impl;
 
-import com.situ.jingbao.dao.ListDao;
+
+import com.situ.jingbao.dao.ListDAO;
 import com.situ.jingbao.model.Goods;
 import com.situ.jingbao.model.GoodsCondition;
 import com.situ.jingbao.model.Title;
 import com.situ.jingbao.service.ListService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -13,26 +15,24 @@ import java.util.Set;
 
 @Service
 public class ListServiceImpl  implements ListService {
-    private ListDao listDao;
 
-    public ListServiceImpl(ListDao listDao) {
-        this.listDao = listDao;
-    }
+    @Autowired
+    private ListDAO listDAO;
 
     @Override
     public List<Goods> findGoods(GoodsCondition gs) {
-       return listDao.findGoods(gs);
+       return listDAO.findGoods(gs);
 
     }
 
     @Override
     public Goods findGoodsId(int goodsId) {
-        return   listDao.findGoodsId(goodsId);
+        return   listDAO.findGoodsId(goodsId);
     }
 
 
     @Override
     public Integer findId(String categoryName) {
-        return listDao.findId(categoryName);
+        return listDAO.findId(categoryName);
     }
 }

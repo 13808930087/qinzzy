@@ -1,5 +1,4 @@
 package com.situ.jingbao.dao.admin;
-
 import com.situ.jingbao.model.admin.AdminUser;
 import com.situ.jingbao.model.admin.AdminUserSearchBean;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,13 +16,13 @@ public interface AdminUserDAO {
      */
     AdminUser findByUsername(String username);
 
-    List<AdminUser> findAll(AdminUserSearchBean ausb);
+    List<AdminUser> findAll(@Param("ausb")AdminUserSearchBean ausb);
 
     int deleteByIds(@Param("ids") Integer[] ids);
 
-    int save(AdminUser user);
+    int save(@Param("user")AdminUser user);
 
-    int update(AdminUser user);
+    int update(@Param("user")AdminUser user);
 
     int updateState(@Param("id") Integer id, @Param("state") boolean state);
 }

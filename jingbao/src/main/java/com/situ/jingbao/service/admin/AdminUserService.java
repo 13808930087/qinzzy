@@ -3,6 +3,7 @@ package com.situ.jingbao.service.admin;
 import com.situ.jingbao.model.admin.AdminUser;
 import com.situ.jingbao.model.admin.AdminUserSearchBean;
 
+
 import java.util.List;
 
 public interface AdminUserService {

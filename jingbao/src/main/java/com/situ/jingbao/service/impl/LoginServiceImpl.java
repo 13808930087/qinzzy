@@ -1,6 +1,6 @@
 package com.situ.jingbao.service.impl;
 
-import com.situ.jingbao.dao.LoginDao;
+import com.situ.jingbao.dao.LoginDAO;
 import com.situ.jingbao.model.Customer;
 import com.situ.jingbao.model.User;
 import com.situ.jingbao.service.LoginService;
@@ -10,16 +10,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginServiceImpl implements LoginService {
-    private LoginDao loginDao;
+    private LoginDAO loginDAO;
 
 
 
-    public LoginServiceImpl(LoginDao loginDao) {
-        this.loginDao = loginDao;
+    public LoginServiceImpl(LoginDAO loginDAO) {
+        this.loginDAO = loginDAO;
     }
 
     public boolean check(User loginUser) {
-        User dbUser = loginDao.validation(loginUser.getUsername());
+        User dbUser = loginDAO.validation(loginUser.getUsername());
         if (dbUser == null) {
             return false;
         }
@@ -32,23 +32,23 @@ public class LoginServiceImpl implements LoginService {
     }
 
     public User validation(User loginUser) {
-        return loginDao.validation(loginUser.getUsername());
+        return loginDAO.validation(loginUser.getUsername());
     }
 
     @Override
     public User findUserId(User loginUser) {
-        return loginDao.findUserId(loginUser.getCustomerId());
+        return loginDAO.findUserId(loginUser.getCustomerId());
     }
 
     @Override
     public Integer register(User user) {
         String encrypt=Md5Utils.encrypt(user.getPassword() + "{" + user.getUsername() + "}");
         user.setPassword(encrypt);
-        return loginDao.register(user);
+        return loginDAO.register(user);
     }
 
     @Override
     public Integer saveCustomer(Customer customer) {
-        return loginDao.saveCustomer(customer);
+        return loginDAO.saveCustomer(customer);
     }
 }

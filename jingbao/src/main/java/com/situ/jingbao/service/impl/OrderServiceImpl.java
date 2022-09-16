@@ -1,7 +1,7 @@
 package com.situ.jingbao.service.impl;
 
-import com.situ.jingbao.dao.CartDao;
-import com.situ.jingbao.dao.OrderDao;
+import com.situ.jingbao.dao.CartDAO;
+import com.situ.jingbao.dao.OrderDAO;
 import com.situ.jingbao.model.Order;
 import com.situ.jingbao.model.OrderItem;
 import com.situ.jingbao.service.OrderService;
@@ -14,12 +14,12 @@ import java.util.List;
 
 @Service
 public class OrderServiceImpl implements OrderService {
-    private OrderDao orderDao;
-    private CartDao cartDao;
+    private OrderDAO orderDAO;
+    private CartDAO cartDAO;
 
-    public OrderServiceImpl(OrderDao orderDao, CartDao cartDao) {
-        this.orderDao = orderDao;
-        this.cartDao = cartDao;
+    public OrderServiceImpl(OrderDAO orderDao, CartDAO cartDao) {
+        this.orderDAO = orderDAO;
+        this.cartDAO = cartDAO;
     }
 
     @Override
@@ -37,12 +37,12 @@ public class OrderServiceImpl implements OrderService {
             order.setTotal(bd);//设置总价
         }
         //保存订单及订单项
-        int rows = orderDao.saveOrder(order);//保存之后，才有订单主键
+        int rows = orderDAO.saveOrder(order);//保存之后，才有订单主键
         for (OrderItem oi : order.getOrderItemList()) {
             oi.setOrderId(order.getOrderId());
-            orderDao.saveOrderItem(oi);
+            orderDAO.saveOrderItem(oi);
             //删除购物车项
-          cartDao.deleteCart(order.getCustomerId(),oi.getGoodsId());
+            cartDAO.deleteCart(order.getCustomerId(),oi.getGoodsId());
         }
         return rows > 0;
 
@@ -50,21 +50,21 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order findById(Integer customerId, Integer orderId) {
-        return orderDao.findById(customerId,orderId);
+        return orderDAO.findById(customerId,orderId);
     }
 
     @Override
     public List<Order> findOrders(Integer customerId) {
-        return orderDao.findOrders(customerId);
+        return orderDAO.findOrders(customerId);
     }
 
     @Override
     public List<OrderItem> findOrderItemsByOrderId(Integer orderId) {
-        return orderDao.findOrderItemsByOrderId(orderId);
+        return orderDAO.findOrderItemsByOrderId(orderId);
     }
 
     @Override
     public boolean updateOrder(Order order) {
-        return orderDao.updateOrder(order)>0;
+        return orderDAO.updateOrder(order)>0;
     }
 }
