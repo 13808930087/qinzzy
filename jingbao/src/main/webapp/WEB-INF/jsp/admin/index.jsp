@@ -117,13 +117,13 @@
                     <cite>商品管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
+<%--                    <li>--%>
+<%--                        <a onclick="xadmin.add_tab('商品类型','articletype-list')">--%>
+<%--                            <i class="iconfont">&#xe6a7;</i>--%>
+<%--                            <cite>商品类型</cite></a>--%>
+<%--                    </li>--%>
                     <li>
-                        <a onclick="xadmin.add_tab('商品类型','articletype-list')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>商品类型</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('商品列表','article-list')">
+                        <a onclick="xadmin.add_tab('商品列表','goodsList')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>商品列表</cite></a>
                     </li>
@@ -138,17 +138,17 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('交易信息','noticetype-list')">
+                        <a onclick="xadmin.add_tab('交易信息','orderInfo')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>交易信息</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('交易订单','notice-list')">
+                        <a onclick="xadmin.add_tab('交易订单','orderList')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>交易订单</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('交易金额','notice-list')">
+                        <a onclick="xadmin.add_tab('交易金额','orderAmount')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>交易金额</cite></a>
                     </li>
@@ -165,7 +165,7 @@
                 </ul>
             </li>
             <li>
-                <a onclick="xadmin.add_tab('类别管理','cate')">
+                <a onclick="xadmin.add_tab('类别管理','title')">
                     <i class="iconfont left-nav-li" lay-tips="类别管理">&#xe604;</i>
                     <%--                            <i class="iconfont">&#xe6a7;</i>--%>
                     <cite>类别管理</cite></a>
