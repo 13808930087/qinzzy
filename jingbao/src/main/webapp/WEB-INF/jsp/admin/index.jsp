@@ -85,9 +85,9 @@
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('个人信息','one_set')">个人信息</a></dd>
+                    <a onclick="xadmin.open('个人信息','oneSet')">个人信息</a></dd>
                 <dd>
-                    <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                    <a onclick="xadmin.open('切换帐号','login')">切换帐号</a></dd>
                 <dd>
                     <a href="login">退出</a></dd>
             </dl>
@@ -253,7 +253,8 @@
                     <li>
                         <a onclick="xadmin.add_tab('系统设置','sys-set')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>系统设置</cite></a>00
+                            <cite>系统设置</cite>
+                        </a>
                     </li>
                     <li>
                         <a onclick="xadmin.add_tab('屏蔽词','sys-shild')">
@@ -270,8 +271,6 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>图片水印设置</cite></a>
                     </li>
-
-
                 </ul>
             </li>
             <%--            <li>--%>

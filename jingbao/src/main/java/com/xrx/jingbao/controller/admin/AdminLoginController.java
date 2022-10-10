@@ -45,33 +45,26 @@ public class AdminLoginController {
         map.put("pageName", "登录");
         return "admin/login";
     }
-
     @PostMapping("/login")
-    public String loginPost(User user,Map<String, Object> map, HttpSession session) throws IOException, ServletException {
-        String sessionCode = (String) session.getAttribute("identifyCode");
+    public String loginPost(User user, Map<String, Object> map, HttpSession session) throws IOException, ServletException {
+
         String loginUrl = "admin/login";
         String loginPrompt;
-        if (user.getIdentifyCode() == null || user.getIdentifyCode() == "") {
-            loginPrompt = " 验证码不能为空";
-        } else if (user.getIdentifyCode().equalsIgnoreCase(sessionCode)) {
-            AdminUser dbUser = userService.findByUsername(user.getUsername());
-            if (dbUser == null) {
-                loginPrompt = "用户名不存在";
-            } else {
-                String str = user.getPassword() + "{" + user.getUsername() + "}";
-                String encrypt = DigestUtils.md5DigestAsHex(str.getBytes(StandardCharsets.UTF_8));
-                if (encrypt.equals(dbUser.getPassword())) {
-                    session.setAttribute(Global.LOGIN_USER_KEY, dbUser);
-                    loginUrl = "admin/index";
-                    loginPrompt = "登录成功";
-                } else {
-                    loginPrompt = "用户名密码不匹配";
-                }
-            }
+
+        AdminUser dbUser = userService.findByUsername(user.getUsername());
+        if (dbUser == null) {
+            loginPrompt = "用户名不存在";
         } else {
-            loginPrompt = "验证码错误";
+            String str = user.getPassword() + "{" + user.getUsername() + "}";
+            String encrypt = DigestUtils.md5DigestAsHex(str.getBytes(StandardCharsets.UTF_8));
+            if (encrypt.equals(dbUser.getPassword())) {
+                session.setAttribute(Global.LOGIN_ADMIN_USER_KEY, dbUser);
+                loginUrl = "admin/index";
+                loginPrompt = "登录成功";
+            } else {
+                loginPrompt = "用户名密码不匹配";
+            }
         }
-        map.put("ADMIN_USER_LOGIN_ERROR_KEY", loginPrompt);
         return loginUrl;
     }
 }

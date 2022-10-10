@@ -68,141 +68,70 @@
                             <th width="80">状态</th>
                             <th width="250">操作</th>
                         </thead>
-                        <tbody class="x-cate">
-                        <c:forEach items="${titles}" var="title">
-                            <tr cate-id='${title.titleId}' fid='${title.parentId}'>
-                                <td>
-                                    <input type="checkbox" name="" lay-skin="primary">
-                                </td>
-                                <td>${title.titleId}</td>
-                                <td>
-                                    <i class="layui-icon x-show" status='true'>&#xe623;</i>
-                                        ${title.titleName}
-                                </td>
-                                <td><input type="text" class="layui-input x-sort" name="order" value="1"></td>
-                                <td>
-                                    <input type="checkbox" name="switch" lay-text="开启|停用" checked=""
-                                           lay-skin="switch">
-                                </td>
-                                <td class="td-manage">
-                                    <button class="layui-btn layui-btn layui-btn-xs"
-                                            onclick="xadmin.open('编辑','admin-edit.html')"><i class="layui-icon">&#xe642;</i>编辑
-                                    </button>
-                                    <button class="layui-btn layui-btn-warm layui-btn-xs"
-                                            onclick="xadmin.open('编辑','admin-edit.html')"><i class="layui-icon">&#xe642;</i>添加子栏目
-                                    </button>
-                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                            onclick="member_del(this,'要删除的id')" href="javascript:;"><i
-                                            class="layui-icon">&#xe640;</i>删除
-                                    </button>
-                                </td>
-                            </tr>
-                            <c:if test="${title.titles!=null}">
-                                <c:forEach items="${title.titles}" var="title">
-                                    <tr cate-id='${title.titleId}' fid='${title.parentId}'>
-                                        <td>
-                                            <input type="checkbox" name="" lay-skin="primary">
-                                        </td>
-                                        <td>${title.titleId}</td>
-                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <i class="layui-icon x-show" status='true'>&#xe623;</i>
-                                                ${title.titleName}
-                                        </td>
-                                        <td><input type="text" class="layui-input x-sort" name="order" value="1"></td>
-                                        <td>
-                                            <input type="checkbox" name="switch" lay-text="开启|停用" checked=""
-                                                   lay-skin="switch">
-                                        </td>
-                                        <td class="td-manage">
-                                            <button class="layui-btn layui-btn layui-btn-xs"
-                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                    class="layui-icon">&#xe642;</i>编辑
-                                            </button>
-                                            <button class="layui-btn layui-btn-warm layui-btn-xs"
-                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                    class="layui-icon">&#xe642;</i>添加子栏目
-                                            </button>
-                                            <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                    onclick="member_del(this,'要删除的id')" href="javascript:;"><i
-                                                    class="layui-icon">&#xe640;</i>删除
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <c:if test="${title.titles!=null}">
-                                        <c:forEach items="${title.titles}" var="title">
-                                            <tr cate-id='${title.titleId}' fid='${title.parentId}'>
-                                                <td>
-                                                    <input type="checkbox" name="" lay-skin="primary">
-                                                </td>
-                                                <td>${title.titleId}</td>
-                                                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <c:if test="${title.titles.size()==0}">├</c:if><c:if test="${title.titles.size()!=0}"><i class="layui-icon x-show" status='true'>&#xe623;</i></c:if>
-                                                        ${title.titleName}
-                                                </td>
-                                                <td><input type="text" class="layui-input x-sort" name="order"
-                                                           value="1"></td>
-                                                <td>
-                                                    <input type="checkbox" name="switch" lay-text="开启|停用" checked=""
-                                                           lay-skin="switch">
-                                                </td>
-                                                <td class="td-manage">
-                                                    <button class="layui-btn layui-btn layui-btn-xs"
-                                                            onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                            class="layui-icon">&#xe642;</i>编辑
-                                                    </button>
-                                                    <button class="layui-btn layui-btn-warm layui-btn-xs"
-                                                            onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                            class="layui-icon">&#xe642;</i>添加子栏目
-                                                    </button>
-                                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                            onclick="member_del(this,'要删除的id')" href="javascript:;">
-                                                        <i
-                                                                class="layui-icon">&#xe640;</i>删除
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <c:if test="${title.titles!=null}">
-                                                <c:forEach items="${title.titles}" var="title">
-                                                    <tr cate-id='${title.titleId}' fid='${title.parentId}'>
-                                                        <td>
-                                                            <input type="checkbox" name="" lay-skin="primary">
-                                                        </td>
-                                                        <td>${title.titleId}</td>
-                                                        <td>
-                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                            <i class="layui-icon x-show" status='true'>&#xe623;</i>
-                                                                ${title.titleName}
-                                                        </td>
-                                                        <td><input type="text" class="layui-input x-sort" name="order"
-                                                                   value="1"></td>
-                                                        <td>
-                                                            <input type="checkbox" name="switch" lay-text="开启|停用"
-                                                                   checked=""
-                                                                   lay-skin="switch">
-                                                        </td>
-                                                        <td class="td-manage">
-                                                            <button class="layui-btn layui-btn layui-btn-xs"
-                                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                                    class="layui-icon">&#xe642;</i>编辑
-                                                            </button>
-                                                            <button class="layui-btn layui-btn-warm layui-btn-xs"
-                                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i
-                                                                    class="layui-icon">&#xe642;</i>添加子栏目
-                                                            </button>
-                                                            <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                                                    onclick="member_del(this,'要删除的id')"
-                                                                    href="javascript:;"><i
-                                                                    class="layui-icon">&#xe640;</i>删除
-                                                            </button>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
-                                            </c:if>
-                                        </c:forEach>
-                                    </c:if>
-                                </c:forEach>
-                            </c:if>
-                        </c:forEach>.
+
+                        <tr id="titles_ts" date-id='' fid='' style="display: none">
+                            <td>
+                                <input type="checkbox" name="" lay-skin="primary">
+                            </td>
+                            <td><%-- ${title.titleId}--%></td>
+                            <td>
+                                <i class="layui-icon x-show" status='true'>&#xe623;</i>
+                                <%--                                ${title.titleName}--%>
+                            </td>
+                            <td><input type="text" class="layui-input x-sort" name="order" value="1"></td>
+                            <td>
+                                <input type="checkbox" name="switch" lay-text="开启|停用" checked=""
+                                       lay-skin="switch">
+                            </td>
+                            <td class="td-manage">
+                                <button class="layui-btn layui-btn layui-btn-xs"
+                                        onclick="xadmin.open('编辑','admin-edit.html')"><i class="layui-icon">&#xe642;</i>编辑
+                                </button>
+                                <button class="layui-btn layui-btn-warm layui-btn-xs"
+                                        onclick="xadmin.open('编辑','admin-edit.html')"><i class="layui-icon">&#xe642;</i>添加子栏目
+                                </button>
+                                <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                        onclick="member_del(this,'要删除的id')" href="javascript:;"><i
+                                        class="layui-icon">&#xe640;</i>删除
+                                </button>
+                            </td>
+                        </tr>
+
+                        <tbody id="title_tbody" class="x-cate">
+
+
+
+
+<%--                                    <tr cate-id='${title.titleId}' fid='${title.parentId}'>--%>
+<%--                                        <td>--%>
+<%--                                            <input type="checkbox" name="" lay-skin="primary">--%>
+<%--                                        </td>--%>
+<%--                                        <td>${title.titleId}</td>--%>
+<%--                                        <td>&nbsp;&nbsp;&nbsp;&nbsp;--%>
+<%--                                            <i class="layui-icon x-show" status='true'>&#xe623;</i>--%>
+<%--                                                ${title.titleName}--%>
+<%--                                        </td>--%>
+<%--                                        <td><input type="text" class="layui-input x-sort" name="order" value="1"></td>--%>
+<%--                                        <td>--%>
+<%--                                            <input type="checkbox" name="switch" lay-text="开启|停用" checked=""--%>
+<%--                                                   lay-skin="switch">--%>
+<%--                                        </td>--%>
+<%--                                        <td class="td-manage">--%>
+<%--                                            <button class="layui-btn layui-btn layui-btn-xs"--%>
+<%--                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i--%>
+<%--                                                    class="layui-icon">&#xe642;</i>编辑--%>
+<%--                                            </button>--%>
+<%--                                            <button class="layui-btn layui-btn-warm layui-btn-xs"--%>
+<%--                                                    onclick="xadmin.open('编辑','admin-edit.html')"><i--%>
+<%--                                                    class="layui-icon">&#xe642;</i>添加子栏目--%>
+<%--                                            </button>--%>
+<%--                                            <button class="layui-btn-danger layui-btn layui-btn-xs"--%>
+<%--                                                    onclick="member_del(this,'要删除的id')" href="javascript:;"><i--%>
+<%--                                                    class="layui-icon">&#xe640;</i>删除--%>
+<%--                                            </button>--%>
+<%--                                        </td>--%>
+<%--                                    </tr>--%>
+
                         <%--                                <tr cate-id='5' fid='0' >--%>
                         <%--                                  <td>--%>
                         <%--                                   <input type="checkbox" name="" lay-skin="primary">--%>
@@ -278,6 +207,29 @@
         </div>
     </div>
 </div>
+<script>
+    let url="admin/titles";
+    $.ajax({
+        url: url,
+        method: "post",
+        contentType:"application/json",
+        dataType: "json",
+        success: function (resp) {//回调函数
+           console.log(resp.titles);
+           let $ts= $("#titles_ts").clone(true,true);
+           $($ts).data("id",1);
+           console.log($($ts).html());
+           $("#title_tbody").append($($ts).css("display",""));
+
+
+        }
+        ,
+        error: function (resp) {
+        }
+        ,
+        traditional: true
+    })
+</script>
 <script>
     layui.use(['form'], function () {
         form = layui.form;

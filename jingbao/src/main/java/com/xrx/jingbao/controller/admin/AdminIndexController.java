@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
         public String welcome() {
             return "admin/welcome";
         }
+        @GetMapping("/oneSet")
+        public String oneSet() {
+            return "admin/oneSet";
+        }
 
     }
 

@@ -2,6 +2,7 @@ package com.xrx.jingbao.interceptor;
 
 import com.xrx.jingbao.common.Global;
 import com.xrx.jingbao.model.User;
+import com.xrx.jingbao.model.admin.AdminUser;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -13,9 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
-public class JingbaoInterceptor implements HandlerInterceptor {
-    private static final Log log = LogFactory.getLog(JingbaoInterceptor.class);
-
+public class JingbaoAdminInterceptor implements HandlerInterceptor {
+    private static final Log log = LogFactory.getLog(JingbaoAdminInterceptor.class);
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
@@ -25,9 +25,9 @@ public class JingbaoInterceptor implements HandlerInterceptor {
         HttpSession session = req.getSession();
         String path = req.getServletPath();
         session.setAttribute("servletPath",request.getServletPath());
-            User user = (User) session.getAttribute(Global.LOGIN_USER_KEY);
+        AdminUser user = (AdminUser) session.getAttribute(Global.LOGIN_ADMIN_USER_KEY);
             if (user == null) {
-                resp.sendRedirect(req.getContextPath() + "/login");
+                resp.sendRedirect(req.getContextPath() + "/admin/login");
                 return false;
             } else {
               return true;
