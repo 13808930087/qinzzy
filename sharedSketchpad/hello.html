@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .rg{
+      float: left;
+      width: 400px;
+      height: 100px;
+      text-align: center;
+      border: 1px black solid;
+      margin-left:-1px ;
+    }
+    #cas{
+      width: 800px;
+      height: 600px;
+      border: #000000 1px solid;
+    }
+
+    p{
+      margin: 5px 0 5px 0;
+    }
+  </style>
+</head>
+<body>
+<div id="seclect">
+  <div class="rg" id="secc">
+    <p>选择画笔颜色</p>
+    <input type="color" id="cl"/>
+  </div>
+  <div class="rg" id="secw">
+    <p>选择画笔大小:&nbsp;<span id="size">1px</span></p>
+    <input type="range" onchange="setLineWidth(this)" value="1" min="1" max="10"/>
+  </div>
+</div>
+<div id="cas">
+  <canvas id="cs" width="800" height="600"></canvas>
+</div>
+
+<script type="text/javascript">
+  var canvas = document.getElementById("cs");//获取画布
+  var context = canvas.getContext("2d");
+
+  function setLineWidth(e) {    // this 指向是就是该元素本身
+    console.log("你点击了画笔：", e);
+    console.log(e.value)
+    context.lineWidth = e.value;
+    document.getElementById("size").innerHTML = e.value + " px";
+  }
+
+  /* 用户绘制的动作，可以分解为如下操作：
+      1.按下鼠标
+      2.移动鼠标
+      3.松开鼠标
+
+     它们分别对应于鼠标的onmousedown、onmousemove和onmouseup事件。
+     并且上述操作必然是有想后顺序的，因为人的操作必然是几个操作
+     集合中的一种。所以我们需要来限定以下，过滤用户的无效操作，
+     只对按照上诉顺序的操作进行响应。
+  */
+  let isDowned = false;  // 是否按下鼠标，默认是false，如果为false，则不响应任何事件。
+
+  // 开始添加鼠标事件
+  canvas.onmousedown = function(e) {
+    let x = e.clientX - canvas.offsetLeft;
+    let y = e.clientY - canvas.offsetTop;
+    isDowned = true;   // 设置isDowned为true，可以响应鼠标移动事件
+    console.log("当前鼠标点击的坐标为：(", x + ", " + y + ")");
+    context.strokeStyle = document.getElementById("cl").value;   // 设置颜色，大小已经设置完毕了
+    context.beginPath();    // 开始一个新的路径
+    context.moveTo(x, y);   // 移动画笔到鼠标的点击位置
+
+    // 多人协作的逻辑
+    let pos = {type: 0, x: x, y: y, color: context.strokeStyle, size: context.lineWidth}
+    client.send(JSON.stringify(pos))
+
+  }
+
+  canvas.onmousemove = function(e) {
+    if (!isDowned) {
+      return ;
+    }
+    let x = e.clientX - canvas.offsetLeft;
+    let y = e.clientY - canvas.offsetTop;
+    console.log("当前鼠标的坐标为：(", x + ", " + y + ")");
+    context.lineTo(x, y);    // 移动画笔绘制线条
+    context.stroke();
+
+    // 多人协作逻辑
+    let pos = {type: 1, x: x, y: y, color: context.strokeStyle, size: context.lineWidth}
+    client.send(JSON.stringify(pos))
+  }
+
+  canvas.onmouseup = function(e) {
+    isDowned = false;
+  }
+
+
+  /*
+      在按下鼠标移动的过程中，如果移出了画布，则无法触发鼠标松开事件，即onmouseup。
+      所以需要在鼠标移出画布时，设置isDowned为false。
+  */
+  canvas.onmouseout = function(e) {
+    isDowned = false;
+  }
+
+</script>
+
+<script>
+  function link () {
+    client = new WebSocket("ws://192.168.0.118:30985/ws/wedraw");    //连接服务器
+
+    client.onopen = function(e){
+      alert('连接了');
+    };
+
+    client.onmessage = function (e) {
+      let data = e.data
+      let pos = JSON.parse(data)
+
+      console.log("接受到的消息：" + data)
+
+      context.strokeStyle = pos.color   // 设置颜色
+      context.lineWidth = pos.size      // 设置线宽
+      if (pos.type === 0) {             // 如果该点是移动画笔，则移动画笔
+        context.beginPath()           // 开始一个新的路径
+        context.moveTo(pos.x, pos.y)
+      } else if (pos.type === 1) {      // 如果该点是画线，就画线
+        context.lineTo(pos.x, pos.y);
+        context.stroke();                  // 绘制点
+      } else {
+        console.log("不存在的情况，直接返回")
+        return
+      }
+    }
+
+    client.onclose = function(e){
+      alert("已经与服务器断开连接\r\n当前连接状态：" + this.readyState);
+    };
+
+    client.onerror = function(e){
+      alert("WebSocket异常！");
+    };
+  }
+
+  function sendMsg(position){
+    client.send(position);
+  }
+  link ()  // 直接建立websocket连接
+</script>
+</body>
+
+</html>
